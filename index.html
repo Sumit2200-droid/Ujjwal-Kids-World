@@ -124,6 +124,41 @@
             overflow: hidden;
         }
 
+        .hero-bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero-bg-slide.active {
+            opacity: 0.8;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
         .particles {
             position: absolute;
             top: 0;
@@ -131,6 +166,7 @@
             right: 0;
             bottom: 0;
             overflow: hidden;
+            z-index: 2;
         }
 
         .particle {
@@ -169,6 +205,7 @@
             background-size: 60px 60px;
             animation: gridSlide 20s linear infinite;
             mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+            z-index: 2;
         }
 
         @keyframes gridSlide {
@@ -180,7 +217,7 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 3;
             text-align: center;
         }
 
@@ -937,11 +974,19 @@
     </header>
 
     <section class="hero" id="home">
+        <div class="hero-bg-slider" id="bgSlider">
+            <div class="hero-bg-slide active" style="background-image: url('48367674_295220207788206_5921511594709221376_n.jpg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('WhatsApp Image 2026-01-09 at 12.03.36 PM.jpeg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('WhatsApp Image 2026-01-09 at 12.07.59 PM.jpeg');"></div>
+            <div class="hero-bg-slide" style="background-image: url('WhatsApp Image 2026-01-09 at 12.05.15 PM.jpeg');"></div>
+            
+        </div>
+        <div class="hero-overlay"></div>
         <div class="particles" id="particles"></div>
         <div class="hero-grid"></div>
         <div class="hero-content">
             <div class="hero-badge">
-                <span>✨</span> 5000+ Students Across 6 Campuses
+                <span>✨</span> 10000+ Students Across 6 Campuses
             </div>
             <h1>Empowering Future Innovators</h1>
             <p>A beacon of excellence in education, fostering innovation and creativity through cutting-edge technology, AI-driven learning, and transformative hands-on experiences</p>
@@ -960,7 +1005,7 @@
         <div class="stats-container">
             <div class="stat-item">
                 <div class="stat-icon">👥</div>
-                <div class="stat-number">5000+</div>
+                <div class="stat-number">10000+</div>
                 <div class="stat-label">Active Students</div>
             </div>
             <div class="stat-item">
@@ -986,6 +1031,21 @@
         <p class="section-subtitle">Cutting-edge curriculum designed to prepare students for the future with technology, creativity, and critical thinking at the core</p>
         <div class="programs-grid">
             <div class="program-card">
+                <div class="program-icon">📚</div>
+                <h3>Academic Excellence</h3>
+                <p>Education first — we focus on strong foundational academics aligned with WB Board and CBSE standards, ensuring holistic development and outstanding results.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🔢</div>
+                <h3>Advanced Mathematics</h3>
+                <p>Excel in mathematics with our comprehensive curriculum designed to build strong analytical and problem-solving skills for academic excellence.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🗣️</div>
+                <h3>English Spoken</h3>
+                <p>Build confidence and fluency in English communication through interactive sessions, practical exercises, and immersive conversation practice.</p>
+            </div>
+            <div class="program-card">
                 <div class="program-icon">💻</div>
                 <h3>Full Stack Development</h3>
                 <p>Master modern web technologies and become a proficient full stack developer with hands-on projects and real-world applications that prepare you for industry.</p>
@@ -1009,21 +1069,6 @@
                 <div class="program-icon">🎨</div>
                 <h3>Graphic Design</h3>
                 <p>Develop creative skills in visual design, digital art, and multimedia production using industry-standard tools and professional techniques.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🗣️</div>
-                <h3>English Spoken</h3>
-                <p>Build confidence and fluency in English communication through interactive sessions, practical exercises, and immersive conversation practice.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🔢</div>
-                <h3>Advanced Mathematics</h3>
-                <p>Excel in mathematics with our comprehensive curriculum designed to build strong analytical and problem-solving skills for academic excellence.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">📚</div>
-                <h3>Academic Excellence</h3>
-                <p>Education first — we focus on strong foundational academics aligned with WB Board and CBSE standards, ensuring holistic development and outstanding results.</p>
             </div>
         </div>
     </section>
@@ -1156,6 +1201,20 @@
     </footer>
 
     <script>
+        // Background slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-bg-slide');
+        const totalSlides = slides.length;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 2 seconds
+        setInterval(nextSlide, 2000);
+
         // Particle generation
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {
