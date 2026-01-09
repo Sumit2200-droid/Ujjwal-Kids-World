@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujjwal Kids World - Empowering Future Innovators</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #0f172a;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+
+        .header.scrolled {
+            padding: 0.7rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #334155;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: transform 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav-menu a:hover {
+            color: #6366f1;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 10rem 2rem 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(99, 102, 241, 0.5);
+            border-radius: 50%;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridSlide 20s linear infinite;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+        }
+
+        @keyframes gridSlide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1.4s ease;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
+        }
+
+        .cta-button-secondary {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 10px 40px rgba(255,255,255,0.2);
+        }
+
+        .stats {
+            background: #ffffff;
+            padding: 0;
+            margin-top: -5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .stat-item {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.05rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 7rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-alternate {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #64748b;
+            margin-bottom: 5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .program-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .program-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .program-card:hover::after {
+            width: 500px;
+            height: 500px;
+        }
+
+        .program-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .program-card h3 {
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .program-card p {
+            color: #64748b;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .campuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .campus-card {
+            background: white;
+            border: 2px solid rgba(99, 102, 241, 0.15);
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .campus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 0;
+        }
+
+        .campus-card:hover::before {
+            opacity: 1;
+        }
+
+        .campus-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.25);
+            border-color: transparent;
+        }
+
+        .campus-card:hover h3,
+        .campus-card:hover p {
+            color: white;
+        }
+
+        .campus-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .campus-card:hover .campus-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .campus-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            transition: color 0.3s;
+        }
+
+        .campus-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        .campus-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #6366f1;
+            transition: all 0.3s;
+        }
+
+        .campus-card:hover .campus-badge {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .founder-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 8rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridSlide 20s linear infinite;
+        }
+
+        .founder-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-image-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .founder-image {
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            box-shadow: 0 25px 80px rgba(99, 102, 241, 0.5);
+            position: relative;
+            overflow: hidden;
+            animation: founderPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes founderPulse {
+            0%, 100% {
+                box-shadow: 0 25px 80px rgba(99, 102, 241, 0.5);
+            }
+            50% {
+                box-shadow: 0 25px 100px rgba(139, 92, 246, 0.6);
+            }
+        }
+
+        .founder-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .founder-emoji {
+            animation: wave 2s ease-in-out infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            40%, 60% { transform: rotate(14deg); }
+            50% { transform: rotate(-8deg); }
+            70%, 100% { transform: rotate(0deg); }
+        }
+
+        .founder-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            filter: blur(40px);
+            opacity: 0.5;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .founder-text {
+            flex: 1;
+            min-width: 320px;
+            color: white;
+        }
+
+        .founder-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .founder-text h3 {
+            color: #a78bfa;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .founder-text p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 5rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: rgba(255,255,255,0.7);
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: #a78bfa;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 968px) {
+            .nav-menu {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .founder-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .founder-image {
+                width: 260px;
+                height: 260px;
+                font-size: 7rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .programs-grid,
+            .campuses-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <span class="logo-text">Ujjwal Kids World</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#campuses">Campuses</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="particles" id="particles"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>✨</span> 5000+ Students Across 6 Campuses
+            </div>
+            <h1>Empowering Future Innovators</h1>
+            <p>A beacon of excellence in education, fostering innovation and creativity through cutting-edge technology, AI-driven learning, and transformative hands-on experiences</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="cta-button">
+                    🚀 Enroll Now
+                </a>
+                <a href="#programs" class="cta-button cta-button-secondary">
+                    📚 Explore Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Active Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🏛️</div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">Campuses</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">📖</div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">Board Options</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">AI-Focused</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="programs">
+        <h2 class="section-title">Innovative Programs</h2>
+        <p class="section-subtitle">Cutting-edge curriculum designed to prepare students for the future with technology, creativity, and critical thinking at the core</p>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-icon">💻</div>
+                <h3>Full Stack Development</h3>
+                <p>Master modern web technologies and become a proficient full stack developer with hands-on projects and real-world applications that prepare you for industry.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🐍</div>
+                <h3>Python Programming</h3>
+                <p>Learn Python from basics to advanced, including AI and machine learning applications tailored for young innovative minds ready to shape the future.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">📱</div>
+                <h3>App Development</h3>
+                <p>Create innovative mobile applications and bring your groundbreaking ideas to life with cutting-edge development tools and expert mentorship.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🤖</div>
+                <h3>Robotics & AI</h3>
+                <p>Explore the fascinating world of robotics and artificial intelligence through interactive projects, competitions, and hands-on innovation labs.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🎨</div>
+                <h3>Graphic Design</h3>
+                <p>Develop creative skills in visual design, digital art, and multimedia production using industry-standard tools and professional techniques.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🗣️</div>
+                <h3>English Spoken</h3>
+                <p>Build confidence and fluency in English communication through interactive sessions, practical exercises, and immersive conversation practice.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🔢</div>
+                <h3>Advanced Mathematics</h3>
+                <p>Excel in mathematics with our comprehensive curriculum designed to build strong analytical and problem-solving skills for academic excellence.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">📚</div>
+                <h3>Academic Excellence</h3>
+                <p>Education first — we focus on strong foundational academics aligned with WB Board and CBSE standards, ensuring holistic development and outstanding results.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alternate" id="campuses">
+        <h2 class="section-title">Our Campuses</h2>
+        <p class="section-subtitle">Six world-class campuses across West Bengal, bringing quality education and innovation closer to every student</p>
+        <div class="campuses-grid">
+            <div class="campus-card">
+                <div class="campus-icon">🏛️</div>
+                <h3>Gangarampur</h3>
+                <p>Main Campus</p>
+                <span class="campus-badge">WB Board & CBSE</span>
+            </div>
+            <div class="campus-card">
+                <div class="campus-icon">⭐</div>
+                <h3>Ujjwal Kinder World</h3>
+                <p>Gangarampur</p>
+                <span class="campus-badge">CBSE Exclusive</span>
+            </div>
+            <div class="campus-card">
+                <div class="campus-icon">🏫</div>
+                <h3>Buniadpur</h3>
+                <p>Dakshin Dinajpur</p>
+                <span class="campus-badge">WB Board & CBSE</span>
+            </div>
+            <div class="campus-card">
+                <div class="campus-icon">🏫</div>
+                <h3>Kaliyaganj</h3>
+                <p>Uttar Dinajpur</p>
+                <span class="campus-badge">WB Board & CBSE</span>
+            </div>
+            <div class="campus-card">
+                <div class="campus-icon">🏫</div>
+                <h3>Kumarganj</h3>
+                <p>Dakshin Dinajpur</p>
+                <span class="campus-badge">WB Board & CBSE</span>
+            </div>
+            <div class="campus-card">
+                <div class="campus-icon">🏫</div>
+                <h3>Harirampur</h3>
+                <p>Dakshin Dinajpur</p>
+                <span class="campus-badge">WB Board & CBSE</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="founder-section" id="about">
+        <div class="founder-content">
+            <div class="founder-image-wrapper">
+                <div class="founder-glow"></div>
+                <div class="founder-image">
+                    <span class="founder-emoji">👋</span>
+                </div>
+            </div>
+            <div class="founder-text">
+                <h2>Meet Our Visionary Founder</h2>
+                <h3>Mr. Ashim Ghosh</h3>
+                <p>
+                    With an unwavering commitment to revolutionize traditional schooling, Mr. Ashim Ghosh founded Ujjwal Kids World to create a nurturing and innovative learning environment where technology meets education. His vision has transformed the lives of over 5,000 students across West Bengal, empowering them to reach their full potential academically, socially, and emotionally. Under his leadership, Ujjwal Kids World has become a beacon of excellence, pioneering AI-focused education and fostering the next generation of innovators, developers, and creative thinkers who will shape tomorrow's world.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Why Choose Us</h2>
+        <p class="section-subtitle">Experience excellence in education with our unique approach to learning and development</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Innovation First</h3>
+                <p>Hands-on projects integrating cutting-edge technology and coding skills for 21st-century learning excellence and future readiness.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>Holistic Development</h3>
+                <p>Nurturing academic excellence alongside social and emotional growth in every student we teach, creating well-rounded individuals.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Expert Faculty</h3>
+                <p>Dedicated educators passionate about inspiring and guiding the next generation of innovators, leaders, and change-makers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Proven Excellence</h3>
+                <p>Track record of outstanding academic achievements and successful student outcomes across all our campuses statewide.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ujjwal Kids World</h3>
+                <p>Empowering young minds through innovative education and technology-driven learning for a brighter, smarter tomorrow.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div>
+                    <div><a href="#home">→ Home</a></div>
+                    <div><a href="#programs">→ Programs</a></div>
+                    <div><a href="#campuses">→ Campuses</a></div>
+                    <div><a href="#about">→ About Us</a></div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <div>
+                    <div>📍 Gangarampur, Dakshin Dinajpur</div>
+                    <div>West Bengal, India</div>
+                    <div>📧 info@ujjwalkidsworld.edu</div>
+                    <div>📞 Contact: Available on Request</div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Education Boards</h3>
+                <div>
+                    <div>✓ West Bengal Board</div>
+                    <div>✓ CBSE Board</div>
+                    <div>✓ Dual Board Options</div>
+                    <div>✓ CBSE Exclusive (Kinder World)</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ujjwal Kids World. All Rights Reserved. | Founded by Mr. Ashim Ghosh</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle generation
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
