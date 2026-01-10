@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujjwal Kids World - Empowering Future Innovators</title>
+    <title>Kids World - Empowering Future Innovators</title>
     <style>
         * {
             margin: 0;
@@ -142,7 +142,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 2s ease-in-out;
+            transition: opacity 6s ease-in-out;
         }
 
         .hero-bg-slide.active {
@@ -155,7 +155,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.35));
             z-index: 1;
         }
 
@@ -214,7 +214,7 @@
         }
 
         .hero-content {
-            max-width: 1200px;
+            max-width: 680px;
             margin: 0 auto;
             position: relative;
             z-index: 3;
@@ -256,13 +256,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: slideUp 1s ease;
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -274,16 +274,20 @@
             font-size: 1.4rem;
             margin-bottom: 3rem;
             color: rgba(255,255,255,0.9);
-            max-width: 800px;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
-            animation: fadeIn 1.2s ease;
+            animation: fadeIn 0.8s ease-out 0.2s both;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { 
+                opacity: 0;
+            }
+            to { 
+                opacity: 1;
+            }
         }
 
         .hero-buttons {
@@ -291,7 +295,18 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeIn 1.4s ease;
+            animation: buttonScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+        }
+
+        @keyframes buttonScale {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .cta-button {
@@ -305,10 +320,11 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.05rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4), 0 0 30px rgba(99, 102, 241, 0.2);
             position: relative;
             overflow: hidden;
+            border: none;
         }
 
         .cta-button::before {
@@ -327,19 +343,22 @@
         }
 
         .cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
         }
 
         .cta-button-secondary {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.4);
             backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
 
         .cta-button-secondary:hover {
-            background: rgba(255,255,255,0.2);
-            box-shadow: 0 10px 40px rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.6);
+            box-shadow: 0 12px 40px rgba(255,255,255,0.15);
+            transform: translateY(-2px);
         }
 
         .stats {
@@ -961,7 +980,7 @@
         <nav class="nav-container">
             <div class="logo">
                 <div class="logo-icon">🎓</div>
-                <span class="logo-text">Ujjwal Kids World</span>
+                <span class="logo-text">Kids World</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -986,7 +1005,7 @@
         <div class="hero-grid"></div>
         <div class="hero-content">
             <div class="hero-badge">
-                <span>✨</span> 10000+ Students Across 6 Campuses
+                <span>✨</span> 10000+ Students Across 5 Campuses
             </div>
             <h1>Empowering Future Innovators</h1>
             <p>A beacon of excellence in education, fostering innovation and creativity through cutting-edge technology, AI-driven learning, and transformative hands-on experiences</p>
@@ -1010,18 +1029,18 @@
             </div>
             <div class="stat-item">
                 <div class="stat-icon">🏛️</div>
-                <div class="stat-number">6</div>
+                <div class="stat-number">5</div>
                 <div class="stat-label">Campuses</div>
             </div>
             <div class="stat-item">
                 <div class="stat-icon">📖</div>
-                <div class="stat-number">2</div>
+                <div class="stat-number">1</div>
                 <div class="stat-label">Board Options</div>
             </div>
             <div class="stat-item">
-                <div class="stat-icon">🤖</div>
+                <div class="stat-icon">⭐</div>
                 <div class="stat-number">100%</div>
-                <div class="stat-label">AI-Focused</div>
+                <div class="stat-label">Student Success</div>
             </div>
         </div>
     </section>
@@ -1075,19 +1094,13 @@
 
     <section class="section section-alternate" id="campuses">
         <h2 class="section-title">Our Campuses</h2>
-        <p class="section-subtitle">Six world-class campuses across West Bengal, bringing quality education and innovation closer to every student</p>
+        <p class="section-subtitle">Five world-class campuses across West Bengal, bringing quality education and innovation closer to every student</p>
         <div class="campuses-grid">
             <div class="campus-card">
                 <div class="campus-icon">🏛️</div>
                 <h3>Gangarampur</h3>
                 <p>Main Campus</p>
                 <span class="campus-badge">WB Board & CBSE</span>
-            </div>
-            <div class="campus-card">
-                <div class="campus-icon">⭐</div>
-                <h3>Ujjwal Kinder World</h3>
-                <p>Gangarampur</p>
-                <span class="campus-badge">CBSE Exclusive</span>
             </div>
             <div class="campus-card">
                 <div class="campus-icon">🏫</div>
@@ -1128,7 +1141,7 @@
                 <h2>Meet Our Visionary Founder</h2>
                 <h3>Mr. Ashim Ghosh</h3>
                 <p>
-                    With an unwavering commitment to revolutionize traditional schooling, Mr. Ashim Ghosh founded Ujjwal Kids World to create a nurturing and innovative learning environment where technology meets education. His vision has transformed the lives of over 5,000 students across West Bengal, empowering them to reach their full potential academically, socially, and emotionally. Under his leadership, Ujjwal Kids World has become a beacon of excellence, pioneering AI-focused education and fostering the next generation of innovators, developers, and creative thinkers who will shape tomorrow's world.
+                    With an unwavering commitment to revolutionize traditional schooling, Mr. Ashim Ghosh founded Kids World to create a nurturing and innovative learning environment where technology meets education. His vision has transformed the lives of over 5,000 students across West Bengal, empowering them to reach their full potential academically, socially, and emotionally. Under his leadership, Kids World has become a beacon of excellence, pioneering AI-focused education and fostering the next generation of innovators, developers, and creative thinkers who will shape tomorrow's world.
                 </p>
             </div>
         </div>
@@ -1164,7 +1177,7 @@
     <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Ujjwal Kids World</h3>
+                <h3>Kids World</h3>
                 <p>Empowering young minds through innovative education and technology-driven learning for a brighter, smarter tomorrow.</p>
             </div>
             <div class="footer-section">
@@ -1181,22 +1194,19 @@
                 <div>
                     <div>📍 Gangarampur, Dakshin Dinajpur</div>
                     <div>West Bengal, India</div>
-                    <div>📧 info@ujjwalkidsworld.edu</div>
+                    <div>📧 info@kidsworld.edu</div>
                     <div>📞 Contact: Available on Request</div>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Education Boards</h3>
                 <div>
-                    <div>✓ West Bengal Board</div>
                     <div>✓ CBSE Board</div>
-                    <div>✓ Dual Board Options</div>
-                    <div>✓ CBSE Exclusive (Kinder World)</div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Ujjwal Kids World. All Rights Reserved. | Founded by Mr. Ashim Ghosh</p>
+            <p>&copy; 2026 Kids World. All Rights Reserved. | Founded by Mr. Ashim Ghosh</p>
         </div>
     </footer>
 
@@ -1212,8 +1222,8 @@
             slides[currentSlide].classList.add('active');
         }
 
-        // Change slide every 2 seconds
-        setInterval(nextSlide, 2000);
+        // Change slide every 8 seconds
+        setInterval(nextSlide, 8000);
 
         // Particle generation
         const particlesContainer = document.getElementById('particles');
