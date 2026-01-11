@@ -378,10 +378,11 @@
             padding: 0 2rem;
         }
 
+
         .stat-item {
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 24px;
+            border-radius: 20px;
             text-align: center;
             border: 1px solid rgba(99, 102, 241, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -389,7 +390,6 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
-
         .stat-item::before {
             content: '';
             position: absolute;
@@ -973,6 +973,523 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Enhanced Why Choose Us Section */
+.why-choose-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.why-choose-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.features-grid-enhanced {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card-enhanced {
+    padding: 3rem 2.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    border-radius: 28px;
+    border: 2px solid transparent;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.feature-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef, #6366f1);
+    background-size: 300% 300%;
+    border-radius: 28px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: -1;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.feature-card-enhanced:hover::before {
+    opacity: 1;
+}
+
+.feature-card-enhanced::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(99, 102, 241, 0.08) 0%, 
+                transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    border-radius: 28px;
+}
+
+.feature-card-enhanced:hover::after {
+    opacity: 1;
+}
+
+.feature-card-enhanced:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 70px rgba(99, 102, 241, 0.25);
+}
+
+.feature-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+    pointer-events: none;
+}
+
+.feature-card-enhanced:hover .feature-glow {
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.feature-number {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.08;
+    line-height: 1;
+    transition: all 0.4s;
+}
+
+.feature-card-enhanced:hover .feature-number {
+    opacity: 0.15;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.feature-icon-enhanced {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 35px rgba(99, 102, 241, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-icon-enhanced::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+    transform: rotate(45deg);
+    animation: iconShine 3s linear infinite;
+}
+
+@keyframes iconShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.feature-card-enhanced:hover .feature-icon-enhanced {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
+}
+
+.feature-icon-enhanced span {
+    position: relative;
+    z-index: 1;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.feature-card-enhanced h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    color: #0f172a;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+}
+
+.feature-card-enhanced:hover h3 {
+    color: #6366f1;
+}
+
+.feature-card-enhanced p {
+    color: #64748b;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+}
+
+.feature-stats {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.stat-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.stat-desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+    .features-grid-enhanced {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .feature-number {
+        font-size: 3rem;
+    }
+}
+.feature-card-enhanced:hover h3,
+.feature-card-enhanced:hover p,
+.feature-card-enhanced:hover .stat-desc {
+    color: #0f172a !important;
+}
+.feature-card-enhanced:hover {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+}
+
+.feature-card-enhanced:hover h3,
+.feature-card-enhanced:hover p,
+.feature-card-enhanced:hover .stat-desc {
+    color: #ffffff !important;
+}
+/* Programs Section Enhancement */
+.programs-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Education First Banner */
+.education-first-banner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    padding: 3rem;
+    border-radius: 24px;
+    margin-bottom: 5rem;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-first-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.banner-icon {
+    font-size: 5rem;
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.banner-content h3 {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+}
+
+.banner-content p {
+    color: rgba(255,255,255,0.95);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 800px;
+}
+
+/* Program Categories */
+.program-category {
+    margin-bottom: 5rem;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.category-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.category-badge.innovation {
+    background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+.category-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.category-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* New Program Cards */
+.programs-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.program-card-new {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.program-card-new.academic {
+    border-top: 4px solid #6366f1;
+}
+
+.program-card-new.innovation {
+    border-top: 4px solid #ec4899;
+}
+
+.program-card-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.program-card-new.innovation::before {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.03) 0%, transparent 100%);
+}
+
+.program-card-new:hover::before {
+    opacity: 1;
+}
+
+.program-card-new:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+.program-card-new.innovation:hover {
+    border-color: rgba(236, 72, 153, 0.2);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.program-icon-new {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+    transition: all 0.3s;
+}
+
+.program-card-new.innovation .program-icon-new {
+    background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.25);
+}
+
+.program-card-new:hover .program-icon-new {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.program-tag {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.program-tag.innovation-tag {
+    background: rgba(236, 72, 153, 0.1);
+    color: #ec4899;
+}
+
+.program-card-new h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.program-card-new p {
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 1.02rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Program Features */
+.program-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(0,0,0,0.05);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    color: #475569;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.program-card-new.academic .feature-item {
+    color: #6366f1;
+}
+
+.program-card-new.innovation .feature-item {
+    color: #ec4899;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .education-first-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 2rem;
+    }
+    
+    .banner-icon {
+        font-size: 4rem;
+    }
+    
+    .banner-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .category-title {
+        font-size: 2rem;
+    }
+    
+    .programs-grid-new {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -984,7 +1501,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#programs">Programs</a></li>
+                <li><a href="#programs">Academics & Programs</a></li>
                 <li><a href="#campuses">Campuses</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1044,53 +1561,218 @@
             </div>
         </div>
     </section>
+<section class="section why-choose-section">
+    <h2 class="section-title">Why Choose Us</h2>
+    <p class="section-subtitle">
+        A future-ready education that balances academic excellence, innovation, and holistic student development
+    </p>
 
-    <section class="section" id="programs">
-        <h2 class="section-title">Innovative Programs</h2>
-        <p class="section-subtitle">Cutting-edge curriculum designed to prepare students for the future with technology, creativity, and critical thinking at the core</p>
-        <div class="programs-grid">
-            <div class="program-card">
-                <div class="program-icon">📚</div>
-                <h3>Academic Excellence</h3>
-                <p>Education first — we focus on strong foundational academics aligned with WB Board and CBSE standards, ensuring holistic development and outstanding results.</p>
+    <div class="features-grid-enhanced">
+        <div class="feature-card-enhanced" data-tilt>
+            <div class="feature-glow"></div>
+            <div class="feature-number">01</div>
+            <div class="feature-icon-enhanced">
+                <span>🚀</span>
             </div>
-            <div class="program-card">
-                <div class="program-icon">🔢</div>
-                <h3>Advanced Mathematics</h3>
-                <p>Excel in mathematics with our comprehensive curriculum designed to build strong analytical and problem-solving skills for academic excellence.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🗣️</div>
-                <h3>English Spoken</h3>
-                <p>Build confidence and fluency in English communication through interactive sessions, practical exercises, and immersive conversation practice.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">💻</div>
-                <h3>Full Stack Development</h3>
-                <p>Master modern web technologies and become a proficient full stack developer with hands-on projects and real-world applications that prepare you for industry.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🐍</div>
-                <h3>Python Programming</h3>
-                <p>Learn Python from basics to advanced, including AI and machine learning applications tailored for young innovative minds ready to shape the future.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">📱</div>
-                <h3>App Development</h3>
-                <p>Create innovative mobile applications and bring your groundbreaking ideas to life with cutting-edge development tools and expert mentorship.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🤖</div>
-                <h3>Robotics & AI</h3>
-                <p>Explore the fascinating world of robotics and artificial intelligence through interactive projects, competitions, and hands-on innovation labs.</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🎨</div>
-                <h3>Graphic Design</h3>
-                <p>Develop creative skills in visual design, digital art, and multimedia production using industry-standard tools and professional techniques.</p>
+            <h3>Innovation-Driven Learning</h3>
+            <p>
+                We integrate technology, coding, and hands-on projects into everyday learning, helping students develop critical thinking and problem-solving skills for the future.
+            </p>
+            <div class="feature-stats">
+                <div class="stat-mini">
+                    <span class="stat-value">95%</span>
+                    <span class="stat-desc">Tech Integration</span>
+                </div>
             </div>
         </div>
-    </section>
+
+        <div class="feature-card-enhanced" data-tilt>
+            <div class="feature-glow"></div>
+            <div class="feature-number">02</div>
+            <div class="feature-icon-enhanced">
+                <span>📚</span>
+            </div>
+            <h3>Strong Academic Foundation</h3>
+            <p>
+                A well-structured curriculum focused on core subjects ensures conceptual clarity, academic excellence, and consistent performance at every stage.
+            </p>
+            <div class="feature-stats">
+                <div class="stat-mini">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-desc">Success Rate</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-card-enhanced" data-tilt>
+            <div class="feature-glow"></div>
+            <div class="feature-number">03</div>
+            <div class="feature-icon-enhanced">
+                <span>👨‍🏫</span>
+            </div>
+            <h3>Experienced & Caring Faculty</h3>
+            <p>
+                Our dedicated educators combine subject expertise with modern teaching methods to guide, mentor, and inspire every student.
+            </p>
+            <div class="feature-stats">
+                <div class="stat-mini">
+                    <span class="stat-value">50+</span>
+                    <span class="stat-desc">Expert Teachers</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-card-enhanced" data-tilt>
+            <div class="feature-glow"></div>
+            <div class="feature-number">04</div>
+            <div class="feature-icon-enhanced">
+                <span>🌱</span>
+            </div>
+            <h3>Holistic Student Development</h3>
+            <p>
+                We nurture intellectual, emotional, and social growth, helping students build confidence, discipline, creativity, and leadership skills.
+            </p>
+            <div class="feature-stats">
+                <div class="stat-mini">
+                    <span class="stat-value">360°</span>
+                    <span class="stat-desc">Development</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section programs-section" id="programs">
+    <h2 class="section-title">Our Programs</h2>
+    <p class="section-subtitle">Building strong academic foundations while nurturing future-ready skills through innovation and technology</p>
+    
+    <!-- Education First Banner -->
+    <div class="education-first-banner">
+        <div class="banner-icon">🎓</div>
+        <div class="banner-content">
+            <h3>Education First, Innovation Always</h3>
+            <p>We believe in building a rock-solid academic foundation aligned with CBSE & WB Board standards, complemented by cutting-edge technology programs</p>
+        </div>
+    </div>
+
+    <!-- Core Academic Programs -->
+    <div class="program-category">
+        <div class="category-header">
+            <span class="category-badge">Core Academic Excellence</span>
+            <h3 class="category-title">Foundational Education Programs</h3>
+        </div>
+        <div class="programs-grid-new">
+            <div class="program-card-new academic">
+                <div class="card-header">
+                    <div class="program-icon-new">📚</div>
+                    <span class="program-tag">Primary Focus</span>
+                </div>
+                <h3>Academic Excellence</h3>
+                <p>Strong foundational academics aligned with WB Board and CBSE standards, ensuring holistic development and outstanding results through proven teaching methodologies.</p>
+                <div class="program-features">
+                    <div class="feature-item">✓ CBSE & WB Board Curriculum</div>
+                    <div class="feature-item">✓ Expert Faculty Guidance</div>
+                    <div class="feature-item">✓ Regular Assessments</div>
+                </div>
+            </div>
+
+            <div class="program-card-new academic">
+                <div class="card-header">
+                    <div class="program-icon-new">🔢</div>
+                    <span class="program-tag">Core Subject</span>
+                </div>
+                <h3>Advanced Mathematics</h3>
+                <p>Comprehensive curriculum designed to build strong analytical and problem-solving skills, preparing students for academic excellence and competitive examinations.</p>
+                <div class="program-features">
+                    <div class="feature-item">✓ Concept-Based Learning</div>
+                    <div class="feature-item">✓ Practice-Oriented Approach</div>
+                    <div class="feature-item">✓ Competitive Exam Prep</div>
+                </div>
+            </div>
+
+            <div class="program-card-new academic">
+                <div class="card-header">
+                    <div class="program-icon-new">🗣️</div>
+                    <span class="program-tag">Essential Skill</span>
+                </div>
+                <h3>English Communication</h3>
+                <p>Build confidence and fluency in English through interactive sessions, practical exercises, and immersive conversation practice for real-world success.</p>
+                <div class="program-features">
+                    <div class="feature-item">✓ Speaking & Writing Skills</div>
+                    <div class="feature-item">✓ Interactive Sessions</div>
+                    <div class="feature-item">✓ Practical Applications</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Innovation & Technology Programs -->
+    <div class="program-category">
+        <div class="category-header">
+            <span class="category-badge innovation">Future-Ready Skills</span>
+            <h3 class="category-title">Innovation & Technology Programs</h3>
+            <p class="category-subtitle">Complementary programs to prepare students for tomorrow's world</p>
+        </div>
+        <div class="programs-grid-new">
+            <div class="program-card-new innovation">
+                <div class="card-header">
+                    <div class="program-icon-new">💻</div>
+                    <span class="program-tag innovation-tag">Tech Skill</span>
+                </div>
+                <h3>Full Stack Development</h3>
+                <p>Master modern web technologies with hands-on projects and real-world applications that prepare students for the digital future.</p>
+                <div class="program-features">
+                    <div class="feature-item">⚡ HTML, CSS, JavaScript</div>
+                    <div class="feature-item">⚡ Backend Development</div>
+                    <div class="feature-item">⚡ Real Projects</div>
+                </div>
+            </div>
+
+            <div class="program-card-new innovation">
+                <div class="card-header">
+                    <div class="program-icon-new">🐍</div>
+                    <span class="program-tag innovation-tag">Coding</span>
+                </div>
+                <h3>Python Programming</h3>
+                <p>Learn Python from basics to advanced, including AI and machine learning applications tailored for young innovative minds.</p>
+                <div class="program-features">
+                    <div class="feature-item">⚡ Core Python Concepts</div>
+                    <div class="feature-item">⚡ AI & ML Basics</div>
+                    <div class="feature-item">⚡ Project-Based Learning</div>
+                </div>
+            </div>
+
+            <div class="program-card-new innovation">
+                <div class="card-header">
+                    <div class="program-icon-new">📱</div>
+                    <span class="program-tag innovation-tag">App Dev</span>
+                </div>
+                <h3>App Development</h3>
+                <p>Create innovative mobile applications and bring ideas to life with cutting-edge development tools and expert mentorship.</p>
+                <div class="program-features">
+                    <div class="feature-item">⚡ Mobile App Design</div>
+                    <div class="feature-item">⚡ User Experience (UX)</div>
+                    <div class="feature-item">⚡ App Publishing</div>
+                </div>
+            </div>
+
+            <div class="program-card-new innovation">
+                <div class="card-header">
+                    <div class="program-icon-new">🤖</div>
+                    <span class="program-tag innovation-tag">AI & Robotics</span>
+                </div>
+                <h3>Robotics & AI</h3>
+                <p>Explore robotics and artificial intelligence through interactive projects, competitions, and hands-on innovation labs.</p>
+                <div class="program-features">
+                    <div class="feature-item">⚡ Robot Building</div>
+                    <div class="feature-item">⚡ AI Fundamentals</div>
+                    <div class="feature-item">⚡ Tech Competitions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
     <section class="section section-alternate" id="campuses">
         <h2 class="section-title">Our Campuses</h2>
@@ -1147,32 +1829,7 @@
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Why Choose Us</h2>
-        <p class="section-subtitle">Experience excellence in education with our unique approach to learning and development</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Innovation First</h3>
-                <p>Hands-on projects integrating cutting-edge technology and coding skills for 21st-century learning excellence and future readiness.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌟</div>
-                <h3>Holistic Development</h3>
-                <p>Nurturing academic excellence alongside social and emotional growth in every student we teach, creating well-rounded individuals.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">👨‍🏫</div>
-                <h3>Expert Faculty</h3>
-                <p>Dedicated educators passionate about inspiring and guiding the next generation of innovators, leaders, and change-makers.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>Proven Excellence</h3>
-                <p>Track record of outstanding academic achievements and successful student outcomes across all our campuses statewide.</p>
-            </div>
-        </div>
-    </section>
+
 
     <footer class="footer" id="contact">
         <div class="footer-content">
@@ -1261,6 +1918,63 @@
                 }
             });
         });
+        // Enhanced card mouse tracking effect
+const cards = document.querySelectorAll('.feature-card-enhanced');
+
+cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // Simple tilt effect
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        card.style.transform = `translateY(-15px) scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0) rotateY(0)';
+    });
+});
+
+// Scroll reveal animation for feature cards
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.feature-card-enhanced').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
     </script>
 </body>
-</html>
+</html> 
