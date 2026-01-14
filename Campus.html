@@ -56,15 +56,10 @@
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            width: 70px;
+            height: 70px;
             border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            object-fit: contain;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -1153,7 +1148,6 @@
             .logo-icon {
                 width: 40px;
                 height: 40px;
-                font-size: 1.3rem;
             }
 
             .hero h1 {
@@ -1208,10 +1202,9 @@
 <body>
     <header class="header" id="header">
         <nav class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🎓</div>
-                <span class="logo-text">Kids World</span>
-            </div>
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Kids World Logo" class="logo-icon">
+            </a>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -1221,18 +1214,12 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#why-choose-us">About</a></li>
                 <li><a href="programs.html">Academics & Programs</a></li>
-                <li><a href="#campuses">Campuses</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="projects.html">Our Projects</a></li>
+                <li><a href="Campus.html">Campuses</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-
-
-
-  
-
-
-
     <section class="section section-alternate" id="campuses">
         <h2 class="section-title">Our Campuses</h2>
         <p class="section-subtitle">Five world-class campuses across West Bengal, bringing quality education and innovation closer to every student</p>
@@ -1281,7 +1268,7 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <div>
-                    <div><a href="index.html">→ Home</a></div>
+                    <div><a href="#home">→ Home</a></div>
                     <div><a href="programs.html">→ Programs</a></div>
                     <div><a href="#campuses">→ Campuses</a></div>
                     <div><a href="#about">→ About Us</a></div>
