@@ -488,13 +488,13 @@
             color: #0f172a;
             font-weight: 900;
             position: relative;
-            display: inline-block;
+           
             left: 50%;
             transform: translateX(-50%);
         }
 
         .section-title::after {
-            content: '';
+           
             position: absolute;
             bottom: -10px;
             left: 0;
@@ -1197,6 +1197,234 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+        /* Add this CSS to your existing <style> section */
+
+/* Projects Section */
+.projects-section {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title-wrapper {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8rem 2rem;
+    background: white;
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    color: #334155;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.filter-btn:hover {
+    border-color: #6366f1;
+    color: #6366f1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    opacity: 1;
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.project-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    overflow: hidden;
+}
+
+.project-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.project-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.project-card:hover .project-thumbnail {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(99, 102, 241, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+}
+
+.play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(139, 92, 246, 0.95);
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.5);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-category {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    color: #6366f1;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.project-description {
+    color: #64748b;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.project-meta {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(99, 102, 241, 0.1);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.meta-icon {
+    font-size: 1.2rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .filter-tabs {
+        gap: 0.8rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1221,6 +1449,254 @@
         </nav>
     </header>
 
+    <!-- Add this section after your hero section and before the footer -->
+<section class="projects-section" id="projects">
+    <div class="section-title-wrapper">
+        <h2 class="section-title">Our Student Projects</h2>
+        <p class="section-subtitle">Witness the incredible creativity and innovation of our young learners through their amazing projects and achievements</p>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="filter-btn active" data-category="all">All Projects</button>
+        <button class="filter-btn" data-category="science">Science & Tech</button>
+        <button class="filter-btn" data-category="arts">Arts & Culture</button>
+        <button class="filter-btn" data-category="robotics">Robotics</button>
+        <button class="filter-btn" data-category="sports">Sports</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+        <!-- Project Card 1 -->
+        <div class="project-card" data-category="science">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'YOUR_YOUTUBE_VIDEO_ID_1')"></div>
+                <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_1/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Science & Tech</span>
+                <h3 class="project-title">Solar Energy Innovation</h3>
+                <p class="project-description">Our students designed and built a working solar panel system to power classroom lights, demonstrating renewable energy principles.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Grade 8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card" data-category="robotics">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'YOUR_YOUTUBE_VIDEO_ID_2')"></div>
+                <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_2/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Robotics</span>
+                <h3 class="project-title">Line Following Robot</h3>
+                <p class="project-description">A fully autonomous robot that can follow complex paths using sensors and Arduino programming.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Grade 9</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card" data-category="arts">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'YOUR_YOUTUBE_VIDEO_ID_3')"></div>
+                <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_3/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Arts & Culture</span>
+                <h3 class="project-title">Traditional Dance Performance</h3>
+                <p class="project-description">A beautiful cultural showcase celebrating Indian classical dance forms with modern choreography.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Grade 6-7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 4 -->
+        <div class="project-card" data-category="science">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'XHs13uNCOTI')"></div>
+                <img src="https://img.youtube.com/vi/XHs13uNCOTI/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Science & Tech</span>
+                <h3 class="project-title">Grass Cutter Machine</h3>
+                <p class="project-description">Our Grade 10 students engineered and built a fully functional grass cutter machine, demonstrating mechanical design and practical engineering skills.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Grade 10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 5 -->
+        <div class="project-card" data-category="sports">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'YOUR_YOUTUBE_VIDEO_ID_5')"></div>
+                <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_5/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Sports</span>
+                <h3 class="project-title">Annual Sports Day Highlights</h3>
+                <p class="project-description">Exciting moments from our annual sports competition featuring athletics, team sports, and individual achievements.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>All Grades</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 6 -->
+        <div class="project-card" data-category="robotics">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'YOUR_YOUTUBE_VIDEO_ID_6')"></div>
+                <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_6/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Robotics</span>
+                <h3 class="project-title">Smart Home Automation</h3>
+                <p class="project-description">IoT-based home automation project controlling lights, fans, and security using smartphone app.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Grade 11</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 7 -->
+        <div class="project-card" data-category="science">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'H7bKnW8N6kY')"></div>
+                <img src="https://img.youtube.com/vi/H7bKnW8N6kY/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Science & Tech</span>
+                <h3 class="project-title">Soil Moisture Detection using Arduino</h3>
+                <p class="project-description">An innovative Arduino-based project to detect soil moisture levels and enable automated plant watering systems for smart agriculture.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>4-5 Students</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📚</span>
+                        <span>Grade 5-6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 8 -->
+        <div class="project-card" data-category="robotics">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'sHrU5IdK87s')"></div>
+                <img src="https://img.youtube.com/vi/sHrU5IdK87s/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Robotics</span>
+                <h3 class="project-title">Fuchka Water Dispenser Automatic</h3>
+                <p class="project-description">An intelligent automated water dispensing system designed to efficiently distribute water using robotics and sensor technology.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Team Project</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📚</span>
+                        <span>Grade 5-6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 9 -->
+        <div class="project-card" data-category="science">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'o31odiLLOT4')"></div>
+                <img src="https://img.youtube.com/vi/o31odiLLOT4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Science & Tech</span>
+                <h3 class="project-title">Automatic Street Light On/Off</h3>
+                <p class="project-description">An innovative automatic street lighting system using sensors that intelligently turns lights on and off based on ambient light levels, demonstrating energy efficiency principles.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Class 3-4</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📚</span>
+                        <span>Grade 3-4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 10 -->
+        <div class="project-card" data-category="robotics">
+            <div class="project-video-wrapper">
+                <div class="play-button" onclick="loadVideo(this, 'Kx0HiUMKzTA')"></div>
+                <img src="https://img.youtube.com/vi/Kx0HiUMKzTA/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Robotics</span>
+                <h3 class="project-title">Obstacle Avoidance System</h3>
+                <p class="project-description">An intelligent robot project that autonomously detects and avoids obstacles using sensor technology, demonstrating advanced robotics and real-time decision-making capabilities.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Class 4-5</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📚</span>
+                        <span>Grade 4-5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 11 -->
+        <div class="project-card" data-category="science">
+            <div class="project-video-wrapper">
+                <a href="https://www.facebook.com/share/v/1BKdP96mJL/" target="_blank" style="text-decoration: none; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <div class="play-button" style="cursor: pointer;"></div>
+                </a>
+                <img src="https://via.placeholder.com/500x281?text=SecondWheels+Website+Project" alt="Project Thumbnail" class="project-thumbnail">
+            </div>
+            <div class="project-content">
+                <span class="project-category">Web Development</span>
+                <h3 class="project-title">SecondWheels Website - Full Stack Project</h3>
+                <p class="project-description">Watch Class 6 student Sumit's journey from code writing to design to bug fixing in building a complete full-stack website. In the AI era, skill development is the key to becoming tomorrow's leader. This series showcases real stories of young creators building professional projects.</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">👥</span>
+                        <span>Sumit - Class 6</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📚</span>
+                        <span>Full Stack Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
     <footer class="footer" id="contact">
@@ -1260,6 +1736,42 @@
     </footer>
 
     <script>
+        /* Add this JavaScript at the end of your existing <script> section */
+
+// Video loading function
+function loadVideo(button, videoId) {
+    const wrapper = button.parentElement;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    wrapper.innerHTML = '';
+    wrapper.appendChild(iframe);
+}
+
+// Filter functionality
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+        
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter projects
+        projectCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (category === 'all' || cardCategory === category) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    });
+});
         // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
