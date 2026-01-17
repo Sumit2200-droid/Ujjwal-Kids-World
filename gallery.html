@@ -1197,6 +1197,454 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Gallery Page Styles */
+        .page-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridSlide 20s linear infinite;
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-section {
+            padding: 5rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+            background: #f1f5f9;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.2);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.05s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.15s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.25s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.35s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.4s; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalZoom 0.3s ease;
+        }
+
+        @keyframes modalZoom {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 12px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 1rem;
+        }
+
+        .modal-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .modal-caption p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 2rem;
+            color: white;
+            line-height: 1;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            user-select: none;
+            line-height: 1;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-nav:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+            left: 2rem;
+            padding-right: 2px;
+        }
+
+        .modal-next {
+            right: 2rem;
+            padding-left: 2px;
+        }
+
+        .modal-counter {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .modal-pagination {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            z-index: 10;
+        }
+
+        .pagination-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.8);
+        }
+
+        .pagination-dot:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 12px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .modal-image.transitioning {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        /* Gallery Responsive */
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            .modal-nav, .modal-close {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+            }
+            
+            .modal-close {
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .modal-prev {
+                left: 1rem;
+            }
+            
+            .modal-next {
+                right: 1rem;
+            }
+            
+            .modal-pagination {
+                bottom: 1rem;
+                padding: 0.6rem 1rem;
+                gap: 0.4rem;
+            }
+            
+            .pagination-dot {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .pagination-dot.active {
+                width: 18px;
+            }
+            
+            .modal-image {
+                max-height: 70vh;
+            }
+            
+            .modal-caption {
+                bottom: -90px;
+                font-size: 0.9rem;
+            }
+            
+            .modal-caption h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            .modal-nav, .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.6rem;
+            }
+            
+            .modal-prev {
+                left: 0.5rem;
+            }
+            
+            .modal-next {
+                right: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1222,6 +1670,35 @@
         </nav>
     </header>
 
+    <section class="page-hero">
+        <h1>Our Gallery</h1>
+        <p>Capturing precious moments and joyful memories of our students' learning journey</p>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All Photos</button>
+            <button class="filter-btn" data-filter="events">Events</button>
+            <button class="filter-btn" data-filter="classroom">Classroom</button>
+            <button class="filter-btn" data-filter="activities">Activities</button>
+            <button class="filter-btn" data-filter="sports">Sports</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-close" id="modalClose">×</div>
+        <div class="modal-counter" id="modalCounter"></div>
+        <div class="modal-nav modal-prev" id="modalPrev">‹</div>
+        <div class="modal-nav modal-next" id="modalNext">›</div>
+        <div class="modal-content">
+            <img src="" alt="" class="modal-image" id="modalImage">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+        <div class="modal-pagination" id="modalPagination"></div>
+    </div>
 
     <footer class="footer" id="contact">
         <div class="footer-content">
@@ -1359,6 +1836,216 @@
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });
+    </script>
+
+    <script>
+        const galleryData = [
+            {id: 1, url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200', title: 'Science Lab', category: 'classroom', description: 'Students exploring experiments'},
+            {id: 2, url: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1200', title: 'Sports Day', category: 'sports', description: 'Athletic excellence'},
+            {id: 3, url: 'https://images.unsplash.com/photo-1503428593586-e225b39bddfe?w=1200', title: 'Art Workshop', category: 'activities', description: 'Creative minds'},
+            {id: 4, url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200', title: 'Cultural Festival', category: 'events', description: 'Celebrating culture'},
+            {id: 5, url: 'https://images.unsplash.com/photo-1544006659-f0b21884ce1d?w=1200', title: 'Interactive Learning', category: 'classroom', description: 'Engaged students'},
+            {id: 6, url: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=1200', title: 'Football', category: 'sports', description: 'Team spirit'},
+            {id: 7, url: 'https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=1200', title: 'Music Class', category: 'activities', description: 'Musical talents'},
+            {id: 8, url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200', title: 'Graduation', category: 'events', description: 'Celebrating success'},
+            {id: 9, url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1200', title: 'Computer Lab', category: 'classroom', description: 'Tech learning'},
+            {id: 10, url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200', title: 'Basketball', category: 'sports', description: 'Athletic skills'},
+            {id: 11, url: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200', title: 'Dance', category: 'activities', description: 'Movement expression'},
+            {id: 12, url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200', title: 'Science Fair', category: 'events', description: 'Innovation showcase'},
+            {id: 13, url: 'https://images.unsplash.com/photo-1588072432836-e10032774350?w=1200', title: 'Reading', category: 'classroom', description: 'Literacy skills'},
+            {id: 14, url: 'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1200', title: 'Cricket', category: 'sports', description: 'Teamwork'},
+            {id: 15, url: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200', title: 'Painting', category: 'activities', description: 'Artistic expression'},
+            {id: 16, url: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200', title: 'Annual Day', category: 'events', description: 'Talent showcase'},
+            {id: 17, url: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200', title: 'Group Study', category: 'classroom', description: 'Collaborative learning'},
+            {id: 18, url: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1200', title: 'Yoga', category: 'sports', description: 'Wellness session'},
+            {id: 19, url: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200', title: 'Drama', category: 'activities', description: 'Theater performance'},
+            {id: 20, url: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200', title: 'Independence Day', category: 'events', description: 'Patriotic celebration'}
+        ];
+
+        let currentImageIndex = 0;
+        let filteredImages = [...galleryData];
+
+        // Touch gesture variables
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isTransitioning = false;
+
+        function renderGallery(images) {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = images.map((item, index) => `
+                <div class="gallery-item" data-index="${index}">
+                    <img src="${item.url}" alt="${item.title}" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    currentImageIndex = parseInt(item.dataset.index);
+                    openModal();
+                });
+            });
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('modalPagination');
+            const maxDots = window.innerWidth < 768 ? 7 : 10;
+            
+            if (filteredImages.length <= maxDots) {
+                pagination.innerHTML = filteredImages.map((_, index) => `
+                    <div class="pagination-dot ${index === currentImageIndex ? 'active' : ''}" data-index="${index}"></div>
+                `).join('');
+            } else {
+                let dots = [];
+                const halfDots = Math.floor(maxDots / 2);
+                let start = Math.max(0, currentImageIndex - halfDots);
+                let end = Math.min(filteredImages.length, start + maxDots);
+                
+                if (end - start < maxDots) {
+                    start = Math.max(0, end - maxDots);
+                }
+                
+                for (let i = start; i < end; i++) {
+                    dots.push(`<div class="pagination-dot ${i === currentImageIndex ? 'active' : ''}" data-index="${i}"></div>`);
+                }
+                pagination.innerHTML = dots.join('');
+            }
+            
+            document.querySelectorAll('.pagination-dot').forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentImageIndex = parseInt(dot.dataset.index);
+                    openModal();
+                });
+            });
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                filteredImages = filter === 'all' ? [...galleryData] : galleryData.filter(img => img.category === filter);
+                renderGallery(filteredImages);
+            });
+        });
+
+        function openModal(skipTransition = false) {
+            const modal = document.getElementById('modal');
+            const img = document.getElementById('modalImage');
+            const caption = document.getElementById('modalCaption');
+            const counter = document.getElementById('modalCounter');
+            
+            if (!skipTransition) {
+                img.classList.add('transitioning');
+            }
+            
+            setTimeout(() => {
+                const current = filteredImages[currentImageIndex];
+                img.src = current.url;
+                caption.innerHTML = `<h3>${current.title}</h3><p>${current.description}</p>`;
+                counter.textContent = `${currentImageIndex + 1} / ${filteredImages.length}`;
+                
+                renderPagination();
+                
+                setTimeout(() => {
+                    img.classList.remove('transitioning');
+                }, 50);
+            }, skipTransition ? 0 : 150);
+            
+            if (!modal.classList.contains('active')) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentImageIndex = (currentImageIndex + 1) % filteredImages.length;
+            openModal();
+            setTimeout(() => isTransitioning = false, 400);
+        }
+
+        function prevImage() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentImageIndex = (currentImageIndex - 1 + filteredImages.length) % filteredImages.length;
+            openModal();
+            setTimeout(() => isTransitioning = false, 400);
+        }
+
+        // Handle swipe gestures with improved sensitivity
+        function handleSwipe() {
+            const horizontalSwipe = touchEndX - touchStartX;
+            const verticalSwipe = Math.abs(touchEndY - touchStartY);
+            const minSwipeDistance = 30;
+            
+            if (Math.abs(horizontalSwipe) > verticalSwipe && Math.abs(horizontalSwipe) > minSwipeDistance) {
+                if (horizontalSwipe > 0) {
+                    prevImage();
+                } else {
+                    nextImage();
+                }
+            }
+        }
+
+        // Touch event listeners for modal
+        const modal = document.getElementById('modal');
+        const modalContent = document.querySelector('.modal-content');
+
+        modalContent.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        modalContent.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        modalContent.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Click event listeners
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modalNext').addEventListener('click', nextImage);
+        document.getElementById('modalPrev').addEventListener('click', prevImage);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Re-render pagination on window resize
+        window.addEventListener('resize', () => {
+            if (modal.classList.contains('active')) {
+                renderPagination();
+            }
+        });
+
+        // Initialize gallery
+        renderGallery(filteredImages);
     </script>
 </body>
 </html>
