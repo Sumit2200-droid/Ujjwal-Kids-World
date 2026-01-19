@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Kids World</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #0f172a;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 14px;
+            object-fit: contain;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #334155;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: transform 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .nav-menu a:hover {
+            color: #6366f1;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #6366f1;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 10rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 90px;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridSlide 20s linear infinite;
+        }
+
+        @keyframes gridSlide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .achievements-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #334155;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.1);
+        }
+
+        .achievement-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #6366f1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .achievement-content {
+            padding: 2rem;
+        }
+
+        .student-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-class {
+            color: #6366f1;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .achievement-description {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievement-meta {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .stats-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 32px;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .add-achievement-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+            border: none;
+        }
+
+        .add-achievement-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: rgba(255,255,255,0.7);
+            line-height: 2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 280px;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                gap: 2rem;
+                transition: right 0.3s;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .page-hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Kids World Logo" class="logo-icon">
+            </a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Academics</a></li>
+                <li><a href="projects.html">Our Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="Campus.html">Campuses</a></li>
+                <li><a href="gallery.html">Fun Gallery</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                🏆 Hall of Fame
+            </div>
+            <h1>Student Achievements</h1>
+            <p>Celebrating the extraordinary accomplishments of our brilliant students who make us proud every day</p>
+        </div>
+    </section>
+
+    <section class="achievements-section">
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Achievements</button>
+            <button class="filter-btn" data-filter="academic">Academic Excellence</button>
+            <button class="filter-btn" data-filter="sports">Sports & Athletics</button>
+            <button class="filter-btn" data-filter="arts">Arts & Culture</button>
+            <button class="filter-btn" data-filter="competition">Competitions</button>
+            <button class="filter-btn" data-filter="leadership">Leadership</button>
+        </div>
+
+        <div class="achievements-grid" id="achievementsGrid">
+            <!-- Achievement Card 1 -->
+            <div class="achievement-card" data-category="academic">
+                <div class="achievement-image">
+                    <img src="student1.jpg" alt="Rahul Sharma">
+                    <div class="achievement-badge">🥇 Gold Medal</div>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="student-name">Rahul Sharma</h3>
+                    <div class="student-class">Class 10 - CBSE Board</div>
+                    <div class="achievement-title">
+                        📚 State Topper in Mathematics
+                    </div>
+                    <p class="achievement-description">
+                        Secured 100/100 in Mathematics and topped the state board examinations with an overall score of 98.6%. Awarded the Chief Minister's Excellence Award.
+                    </p>
+                    <div class="achievement-meta">
+                        <div class="meta-item">
+                            📅 March 2025
+                        </div>
+                        <div class="meta-item">
+                            🎯 98.6% Score
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Card 2 -->
+            <div class="achievement-card" data-category="sports">
+                <div class="achievement-image">
+                    <img src="student2.jpg" alt="Priya Das">
+                    <div class="achievement-badge">🥈 Silver</div>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="student-name">Priya Das</h3>
+                    <div class="student-class">Class 8</div>
+                    <div class="achievement-title">
+                        🏸 National Badminton Championship
+                    </div>
+                    <p class="achievement-description">
+                        Won Silver Medal in U-14 Girls National Badminton Championship held in New Delhi. Represented West Bengal state team.
+                    </p>
+                    <div class="achievement-meta">
+                        <div class="meta-item">
+                            📅 January 2026
+                        </div>
+                        <div class="meta-item">
+                            🏆 National Level
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Card 3 -->
+            <div class="achievement-card" data-category="arts">
+                <div class="achievement-image">
+                    <img src="student3.jpg" alt="Amit Kumar">
+                    <div class="achievement-badge">🏅 1st Prize</div>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="student-name">Amit Kumar</h3>
+                    <div class="student-class">Class 7</div>
+                    <div class="achievement-title">
+                        🎨 State Level Art Competition
+                    </div>
+                    <p class="achievement-description">
+                        First Prize in State Level Painting Competition on "Save Environment" theme. Artwork displayed in State Cultural Museum.
+                    </p>
+                    <div class="achievement-meta">
+                        <div class="meta-item">
+                            📅 December 2025
+                        </div>
+                        <div class="meta-item">
+                            🎨 300+ Participants
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Card 4 -->
+            <div class="achievement-card" data-category="competition">
+                <div class="achievement-image">
+                    <img src="student4.jpg" alt="Sneha Roy">
+                    <div class="achievement-badge">🥇 Winner</div>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="student-name">Sneha Roy</h3>
+                    <div class="student-class">Class 9</div>
+                    <div class="achievement-title">
+                        🤖 Robotics Innovation Award
+                    </div>
+                    <p class="achievement-description">
+                        Winner of National Robotics Competition with innovative "Smart Irrigation Robot" project. Patent application filed for the design.
+                    </p>
+                    <div class="achievement-meta">
+                        <div class="meta-item">
+                            📅 November 2025
+                        </div>
+                        <div class="meta-item">
+                            💡 Innovation Award
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Card 5 -->
+            <div class="achievement-card" data-category="leadership">
+                <div class="achievement-image">
+                    <img src="student5.jpg" alt="Arjun Singh">
+                    <div class="achievement-badge">⭐ Excellence</div>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="student-name">Arjun Singh</h3>
+                    <div class="student-class">Class 10</div>
+                    <div class="achievement-title">
+                        👥 Student Council President
+                    </div>
+                    <p class="achievement-description">
+                        Led successful initiatives including "Clean Campus Drive" and "Digital Library Project". Organized state-level inter-school cultural fest.
+                    </p>
+                    <div class="achievement-meta">
+                        <div class="meta-item">
+                            📅 2025-26 Session
+                        </div>
+                        <div class="meta-item">
+                            🎯 5 Major Projects
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Card 6 -->
+            <div class="achievement-card" data-category="academic">
+                <div class="achievement-image">
+                    <img src="student6.jpg" alt="Ananya Ghosh">
+                    <div class="achievement-badge">🏆 Champion</div>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="student-name">Ananya Ghosh</h3>
+                    <div class="student-class">Class 6</div>
+                    <div class="achievement-title">
+                        🧮 International Math Olympiad
+                    </div>
+                    <p class="achievement-description">
+                        Gold Medal in International Mathematics Olympiad (IMO). Ranked in top 50 students globally out of 50,000+ participants.
+                    </p>
+                    <div class="achievement-meta">
+                        <div class="meta-item">
+                            📅 October 2025
+                        </div>
+                        <div class="meta-item">
+                            🌍 International
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-banner">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">45+</div>
+                    <div class="stat-label">National Level</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">International</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="add-achievement-btn" onclick="alert('Contact admin to add new achievements!')">+</button>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kids World</h3>
+                <p>Empowering young minds through innovative education and technology-driven learning for a brighter, smarter tomorrow.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">→ Home</a></div>
+                <div><a href="programs.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">→ Programs</a></div>
+                <div><a href="Campus.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">→ Campuses</a></div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <div>📍 Gangarampur, Dakshin Dinajpur</div>
+                <div>West Bengal, India</div>
+                <div>📧 info@kidsworld.edu</div>
+                <div>📞 Contact: Available on Request</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kids World. All Rights Reserved. | Founded by Mr. Ashim Ghosh</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const achievementCards = document.querySelectorAll('.achievement-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                achievementCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Initial animation
+        achievementCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    </script>
+</body>
+</html>
