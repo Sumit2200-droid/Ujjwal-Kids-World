@@ -3,1514 +3,2294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujjwal Kids World</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #0f172a;
-            overflow-x: hidden;
-            background: #ffffff;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.3s;
-        }
-
-        .header.scrolled {
-            padding: 0.7rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            z-index: 1001;
-        }
-
-        .logo-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 14px;
-            object-fit: contain;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .logo-text {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-menu a {
-            color: #334155;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            transition: transform 0.3s;
-            border-radius: 2px;
-        }
-
-        .nav-menu a:hover::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .nav-menu a:hover {
-            color: #6366f1;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0.5rem;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #6366f1;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 3px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            color: white;
-            padding: 10rem 2rem 8rem;
-            position: relative;
-            overflow: hidden;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-bg-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-bg-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 6s ease-in-out;
-        }
-
-        .hero-bg-slide.active {
-            opacity: 0.8;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.35));
-            z-index: 1;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(99, 102, 241, 0.5);
-            border-radius: 50%;
-            animation: particleFloat linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridSlide 20s linear infinite;
-            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-            z-index: 2;
-        }
-
-        @keyframes gridSlide {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(60px, 60px); }
-        }
-
-        .hero-content {
-            max-width: 680px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            width: 100%;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            animation: slideDown 0.8s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            color: rgba(255,255,255,0.9);
-            max-width: 680px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-            animation: fadeIn 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes fadeIn {
-            from { 
-                opacity: 0;
-            }
-            to { 
-                opacity: 1;
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: buttonScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
-        }
-
-        @keyframes buttonScale {
-            from {
-                opacity: 0;
-                transform: scale(0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-            padding: 1.2rem 3rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4), 0 0 30px rgba(99, 102, 241, 0.2);
-            position: relative;
-            overflow: hidden;
-            border: none;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
-        }
-
-        .cta-button-secondary {
-            background: rgba(255,255,255,0.08);
-            border: 2px solid rgba(255,255,255,0.4);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-
-        .cta-button-secondary:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.6);
-            box-shadow: 0 12px 40px rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-
-        .stats {
-            background: #ffffff;
-            padding: 0;
-            margin-top: -5rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .stats-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .stat-item {
-            padding: 2rem 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .stat-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-
-        .stat-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 1.05rem;
-            color: #64748b;
-            font-weight: 600;
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-alternate {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            font-weight: 900;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            border-radius: 3px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.3rem;
-            color: #64748b;
-            margin-bottom: 5rem;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .why-choose-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .why-choose-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .features-grid-enhanced {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card-enhanced {
-            padding: 2.5rem 2rem;
-            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-            border-radius: 28px;
-            border: 2px solid transparent;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-            transform-style: preserve-3d;
-            cursor: pointer;
-        }
-
-        .feature-card-enhanced::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef, #6366f1);
-            background-size: 300% 300%;
-            border-radius: 28px;
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: -1;
-            animation: gradientShift 8s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .feature-card-enhanced:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card-enhanced:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 70px rgba(99, 102, 241, 0.25);
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        }
-
-        .feature-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.5s;
-            pointer-events: none;
-        }
-
-        .feature-card-enhanced:hover .feature-glow {
-            transform: translate(-50%, -50%) scale(2);
-        }
-
-        .feature-number {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0.08;
-            line-height: 1;
-            transition: all 0.4s;
-        }
-
-        .feature-card-enhanced:hover .feature-number {
-            opacity: 0.15;
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-icon-enhanced {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card-enhanced:hover .feature-icon-enhanced {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
-        }
-
-        .feature-card-enhanced h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            color: #0f172a;
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s;
-        }
-
-        .feature-card-enhanced:hover h3,
-        .feature-card-enhanced:hover p,
-        .feature-card-enhanced:hover .stat-desc {
-            color: #ffffff;
-        }
-
-        .feature-card-enhanced p {
-            color: #64748b;
-            line-height: 1.8;
-            font-size: 1rem;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-stats {
-            display: flex;
-            gap: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid rgba(99, 102, 241, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-mini {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-        }
-
-        .stat-desc {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .campuses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .campus-card {
-            background: white;
-            border: 2px solid rgba(99, 102, 241, 0.15);
-            padding: 2.5rem 2rem;
-            border-radius: 24px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-
-        .campus-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            z-index: 0;
-        }
-
-        .campus-card:hover::before {
-            opacity: 1;
-        }
-
-        .campus-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .campus-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.25);
-            border-color: transparent;
-        }
-
-        .campus-card:hover h3,
-        .campus-card:hover p {
-            color: white;
-        }
-
-        .campus-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .campus-card:hover .campus-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .campus-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-            color: #0f172a;
-            transition: color 0.3s;
-        }
-
-        .campus-card p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .campus-badge {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #6366f1;
-            transition: all 0.3s;
-        }
-
-        .campus-card:hover .campus-badge {
-            background: rgba(255,255,255,0.25);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .founder-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 6rem 2rem;
-            margin-top: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .founder-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridSlide 20s linear infinite;
-        }
-
-        .founder-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .founder-image-wrapper {
-            position: relative;
-            flex-shrink: 0;
-            margin: 0 auto;
-        }
-
-        .founder-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            box-shadow: 0 25px 80px rgba(99, 102, 241, 0.5);
-            position: relative;
-            overflow: hidden;
-            animation: founderPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes founderPulse {
-            0%, 100% {
-                box-shadow: 0 25px 80px rgba(99, 102, 241, 0.5);
-            }
-            50% {
-                box-shadow: 0 25px 100px rgba(139, 92, 246, 0.6);
-            }
-        }
-
-        .founder-emoji {
-            animation: wave 2s ease-in-out infinite;
-            transform-origin: 70% 70%;
-            display: inline-block;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            40%, 60% { transform: rotate(14deg); }
-            50% { transform: rotate(-8deg); }
-            70%, 100% { transform: rotate(0deg); }
-        }
-
-        .founder-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            filter: blur(40px);
-            opacity: 0.5;
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        .founder-text {
-            flex: 1;
-            min-width: 280px;
-            color: white;
-        }
-
-        .founder-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .founder-text h3 {
-            color: #a78bfa;
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-            font-weight: 800;
-        }
-
-        .founder-text p {
-            font-size: 1.1rem;
-            line-height: 2;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .footer {
-            background: #0a0a0a;
-            color: white;
-            padding: 4rem 2rem 2rem;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-section p,
-        .footer-section div {
-            color: rgba(255,255,255,0.7);
-            line-height: 2;
-            font-size: 1rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .footer-section a:hover {
-            color: #a78bfa;
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Mobile Responsive Styles */
-        @media (max-width: 1024px) {
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 280px;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-                gap: 2rem;
-                align-items: flex-start;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu a {
-                font-size: 1.1rem;
-                width: 100%;
-                padding: 0.8rem 0;
-            }
-
-            .hero {
-                padding: 8rem 1.5rem 6rem;
-                min-height: auto;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-badge {
-                font-size: 0.8rem;
-                padding: 0.5rem 1.2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .cta-button {
-                width: 100%;
-                justify-content: center;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                padding: 0 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .stat-icon {
-                font-size: 2.5rem;
-            }
-
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .section-subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 3rem;
-            }
-
-            .features-grid-enhanced {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .feature-number {
-                font-size: 2.5rem;
-            }
-
-            .feature-icon-enhanced {
-                width: 70px;
-                height: 70px;
-                font-size: 2rem;
-            }
-
-            .feature-card-enhanced h3 {
-                font-size: 1.3rem;
-            }
-
-            .feature-card-enhanced p {
-                font-size: 0.95rem;
-            }
-
-            .campuses-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .founder-content {
-                justify-content: center;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .founder-image {
-                width: 220px;
-                height: 220px;
-                font-size: 6rem;
-            }
-
-            .founder-text h2 {
-                font-size: 2rem;
-            }
-
-            .founder-text h3 {
-                font-size: 1.3rem;
-            }
-
-            .founder-text p {
-                font-size: 1rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-text {
-                font-size: 1.2rem;
-            }
-
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-            }
-
-            .feature-card-enhanced {
-                padding: 2rem 1.5rem;
-            }
-
-            .campus-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .founder-section {
-                padding: 4rem 1.5rem;
-            }
-        }
-
-        /* Tablet specific */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .features-grid-enhanced {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .campuses-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    <meta name="description" content="Ujjwal Kids World - A premier educational institution nurturing young minds through excellence in academics, character development, and holistic growth.">
+    <title>Ujjwal Kids World | Excellence in Education</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+   
 </head>
 <body>
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.jpeg" alt="Kids World Logo" class="logo-icon">
-            </a>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <style>
+        /* ========================================
+   UJJWAL KIDS WORLD - MODERN STYLESHEET
+   Educational Design System
+   ======================================== */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    /* Primary Color Palette - Soft Educational Blues */
+    --color-primary: #4A90E2;
+    --color-primary-light: #6BA3E8;
+    --color-primary-dark: #3A7BC8;
+    --color-primary-50: #E3F2FD;
+    --color-primary-100: #BBDEFB;
+    
+    /* Secondary Color Palette - Gentle Purples */
+    --color-secondary: #8E7CC3;
+    --color-secondary-light: #A796D6;
+    --color-secondary-dark: #7461B8;
+    --color-secondary-50: #F3E5F5;
+    
+    /* Accent Colors */
+    --color-accent-orange: #FF9F43;
+    --color-accent-green: #26C281;
+    --color-accent-pink: #EE5A6F;
+    
+    /* Neutral Colors */
+    --color-white: #FFFFFF;
+    --color-gray-50: #F8F9FA;
+    --color-gray-100: #F1F3F5;
+    --color-gray-200: #E9ECEF;
+    --color-gray-300: #DEE2E6;
+    --color-gray-400: #CED4DA;
+    --color-gray-500: #ADB5BD;
+    --color-gray-600: #6C757D;
+    --color-gray-700: #495057;
+    --color-gray-800: #343A40;
+    --color-gray-900: #212529;
+    
+    /* Typography */
+    --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-secondary: 'Quicksand', sans-serif;
+    
+    /* Font Sizes */
+    --text-xs: 0.75rem;      /* 12px */
+    --text-sm: 0.875rem;     /* 14px */
+    --text-base: 1rem;       /* 16px */
+    --text-lg: 1.125rem;     /* 18px */
+    --text-xl: 1.25rem;      /* 20px */
+    --text-2xl: 1.5rem;      /* 24px */
+    --text-3xl: 1.875rem;    /* 30px */
+    --text-4xl: 2.25rem;     /* 36px */
+    --text-5xl: 3rem;        /* 48px */
+    --text-6xl: 3.75rem;     /* 60px */
+    
+    /* Spacing Scale */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+    --space-24: 6rem;     /* 96px */
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;   /* 6px */
+    --radius-md: 0.5rem;     /* 8px */
+    --radius-lg: 0.75rem;    /* 12px */
+    --radius-xl: 1rem;       /* 16px */
+    --radius-2xl: 1.5rem;    /* 24px */
+    --radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.06);
+    --shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+    
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Z-index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
+
+/* ===== RESET & BASE STYLES ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-gray-800);
+    background-color: var(--color-white);
+    overflow-x: hidden;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-2) var(--space-4);
+    text-decoration: none;
+    border-radius: 0 0 var(--radius-md) 0;
+    z-index: var(--z-tooltip);
+    font-weight: 600;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus Visible for Keyboard Navigation */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-4);
+}
+
+h1 {
+    font-size: var(--text-5xl);
+}
+
+h2 {
+    font-size: var(--text-4xl);
+}
+
+h3 {
+    font-size: var(--text-2xl);
+}
+
+p {
+    margin-bottom: var(--space-4);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== CONTAINER & LAYOUT ===== */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--space-8);
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        padding: 0 var(--space-12);
+    }
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    z-index: var(--z-fixed);
+    transition: all var(--transition-base);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.logo-text {
+    font-family: var(--font-secondary);
+    letter-spacing: -0.02em;
+}
+
+.nav-menu {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-gray-700);
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width var(--transition-base);
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn-nav-cta {
+    padding: var(--space-3) var(--space-6);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-white) !important;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.btn-nav-cta::after {
+    display: none;
+}
+
+.btn-nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    z-index: var(--z-modal);
+}
+
+.hamburger {
+    width: 24px;
+    height: 2px;
+    background: var(--color-gray-800);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.menu-toggle.active .hamburger:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active .hamburger:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    z-index: var(--z-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-slow);
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-link {
+    display: block;
+    padding: var(--space-5);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mobile-overlay.active .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-overlay.active .mobile-link:nth-child(1) { transition-delay: 0.1s; }
+.mobile-overlay.active .mobile-link:nth-child(2) { transition-delay: 0.15s; }
+.mobile-overlay.active .mobile-link:nth-child(3) { transition-delay: 0.2s; }
+.mobile-overlay.active .mobile-link:nth-child(4) { transition-delay: 0.25s; }
+.mobile-overlay.active .mobile-link:nth-child(5) { transition-delay: 0.3s; }
+.mobile-overlay.active .mobile-link:nth-child(6) { transition-delay: 0.35s; }
+
+.mobile-link:hover {
+    transform: translateX(10px);
+    color: var(--color-primary-50);
+}
+
+.mobile-link-cta {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    margin: var(--space-4) var(--space-6) 0;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    padding: calc(80px + var(--space-16)) 0 var(--space-20);
+    background: linear-gradient(180deg, var(--color-primary-50) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 100%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid var(--color-primary-100);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.badge-icon {
+    font-size: var(--text-lg);
+}
+
+.badge-text {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+.hero-title {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-6);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.hero-description {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-8);
+    max-width: 600px;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+    font-weight: 600;
+    border-radius: var(--radius-xl);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-white);
+}
+
+.btn-secondary {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary-50);
+    transform: translateY(-2px);
+    color: var(--color-primary-dark);
+}
+
+.btn-light {
+    background: var(--color-white);
+    color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-light:hover {
+    background: var(--color-primary-50);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline-light {
+    background: transparent;
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    color: var(--color-white);
+}
+
+.btn-icon {
+    transition: transform var(--transition-base);
+}
+
+.btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+/* ===== HERO STATS ===== */
+.hero-stats {
+    display: grid;
+    grid-template-columns: auto 1px auto 1px auto 1px auto;
+    gap: var(--space-6);
+    align-items: center;
+    padding: var(--space-8) 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-gray-300);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+}
+
+.stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    font-weight: 500;
+}
+
+/* ===== HERO VISUAL ===== */
+.hero-visual {
+    position: relative;
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-image-wrapper {
+    position: relative;
+    height: 600px;
+}
+
+.image-card {
+    position: absolute;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    transition: transform var(--transition-slow);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.primary-card {
+    top: 0;
+    right: 0;
+    width: 65%;
+    height: 80%;
+    z-index: 2;
+}
+
+.secondary-card {
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 45%;
+    border: 6px solid var(--color-white);
+    z-index: 3;
+}
+
+.image-card:hover {
+    transform: translateY(-8px);
+}
+
+.floating-element {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-white);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-gray-700);
+    z-index: 4;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.element-1 {
+    top: 10%;
+    left: -5%;
+    animation-delay: 0s;
+}
+
+.element-2 {
+    bottom: 15%;
+    right: -5%;
+    animation-delay: 1.5s;
+}
+
+.icon-circle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary-50), var(--color-secondary-50));
+    border-radius: var(--radius-full);
+    font-size: var(--text-lg);
+}
+
+/* ===== SECTION STYLES ===== */
+section {
+    padding: var(--space-20) 0;
+}
+
+.section-header {
+    max-width: 800px;
+    margin-bottom: var(--space-16);
+}
+
+.section-header.centered {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-tag {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-primary-50);
+    color: var(--color-primary-dark);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+}
+
+.section-title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-5);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-description {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-gray-600);
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+    background: var(--color-gray-50);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+.feature-card {
+    background: var(--color-white);
+    padding: var(--space-10);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-icon {
+    margin-bottom: var(--space-6);
+}
+
+.feature-number {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-gray-200);
+    font-family: var(--font-secondary);
+}
+
+.feature-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-4);
+}
+
+.feature-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-primary-50);
+    color: var(--color-primary-dark);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+}
+
+/* ===== LEADERSHIP SECTION ===== */
+.leadership-section {
+    background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
+    color: var(--color-white);
+}
+
+.leadership-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+}
+
+.leadership-image {
+    position: relative;
+}
+
+.image-frame {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+}
+
+.image-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.quote-mark {
+    position: absolute;
+    bottom: -2rem;
+    right: -1rem;
+    font-size: 10rem;
+    font-family: Georgia, serif;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 0.5;
+    pointer-events: none;
+}
+
+.leadership-text .section-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-primary-100);
+}
+
+.leadership-name {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: var(--space-2);
+}
+
+.leadership-role {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    color: var(--color-primary-100);
+    font-style: italic;
+    margin-bottom: var(--space-8);
+}
+
+.leadership-quote {
+    font-size: var(--text-xl);
+    line-height: 1.7;
+    color: var(--color-gray-300);
+    font-style: italic;
+    margin-bottom: var(--space-8);
+    padding-left: var(--space-6);
+    border-left: 4px solid var(--color-primary);
+}
+
+.leadership-bio {
+    margin-bottom: var(--space-10);
+}
+
+.leadership-bio p {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-5);
+}
+
+.leadership-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    padding-top: var(--space-8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leadership-stat {
+    text-align: center;
+}
+
+.leadership-stat .stat-value {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-primary-100);
+    font-family: var(--font-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.leadership-stat .stat-text {
+    font-size: var(--text-sm);
+    color: var(--color-gray-400);
+    font-weight: 500;
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery-section {
+    background: var(--color-white);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-6);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: var(--color-white);
+    transform: translateY(100%);
+    transition: transform var(--transition-base);
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay h3 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    color: var(--color-white);
+}
+
+.gallery-overlay p {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark), var(--color-secondary));
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-icon {
+    margin-bottom: var(--space-6);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.cta-title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: var(--space-6);
+    line-height: 1.2;
+}
+
+.cta-description {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-10);
+}
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-10);
+}
+
+.cta-trust {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--color-gray-900);
+    color: var(--color-gray-400);
+    padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.footer-tagline {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-4);
+    max-width: 400px;
+}
+
+.footer-accreditation {
+    margin-top: var(--space-4);
+}
+
+.accreditation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--color-primary-100);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.footer-links-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+}
+
+.footer-heading {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: var(--space-3);
+}
+
+.footer-links a {
+    color: var(--color-gray-400);
+    transition: color var(--transition-fast);
+    font-size: var(--text-sm);
+}
+
+.footer-links a:hover {
+    color: var(--color-primary-100);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--color-gray-400);
+    font-size: var(--text-sm);
+}
+
+.contact-item svg {
+    flex-shrink: 0;
+    margin-top: var(--space-1);
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: center;
+    text-align: center;
+}
+
+.footer-copyright {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+}
+
+.footer-tagline-small {
+    color: var(--color-gray-600);
+    margin-top: var(--space-2);
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-gray-400);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.social-link:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: block;
+    }
+    
+    .menu-toggle {
+        display: none;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1.1fr 1fr;
+        gap: var(--space-16);
+    }
+    
+    .hero-title {
+        font-size: var(--text-6xl);
+    }
+    
+    .hero-stats {
+        grid-template-columns: auto 1px auto 1px auto 1px auto;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+    }
+    
+    .leadership-content {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: var(--space-16);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: 250px;
+        gap: var(--space-4);
+    }
+    
+    .gallery-item.large {
+        grid-column: span 7;
+        grid-row: span 2;
+    }
+    
+    .gallery-item.medium {
+        grid-column: span 5;
+        grid-row: span 1;
+    }
+    
+    .gallery-item.small {
+        grid-column: span 4;
+        grid-row: span 1;
+    }
+    
+    .footer-main {
+        grid-template-columns: 1.5fr 1fr;
+    }
+    
+    .footer-links-group {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: var(--text-5xl);
+    }
+    
+    .cta-title {
+        font-size: var(--text-5xl);
+    }
+}
+
+/* Large Desktop (1280px and up) */
+@media (min-width: 1280px) {
+    .hero-image-wrapper {
+        height: 650px;
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 767px) {
+    .hero {
+        padding: calc(70px + var(--space-12)) 0 var(--space-12);
+    }
+    
+    .hero-title {
+        font-size: var(--text-4xl);
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+    }
+    
+    .stat-divider {
+        display: none;
+    }
+    
+    .stat-divider:nth-child(4) {
+        display: block;
+        grid-column: 1 / -1;
+        height: 1px;
+        width: 100%;
+    }
+    
+    .hero-image-wrapper {
+        height: 450px;
+    }
+    
+    .primary-card {
+        width: 75%;
+        height: 75%;
+    }
+    
+    .secondary-card {
+        width: 55%;
+        height: 40%;
+    }
+    
+    .floating-element {
+        font-size: var(--text-xs);
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .section-title {
+        font-size: var(--text-3xl);
+    }
+    
+    .leadership-stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+    
+    .cta-title {
+        font-size: var(--text-3xl);
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .menu-toggle,
+    .mobile-overlay,
+    .hero-actions,
+    .cta-section,
+    .footer-social {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+    }
+    
+    .hero {
+        padding-top: var(--space-8);
+    }
+}
+    </style>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
+                    <span class="logo-text">Ujjwal Kids World</span>
+                </div>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Home</a></li>
-               
-                <li><a href="programs.html">Academics</a></li>
-                <li><a href="projects.html">Our Projects</a></li>
-                <li><a href="Achievements.html">Achievements</a></li>
-                <li><a href="Campus.html">Campuses</a></li>
-                   <li><a href="gallery.html">Fun Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#campus">Campus Life</a></li>
+                    <li><a href="#admissions" class="btn-nav-cta">Admissions</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+            <ul class="mobile-nav-links">
+                <li><a href="#home" class="mobile-link">Home</a></li>
+                <li><a href="#about" class="mobile-link">About Us</a></li>
+                <li><a href="#academics" class="mobile-link">Academics</a></li>
+                <li><a href="#leadership" class="mobile-link">Leadership</a></li>
+                <li><a href="#campus" class="mobile-link">Campus Life</a></li>
+                <li><a href="#admissions" class="mobile-link mobile-link-cta">Admissions</a></li>
             </ul>
         </nav>
-    </header>
+    </div>
 
-    <section class="hero" id="home">
-        <div class="hero-bg-slider" id="bgSlider">
-            <div class="hero-bg-slide active" style="background-image: url('48367674_295220207788206_5921511594709221376_n.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('WhatsApp Image 2026-01-09 at 12.03.36 PM.jpeg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('WhatsApp Image 2026-01-09 at 12.07.59 PM.jpeg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('WhatsApp Image 2026-01-09 at 12.05.15 PM.jpeg');"></div>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="particles" id="particles"></div>
-        <div class="hero-grid"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span>✨</span> 10000+ Students Across 5 Campuses
-            </div>
-            <h1>Empowering Future Innovators</h1>
-            <p>A beacon of excellence in education, fostering innovation and creativity through cutting-edge technology, AI-driven learning, and transformative hands-on experiences</p>
-            <!-- <div class="hero-buttons">
-                <a href="#contact" class="cta-button">
-                    🚀 Enroll Now
-                </a>
-                <a href="programs.html" class="cta-button cta-button-secondary">
-                    📚 Explore Programs
-                </a>
-            </div> -->
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-icon">👥</div>
-                <div class="stat-number">10000+</div>
-                <div class="stat-label">Active Students</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">🏛️</div>
-                <div class="stat-number">5</div>
-                <div class="stat-label">Campuses</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">📖</div>
-                <div class="stat-number">1</div>
-                <div class="stat-label">Board Options</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Student Success</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section why-choose-section" id="why-choose-us">
-        <h2 class="section-title">Why Choose Us</h2>
-        <p class="section-subtitle">
-            A future-ready education that balances academic excellence, innovation, and holistic student development
-        </p>
-
-        <div class="features-grid-enhanced">
-            <div class="feature-card-enhanced">
-                <div class="feature-glow"></div>
-                <div class="feature-number">01</div>
-                <div class="feature-icon-enhanced">
-                    <span>🚀</span>
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon">✨</span>
+                        <span class="badge-text">Established 2017 • West Bengal</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Nurturing Young Minds for a 
+                        <span class="highlight">Brighter Future</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Welcome to Ujjwal Kids World, where academic excellence meets holistic development. 
+                        We create an inspiring learning environment that empowers students to discover their 
+                        potential, build character, and develop into confident, compassionate leaders of tomorrow.
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#admissions" class="btn btn-primary">
+                            <span>Apply for Admission</span>
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Happy Students</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Modern Campuses</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-number">9+</div>
+                            <div class="stat-label">Years of Excellence</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
                 </div>
-                <h3>Innovation-Driven Learning</h3>
-                <p>
-                    We integrate technology, coding, and hands-on projects into everyday learning, helping students develop critical thinking and problem-solving skills for the future.
-                </p>
-                <div class="feature-stats">
-                    <div class="stat-mini">
-                        <span class="stat-value">95%</span>
-                        <span class="stat-desc">Tech Integration</span>
+                
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <div class="image-card primary-card">
+                            <img src="home image.jpg" 
+                                 alt="Students engaged in collaborative learning activities" 
+                                 loading="eager">
+                        </div>
+                        <div class="image-card secondary-card">
+                            <img src="home image 1.jpg" 
+                                 alt="Student achieving academic excellence" 
+                                 loading="eager">
+                        </div>
+                        <div class="floating-element element-1">
+                            <div class="icon-circle">🎓</div>
+                            <span>CBSE Affiliated</span>
+                        </div>
+                        <div class="floating-element element-2">
+                            <div class="icon-circle">⭐</div>
+                            <span>Award Winning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Our Philosophy</span>
+                    <h2 class="section-title">
+                        Where Learning Meets <span class="text-gradient">Innovation</span>
+                    </h2>
+                    <p class="section-description">
+                        At Ujjwal Kids World, education goes beyond textbooks. We believe in nurturing 
+                        well-rounded individuals who are equipped with knowledge, values, and skills to 
+                        excel in an ever-evolving world.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" rx="12" fill="#E3F2FD"/>
+                                <path d="M24 14L28 22H32L26 30L22 22H18L24 14Z" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-number">01</div>
+                        <h3 class="feature-title">Academic Excellence</h3>
+                        <p class="feature-text">
+                            Our CBSE-aligned curriculum integrates traditional wisdom with modern technology. 
+                            Advanced labs, digital learning, coding, and robotics prepare students for the future 
+                            while building strong academic foundations.
+                        </p>
+                        <div class="feature-badge">
+                            <span class="badge-dot"></span>
+                            <span>Technology Integration: 95%</span>
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" rx="12" fill="#F3E5F5"/>
+                                <circle cx="24" cy="20" r="6" stroke="#7B1FA2" stroke-width="2"/>
+                                <path d="M14 34C14 28 18 26 24 26C30 26 34 28 34 34" stroke="#7B1FA2" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-number">02</div>
+                        <h3 class="feature-title">Character Development</h3>
+                        <p class="feature-text">
+                            We focus on holistic growth through arts, sports, community service, and leadership 
+                            programs. Students develop resilience, empathy, creativity, and strong moral values 
+                            essential for meaningful lives.
+                        </p>
+                        <div class="feature-badge">
+                            <span class="badge-dot"></span>
+                            <span>Holistic Approach: 360°</span>
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" rx="12" fill="#FFF3E0"/>
+                                <path d="M24 14V24M24 24L30 18M24 24L18 18" stroke="#E65100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="16" y="28" width="16" height="8" rx="1" stroke="#E65100" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="feature-number">03</div>
+                        <h3 class="feature-title">Expert Educators</h3>
+                        <p class="feature-text">
+                            Our 50+ exceptional teachers bring expertise, passion, and dedication to every classroom. 
+                            They mentor, inspire, and guide each student's journey with personalized attention and 
+                            genuine care for their success.
+                        </p>
+                        <div class="feature-badge">
+                            <span class="badge-dot"></span>
+                            <span>Qualified Teachers: 50+</span>
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" rx="12" fill="#E8F5E9"/>
+                                <rect x="14" y="18" width="20" height="16" rx="2" stroke="#2E7D32" stroke-width="2"/>
+                                <path d="M18 14L24 18L30 14" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-number">04</div>
+                        <h3 class="feature-title">World-Class Infrastructure</h3>
+                        <p class="feature-text">
+                            Five state-of-the-art campuses equipped with advanced science labs, digital libraries, 
+                            innovation hubs, performing arts theaters, sports complexes, and collaborative spaces 
+                            that inspire learning and achievement.
+                        </p>
+                        <div class="feature-badge">
+                            <span class="badge-dot"></span>
+                            <span>Modern Facilities: 5 Campuses</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section class="leadership-section" id="leadership">
+            <div class="container">
+                <div class="leadership-content">
+                    <div class="leadership-image">
+                        <div class="image-frame">
+                            <img src="founder.jpg" 
+                                 alt="Mr. Ashim Ghosh, Founder of Ujjwal Kids World" 
+                                 loading="lazy">
+                        </div>
+                        <div class="quote-mark">"</div>
+                    </div>
+                    
+                    <div class="leadership-text">
+                        <span class="section-tag">Visionary Leadership</span>
+                        <h2 class="leadership-name">Mr. Ashim Ghosh</h2>
+                        <p class="leadership-role">Founder & Educational Pioneer</p>
+                        
+                        <blockquote class="leadership-quote">
+                            "True education illuminates not only the mind but also the spirit. It awakens 
+                            potential, cultivates character, and empowers individuals to contribute meaningfully 
+                            to society."
+                        </blockquote>
+                        
+                        <div class="leadership-bio">
+                            <p>
+                                With an unwavering commitment to educational transformation, Mr. Ashim Ghosh has 
+                                pioneered an innovative approach that honors traditional values while embracing 
+                                progressive methodologies.
+                            </p>
+                            <p>
+                                Under his visionary leadership, Ujjwal Kids World has become one of West Bengal's 
+                                most distinguished educational institutions, positively impacting over 10,000 students 
+                                across five exceptional campuses since 2010.
+                            </p>
+                        </div>
+                        
+                        <div class="leadership-stats">
+                            <div class="leadership-stat">
+                                <div class="stat-value">9+</div>
+                                <div class="stat-text">Years of Impact</div>
+                            </div>
+                            <div class="leadership-stat">
+                                <div class="stat-value">10,000+</div>
+                                <div class="stat-text">Students Guided</div>
+                            </div>
+                            <div class="leadership-stat">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-text">Dedication</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campus Gallery Section -->
+        <section class="gallery-section" id="campus">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Campus Life</span>
+                    <h2 class="section-title">
+                        Where Learning Comes <span class="text-gradient">Alive</span>
+                    </h2>
+                    <p class="section-description">
+                        Explore our vibrant learning spaces designed to inspire creativity, collaboration, 
+                        and academic excellence.
+                    </p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item large">
+                        <img src="student1.jpg" 
+                             alt="Students collaborating in modern learning environment" 
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Childrens Day!</h3>
+                            <p>Happy Childrens Day!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item medium">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop&q=90" 
+                             alt="Group discussion and learning activities" 
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Student Engagement</h3>
+                            <p>Interactive discussions & teamwork</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item medium">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop&q=90" 
+                             alt="Contemporary classroom with digital learning tools" 
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Smart Classrooms</h3>
+                            <p>Technology-enabled learning spaces</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item small">
+                        <img src="https://images.unsplash.com/photo-1581726707445-75cbe4efc586?w=500&h=400&fit=crop&q=90" 
+                             alt="Advanced science laboratory facilities" 
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Science Labs</h3>
+                            <p>Hands-on experimentation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item small">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=500&h=400&fit=crop&q=90" 
+                             alt="Arts and creative programs" 
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Arts Program</h3>
+                            <p>Creative expression & talent</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item small">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=500&h=400&fit=crop&q=90" 
+                             alt="Sports and athletic facilities" 
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Sports Complex</h3>
+                            <p>Physical fitness & wellness</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section" id="admissions">
+            <div class="container">
+                <div class="cta-content">
+                    <div class="cta-icon">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.1)"/>
+                            <path d="M32 20L36 28L44 30L38 36L40 44L32 40L24 44L26 36L20 30L28 28L32 20Z" 
+                                  fill="white" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    
+                    <h2 class="cta-title">
+                        Begin Your Child's Journey to Excellence
+                    </h2>
+                    
+                    <p class="cta-description">
+                        Discover how Ujjwal Kids World can provide your child with an exceptional foundation 
+                        for lifelong success. Schedule a personalized campus tour and experience our 
+                        distinguished educational community firsthand.
+                    </p>
+                    
+                    <div class="cta-actions">
+                        <a href="#visit" class="btn btn-light">
+                            <span>Schedule Campus Visit</span>
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#inquiry" class="btn btn-outline-light">
+                            <span>Request Information</span>
+                        </a>
+                    </div>
+                    
+                    <div class="cta-trust">
+                        <div class="trust-badge">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2L12 7L17 8L13.5 12L15 17L10 14.5L5 17L6.5 12L3 8L8 7L10 2Z" 
+                                      fill="currentColor"/>
+                            </svg>
+                            <span>CBSE Affiliated</span>
+                        </div>
+                        <div class="trust-badge">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>9+ Years Trusted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/50x50/4A90E2/FFFFFF?text=UKW" alt="Ujjwal Kids World Logo" class="logo-img">
+                        <span class="logo-text">Ujjwal Kids World</span>
+                    </div>
+                    <p class="footer-tagline">
+                        A premier educational institution dedicated to cultivating excellence, character, 
+                        and leadership in every student.
+                    </p>
+                    <div class="footer-accreditation">
+                        <span class="accreditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z" 
+                                      fill="currentColor"/>
+                            </svg>
+                            CBSE Affiliated
+                        </span>
+                    </div>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Academics</h4>
+                        <ul class="footer-links">
+                            <li><a href="#curriculum">Curriculum</a></li>
+                            <li><a href="#programs">Programs</a></li>
+                            <li><a href="#faculty">Faculty</a></li>
+                            <li><a href="#innovation">Innovation Labs</a></li>
+                            <li><a href="#results">Results</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Campus</h4>
+                        <ul class="footer-links">
+                            <li><a href="#facilities">Facilities</a></li>
+                            <li><a href="#athletics">Athletics</a></li>
+                            <li><a href="#arts">Arts & Culture</a></li>
+                            <li><a href="#library">Library</a></li>
+                            <li><a href="#locations">Locations</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact</h4>
+                        <ul class="footer-links">
+                            <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z" 
+                                          stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                </svg>
+                                <span>Gangarampur, Dakshin Dinajpur<br>West Bengal, India</span>
+                            </li>
+                            <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <a href="mailto:admissions@ujjwalkidsworld.edu">admissions@ujjwalkidsworld.edu</a>
+                            </li>
+                            <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <a href="mailto:info@ujjwalkidsworld.edu">info@ujjwalkidsworld.edu</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="feature-card-enhanced">
-                <div class="feature-glow"></div>
-                <div class="feature-number">02</div>
-                <div class="feature-icon-enhanced">
-                    <span>📚</span>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
+                    <p class="footer-tagline-small">Excellence Since 2010</p>
                 </div>
-                <h3>Strong Academic Foundation</h3>
-                <p>
-                    A well-structured curriculum focused on core subjects ensures conceptual clarity, academic excellence, and consistent performance at every stage.
-                </p>
-                <div class="feature-stats">
-                    <div class="stat-mini">
-                        <span class="stat-value">100%</span>
-                        <span class="stat-desc">Success Rate</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-card-enhanced">
-                <div class="feature-glow"></div>
-                <div class="feature-number">03</div>
-                <div class="feature-icon-enhanced">
-                    <span>👨‍🏫</span>
-                </div>
-                <h3>Experienced & Caring Faculty</h3>
-                <p>
-                    Our dedicated educators combine subject expertise with modern teaching methods to guide, mentor, and inspire every student.
-                </p>
-                <div class="feature-stats">
-                    <div class="stat-mini">
-                        <span class="stat-value">50+</span>
-                        <span class="stat-desc">Expert Teachers</span>
-                    </div>
+                
+                <div class="footer-social">
+                    <a href="#facebook" aria-label="Visit our Facebook page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM11 10.5V14H9V10.5H8V9H9V8C9 6.9 9.9 6 11 6H12V7.5H11.5C11.22 7.5 11 7.72 11 8V9H12L11.75 10.5H11Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#instagram" aria-label="Visit our Instagram page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="14.5" cy="5.5" r="0.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#linkedin" aria-label="Visit our LinkedIn page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 3H17V17H3V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M6 8V14M6 6.5V6M10 14V10.5C10 9.5 10.5 9 11.5 9C12.5 9 13 9.5 13 10.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-
-            <div class="feature-card-enhanced">
-                <div class="feature-glow"></div>
-                <div class="feature-number">04</div>
-                <div class="feature-icon-enhanced">
-                    <span>🌱</span>
-                </div>
-                <h3>Holistic Student Development</h3>
-                <p>
-                    We nurture intellectual, emotional, and social growth, helping students build confidence, discipline, creativity, and leadership skills.
-                </p>
-                <div class="feature-stats">
-                    <div class="stat-mini">
-                        <span class="stat-value">360°</span>
-                        <span class="stat-desc">Development</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="founder-section" id="about">
-        <div class="founder-content">
-            <div class="founder-image-wrapper">
-                <div class="founder-glow"></div>
-                <div class="founder-image">
-                    <span class="founder-emoji">👋</span>
-                </div>
-            </div>
-            <div class="founder-text">
-                <h2>Meet Our Visionary Founder</h2>
-                <h3>Mr. Ashim Ghosh</h3>
-                <p>
-                    With an unwavering commitment to revolutionize traditional schooling, Mr. Ashim Ghosh founded Kids World to create a nurturing and innovative learning environment where technology meets education. His vision has transformed the lives of over 10,000 students across West Bengal, empowering them to reach their full potential academically, socially, and emotionally.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Ujjwal Kids World</h3>
-                <p>Empowering young minds through innovative education and technology-driven learning for a brighter, smarter tomorrow.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <div>
-                    <div><a href="#home">→ Home</a></div>
-                    <div><a href="programs.html">→ Programs</a></div>
-                    <div><a href="#campuses">→ Campuses</a></div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <div>
-                    <div>📍 Gangarampur, Dakshin Dinajpur</div>
-                    <div>West Bengal, India</div>
-                    <div>📧 info@kidsworld.edu</div>
-                    <div>📞 Contact: Available on Request</div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Education Boards</h3>
-                <div>
-                    <div>✓ CBSE Board</div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Ujjwal Kids World. All Rights Reserved. | Founded by Mr. Ashim Ghosh</p>
         </div>
     </footer>
+<script>
+    // ========================================
+// UJJWAL KIDS WORLD - INTERACTIVE SCRIPT
+// Modern, accessible, educational website
+// ========================================
 
-    <script>
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-
-        // Background slider
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-bg-slide');
-        const totalSlides = slides.length;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % totalSlides;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 8000);
-
-        // Particle generation
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 4 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ===== MOBILE MENU TOGGLE =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const body = document.body;
+    
+    if (menuToggle && mobileOverlay) {
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', function() {
+            const isActive = mobileOverlay.classList.contains('active');
+            
+            if (isActive) {
+                closeMobileMenu();
             } else {
-                header.classList.remove('scrolled');
+                openMobileMenu();
             }
         });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        
+        // Close menu when clicking on a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Close menu when clicking outside
+        mobileOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileOverlay) {
+                closeMobileMenu();
+            }
+        });
+    }
+    
+    function openMobileMenu() {
+        menuToggle.classList.add('active');
+        mobileOverlay.classList.add('active');
+        body.style.overflow = 'hidden';
+        menuToggle.setAttribute('aria-expanded', 'true');
+    }
+    
+    function closeMobileMenu() {
+        menuToggle.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        body.style.overflow = '';
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
+    
+    // ===== NAVBAR SCROLL EFFECT =====
+    const navbar = document.getElementById('navbar');
+    let lastScrollTop = 0;
+    let ticking = false;
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateNavbar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    function updateNavbar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+    }
+    
+    // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if href is just "#"
+            if (href === '#') {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                return;
+            }
+            
+            const target = document.querySelector(href);
+            
+            if (target) {
+                e.preventDefault();
+                const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL without jumping
+                if (history.pushState) {
+                    history.pushState(null, null, href);
+                }
+            }
+        });
+    });
+    
+    // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const fadeInObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                fadeInObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Apply fade-in animation to elements
+    const fadeElements = document.querySelectorAll('.feature-card, .gallery-item, .leadership-stat');
+    
+    fadeElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        fadeInObserver.observe(el);
+    });
+    
+    // ===== PARALLAX EFFECT FOR HERO VISUAL =====
+    const heroVisual = document.querySelector('.hero-visual');
+    
+    if (heroVisual) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            if (scrolled < 1000) {
+                heroVisual.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
+        });
+    }
+    
+    // ===== LOADING ANIMATION =====
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+    
+    // ===== ACTIVE NAVIGATION LINK =====
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a:not(.btn-nav-cta)');
+    
+    function highlightNavigation() {
+        const scrollY = window.pageYOffset;
+        
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', highlightNavigation);
+    
+    // ===== FORM VALIDATION (if forms are added later) =====
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            const inputs = form.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                } else {
+                    input.classList.remove('error');
                 }
             });
+            
+            if (!isValid) {
+                e.preventDefault();
+            }
         });
-
-        // Scroll reveal animation for feature cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+    });
+    
+    // ===== ACCESSIBILITY: TRAP FOCUS IN MOBILE MENU =====
+    function trapFocus(element) {
+        const focusableElements = element.querySelectorAll(
+            'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+        
+        element.addEventListener('keydown', function(e) {
+            if (e.key !== 'Tab') return;
+            
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusable) {
+                    lastFocusable.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastFocusable) {
+                    firstFocusable.focus();
+                    e.preventDefault();
+                }
+            }
+        });
+    }
+    
+    if (mobileOverlay) {
+        trapFocus(mobileOverlay);
+    }
+    
+    // ===== PERFORMANCE: LAZY LOADING IMAGES =====
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('loading' in HTMLImageElement.prototype) {
+        // Browser supports native lazy loading
+        images.forEach(img => {
+            img.src = img.dataset.src || img.src;
+        });
+    } else {
+        // Fallback for browsers that don't support lazy loading
+        const imageObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    observer.unobserve(entry.target);
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    imageObserver.unobserve(img);
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card-enhanced').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
         });
-    </script>
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+    
+    // ===== CONSOLE MESSAGE =====
+    console.log('%cUjjwal Kids World', 'font-size: 24px; color: #4A90E2; font-weight: bold;');
+    console.log('%cExcellence in Education Since 2010', 'font-size: 14px; color: #6C757D;');
+    console.log('%c🎓 Building Bright Futures', 'font-size: 12px; color: #26C281;');
+    
+});
+
+// ===== UTILITY FUNCTIONS =====
+
+// Debounce function for performance optimization
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Throttle function for scroll events
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Check if element is in viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// ===== PERFORMANCE MONITORING =====
+if ('PerformanceObserver' in window) {
+    try {
+        const perfObserver = new PerformanceObserver((entryList) => {
+            const entries = entryList.getEntries();
+            entries.forEach((entry) => {
+                if (entry.entryType === 'largest-contentful-paint') {
+                    console.log('LCP:', entry.startTime);
+                }
+            });
+        });
+        
+        perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+    } catch (e) {
+        // PerformanceObserver not supported
+    }
+}
+</script>
 </body>
 </html>
