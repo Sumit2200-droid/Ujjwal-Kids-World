@@ -370,14 +370,14 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background: var(--color-white);
     z-index: var(--z-modal-backdrop);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-slow);
+    overflow-y: auto;
 }
 
 .mobile-overlay.active {
@@ -385,44 +385,124 @@ img {
     visibility: visible;
 }
 
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--color-white);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-fixed);
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-gray-900);
+}
+
+.mobile-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.mobile-logo-text {
+    font-family: var(--font-secondary);
+    letter-spacing: -0.02em;
+}
+
+.mobile-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-800);
+    transition: all var(--transition-fast);
+}
+
+.mobile-close:hover {
+    color: var(--color-primary);
+    transform: rotate(90deg);
+}
+
 .mobile-nav-links {
     list-style: none;
-    text-align: center;
+    padding: var(--space-4) 0;
+    flex: 1;
 }
 
 .mobile-link {
     display: block;
-    padding: var(--space-5);
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    color: var(--color-white);
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-gray-700);
     text-decoration: none;
     transition: all var(--transition-base);
-    opacity: 0;
-    transform: translateY(20px);
+    border-left: 4px solid transparent;
+    position: relative;
 }
 
 .mobile-overlay.active .mobile-link {
-    opacity: 1;
-    transform: translateY(0);
+    animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.mobile-overlay.active .mobile-link:nth-child(1) { transition-delay: 0.1s; }
-.mobile-overlay.active .mobile-link:nth-child(2) { transition-delay: 0.15s; }
-.mobile-overlay.active .mobile-link:nth-child(3) { transition-delay: 0.2s; }
-.mobile-overlay.active .mobile-link:nth-child(4) { transition-delay: 0.25s; }
-.mobile-overlay.active .mobile-link:nth-child(5) { transition-delay: 0.3s; }
-.mobile-overlay.active .mobile-link:nth-child(6) { transition-delay: 0.35s; }
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-nav-links li:nth-child(1) .mobile-link { animation-delay: 0.1s; }
+.mobile-nav-links li:nth-child(2) .mobile-link { animation-delay: 0.15s; }
+.mobile-nav-links li:nth-child(3) .mobile-link { animation-delay: 0.2s; }
+.mobile-nav-links li:nth-child(4) .mobile-link { animation-delay: 0.25s; }
+.mobile-nav-links li:nth-child(5) .mobile-link { animation-delay: 0.3s; }
+.mobile-nav-links li:nth-child(6) .mobile-link { animation-delay: 0.35s; }
+.mobile-nav-links li:nth-child(7) .mobile-link { animation-delay: 0.4s; }
 
 .mobile-link:hover {
-    transform: translateX(10px);
-    color: var(--color-primary-50);
+    background: var(--color-primary-50);
+    color: var(--color-primary-dark);
+    border-left-color: var(--color-primary);
+    transform: translateX(4px);
 }
 
 .mobile-link-cta {
-    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-white) !important;
+    margin: var(--space-2) var(--space-4);
     border-radius: var(--radius-lg);
-    margin: var(--space-4) var(--space-6) 0;
+    border-left: none;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.mobile-link-cta:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 /* ===== HERO SECTION ===== */
@@ -1476,13 +1556,26 @@ section {
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-overlay" id="mobileOverlay">
         <nav class="mobile-nav" aria-label="Mobile navigation">
+            <div class="mobile-nav-header">
+                <div class="mobile-logo">
+                    <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="mobile-logo-img">
+                    <span class="mobile-logo-text">Ujjwal Kids World</span>
+                </div>
+                <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
             <ul class="mobile-nav-links">
                 <li><a href="#home" class="mobile-link">Home</a></li>
-                <li><a href="#about" class="mobile-link">About Us</a></li>
-                <li><a href="#academics" class="mobile-link">Academics</a></li>
-                <li><a href="#leadership" class="mobile-link">Leadership</a></li>
-                <li><a href="#campus" class="mobile-link">Campus Life</a></li>
-                <li><a href="#admissions" class="mobile-link mobile-link-cta">Admissions</a></li>
+                <li><a href="programs.html" class="mobile-link">Academic Programs</a></li>
+                <li><a href="Campus.html" class="mobile-link">Our Campuses</a></li>
+                <li><a href="Achievements.html" class="mobile-link">Achievements</a></li>
+                <li><a href="projects.html" class="mobile-link">Student Projects</a></li>
+                <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
+               
             </ul>
         </nav>
     </div>
@@ -1971,6 +2064,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== MOBILE MENU TOGGLE =====
     const menuToggle = document.getElementById('menuToggle');
     const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileClose = document.getElementById('mobileClose');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const body = document.body;
     
@@ -1985,6 +2079,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 openMobileMenu();
             }
         });
+        
+        // Close menu with close button
+        if (mobileClose) {
+            mobileClose.addEventListener('click', closeMobileMenu);
+        }
         
         // Close menu when clicking on a link
         mobileLinks.forEach(link => {
