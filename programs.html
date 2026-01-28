@@ -9,196 +9,99 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* ========================================
-           UJJWAL KIDS WORLD - ACADEMIC PROGRAMS
-           Matching Homepage Design System
+           UJJWAL KIDS WORLD - CLEAN & MODERN
+           Professional, Elegant, Trustworthy
            ======================================== */
 
-        /* ===== CSS VARIABLES (From Homepage) ===== */
         :root {
-            /* Primary Color Palette */
-            --color-primary: #4A90E2;
-            --color-primary-light: #6BA3E8;
-            --color-primary-dark: #3A7BC8;
-            --color-primary-50: #E3F2FD;
-            --color-primary-100: #BBDEFB;
+            /* Refined Color Palette */
+            --primary-blue: #2563eb;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --primary-blue-50: #eff6ff;
             
-            /* Secondary Color Palette */
-            --color-secondary: #8E7CC3;
-            --color-secondary-light: #A796D6;
-            --color-secondary-dark: #7461B8;
-            --color-secondary-50: #F3E5F5;
+            --accent-purple: #7c3aed;
+            --accent-orange: #f97316;
+            --accent-green: #10b981;
+            --accent-pink: #ec4899;
             
-            /* Accent Colors */
-            --color-accent-orange: #FF9F43;
-            --color-accent-green: #26C281;
-            --color-accent-pink: #EE5A6F;
-            
-            /* Neutral Colors */
-            --color-white: #FFFFFF;
-            --color-gray-50: #F8F9FA;
-            --color-gray-100: #F1F3F5;
-            --color-gray-200: #E9ECEF;
-            --color-gray-300: #DEE2E6;
-            --color-gray-400: #CED4DA;
-            --color-gray-500: #ADB5BD;
-            --color-gray-600: #6C757D;
-            --color-gray-700: #495057;
-            --color-gray-800: #343A40;
-            --color-gray-900: #212529;
+            /* Neutrals */
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
             
             /* Typography */
-            --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --font-secondary: 'Quicksand', sans-serif;
+            --font-primary: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+            --font-secondary: 'Inter', sans-serif;
             
-            /* Font Sizes */
-            --text-xs: 0.75rem;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.25rem;
-            --text-2xl: 1.5rem;
-            --text-3xl: 1.875rem;
-            --text-4xl: 2.25rem;
-            --text-5xl: 3rem;
-            --text-6xl: 3.75rem;
-            
-            /* Spacing Scale */
-            --space-1: 0.25rem;
-            --space-2: 0.5rem;
-            --space-3: 0.75rem;
-            --space-4: 1rem;
-            --space-5: 1.25rem;
-            --space-6: 1.5rem;
-            --space-8: 2rem;
-            --space-10: 2.5rem;
-            --space-12: 3rem;
-            --space-16: 4rem;
-            --space-20: 5rem;
-            --space-24: 6rem;
-            
-            /* Border Radius */
-            --radius-sm: 0.375rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 0.75rem;
-            --radius-xl: 1rem;
-            --radius-2xl: 1.5rem;
-            --radius-full: 9999px;
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
             
             /* Shadows */
-            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.06);
-            --shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
             
             /* Transitions */
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Z-index Scale */
-            --z-dropdown: 1000;
-            --z-sticky: 1020;
-            --z-fixed: 1030;
-            --z-modal-backdrop: 1040;
-            --z-modal: 1050;
-            --z-popover: 1060;
-            --z-tooltip: 1070;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===== RESET & BASE STYLES ===== */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         html {
-            font-size: 16px;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: var(--font-primary);
-            font-size: var(--text-base);
+            font-family: var(--font-secondary);
+            color: var(--gray-800);
+            background: var(--white);
             line-height: 1.6;
-            color: var(--color-gray-800);
-            background-color: var(--color-white);
             overflow-x: hidden;
         }
 
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-primary);
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--color-gray-900);
-            margin-bottom: var(--space-4);
-        }
-
-        h1 { font-size: var(--text-5xl); }
-        h2 { font-size: var(--text-4xl); }
-        h3 { font-size: var(--text-2xl); }
-
-        p {
-            margin-bottom: var(--space-4);
-        }
-
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        a:hover {
-            color: var(--color-primary-dark);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== CONTAINER ===== */
         .container {
-            width: 100%;
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 var(--space-6);
+            padding: 0 var(--space-md);
         }
 
-        @media (min-width: 768px) {
-            .container {
-                padding: 0 var(--space-8);
-            }
-        }
-
-        @media (min-width: 1280px) {
-            .container {
-                padding: 0 var(--space-12);
-            }
-        }
-
-        /* ===== NAVIGATION (From Homepage) ===== */
+        /* ===== NAVIGATION ===== */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
-            z-index: var(--z-fixed);
-            transition: all var(--transition-base);
+            z-index: 1000;
+            transition: var(--transition);
         }
 
         .navbar.scrolled {
@@ -208,32 +111,27 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: var(--space-4) var(--space-6);
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-brand .logo {
+        .logo {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
-            font-size: var(--text-xl);
+            gap: 0.75rem;
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
             font-weight: 700;
-            color: var(--color-gray-900);
+            color: var(--gray-900);
             text-decoration: none;
         }
 
         .logo-img {
             width: 40px;
             height: 40px;
-            object-fit: contain;
-            border-radius: var(--radius-md);
-        }
-
-        .logo-text {
-            font-family: var(--font-secondary);
-            letter-spacing: -0.02em;
+            border-radius: 8px;
         }
 
         .nav-menu {
@@ -242,16 +140,17 @@
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: var(--space-8);
+            gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            font-size: var(--text-sm);
+            font-size: 0.9375rem;
             font-weight: 500;
-            color: var(--color-gray-700);
-            transition: color var(--transition-fast);
+            color: var(--gray-700);
+            text-decoration: none;
+            transition: var(--transition);
             position: relative;
         }
 
@@ -262,85 +161,76 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--color-primary);
-            transition: width var(--transition-base);
+            background: var(--primary-blue);
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--color-primary);
+            color: var(--primary-blue);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .btn-nav-cta {
-            padding: var(--space-3) var(--space-6);
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            color: var(--color-white) !important;
-            border-radius: var(--radius-full);
+        .btn-cta {
+            padding: 0.625rem 1.5rem;
+            background: var(--primary-blue);
+            color: var(--white) !important;
+            border-radius: 50px;
             font-weight: 600;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-base);
+            transition: var(--transition);
         }
 
-        .btn-nav-cta::after {
+        .btn-cta::after {
             display: none;
         }
 
-        .btn-nav-cta:hover {
+        .btn-cta:hover {
+            background: var(--primary-blue-dark);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu */
         .menu-toggle {
             display: flex;
             flex-direction: column;
-            gap: var(--space-2);
+            gap: 5px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: var(--space-2);
-            z-index: var(--z-modal);
+            padding: 0.5rem;
         }
 
         .hamburger {
             width: 24px;
             height: 2px;
-            background: var(--color-gray-800);
-            border-radius: var(--radius-full);
-            transition: all var(--transition-base);
+            background: var(--gray-800);
+            transition: var(--transition);
+            border-radius: 2px;
         }
 
         .menu-toggle.active .hamburger:nth-child(1) {
-            transform: translateY(6px) rotate(45deg);
+            transform: translateY(7px) rotate(45deg);
         }
 
         .menu-toggle.active .hamburger:nth-child(2) {
             opacity: 0;
-            transform: scaleX(0);
         }
 
         .menu-toggle.active .hamburger:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg);
+            transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* Mobile Navigation Overlay */
         .mobile-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--color-white);
-            z-index: var(--z-modal-backdrop);
-            display: flex;
-            flex-direction: column;
+            inset: 0;
+            background: var(--white);
+            z-index: 999;
             opacity: 0;
             visibility: hidden;
-            transition: all var(--transition-slow);
-            overflow-y: auto;
+            transition: var(--transition);
         }
 
         .mobile-overlay.active {
@@ -349,467 +239,340 @@
         }
 
         .mobile-nav {
+            height: 100%;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         .mobile-nav-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: var(--space-5) var(--space-6);
-            border-bottom: 1px solid var(--color-gray-200);
-            background: var(--color-white);
-            position: sticky;
-            top: 0;
-            z-index: var(--z-fixed);
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
         }
 
         .mobile-logo {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
-            font-size: var(--text-lg);
+            gap: 0.75rem;
+            font-family: var(--font-primary);
             font-weight: 700;
-            color: var(--color-gray-900);
+            color: var(--gray-900);
         }
 
         .mobile-logo-img {
             width: 32px;
             height: 32px;
-            object-fit: contain;
-            border-radius: var(--radius-md);
-        }
-
-        .mobile-logo-text {
-            font-family: var(--font-secondary);
-            letter-spacing: -0.02em;
+            border-radius: 6px;
         }
 
         .mobile-close {
             background: none;
             border: none;
             cursor: pointer;
-            padding: var(--space-2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-gray-800);
-            transition: all var(--transition-fast);
-        }
-
-        .mobile-close:hover {
-            color: var(--color-primary);
-            transform: rotate(90deg);
+            padding: 0.5rem;
+            color: var(--gray-700);
         }
 
         .mobile-nav-links {
             list-style: none;
-            padding: var(--space-4) 0;
-            flex: 1;
+            padding: 2rem 0;
         }
 
         .mobile-link {
             display: block;
-            padding: var(--space-5) var(--space-6);
-            font-size: var(--text-lg);
+            padding: 1rem 1.5rem;
+            font-size: 1.125rem;
             font-weight: 500;
-            color: var(--color-gray-700);
+            color: var(--gray-700);
             text-decoration: none;
-            transition: all var(--transition-base);
-            border-left: 4px solid transparent;
+            border-left: 3px solid transparent;
+            transition: var(--transition);
         }
 
-        .mobile-link:hover {
-            background: var(--color-primary-50);
-            color: var(--color-primary-dark);
-            border-left-color: var(--color-primary);
-            transform: translateX(4px);
+        .mobile-link:active {
+            background: var(--gray-50);
+            border-left-color: var(--primary-blue);
+            color: var(--primary-blue);
         }
 
-        /* ===== PROGRAMS PAGE HERO ===== */
-        .programs-hero {
-            padding: calc(80px + var(--space-16)) 0 var(--space-20);
-            background: linear-gradient(180deg, var(--color-primary-50) 0%, var(--color-white) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .programs-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 100%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .programs-hero-content {
-            max-width: 900px;
-            margin: 0 auto;
+        /* ===== HERO ===== */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary-blue-50) 0%, var(--white) 100%);
             text-align: center;
-            position: relative;
-            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-2) var(--space-4);
-            background: var(--color-white);
-            border: 1px solid var(--color-primary-100);
-            border-radius: var(--radius-full);
-            margin-bottom: var(--space-6);
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .badge-icon {
-            font-size: var(--text-lg);
-        }
-
-        .badge-text {
-            font-size: var(--text-sm);
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 50px;
+            font-size: 0.875rem;
             font-weight: 600;
-            color: var(--color-primary-dark);
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
         }
 
-        .programs-hero h1 {
-            font-size: var(--text-5xl);
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
             font-weight: 800;
-            line-height: 1.15;
-            color: var(--color-gray-900);
-            margin-bottom: var(--space-6);
+            line-height: 1.2;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
         }
 
-        .highlight {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero .highlight {
+            color: var(--primary-blue);
         }
 
-        .programs-hero p {
-            font-size: var(--text-lg);
-            line-height: 1.8;
-            color: var(--color-gray-600);
-            max-width: 700px;
-            margin: 0 auto;
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            line-height: 1.7;
         }
 
-        /* ===== SECTION STYLES ===== */
+        /* ===== SECTIONS ===== */
         section {
-            padding: var(--space-20) 0;
-        }
-
-        .section-alternate {
-            background: var(--color-gray-50);
+            padding: 4rem 0;
         }
 
         .section-header {
-            max-width: 800px;
-            margin-bottom: var(--space-16);
-        }
-
-        .section-header.centered {
             text-align: center;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 700px;
+            margin: 0 auto 3rem;
         }
 
         .section-tag {
             display: inline-block;
-            padding: var(--space-2) var(--space-4);
-            background: var(--color-primary-50);
-            color: var(--color-primary-dark);
-            font-size: var(--text-sm);
+            padding: 0.5rem 1rem;
+            background: var(--primary-blue-50);
+            color: var(--primary-blue);
+            font-size: 0.8125rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-radius: var(--radius-full);
-            margin-bottom: var(--space-4);
+            letter-spacing: 0.05em;
+            border-radius: 50px;
+            margin-bottom: 1rem;
         }
 
         .section-tag.orange {
-            background: rgba(255, 159, 67, 0.1);
-            color: #d97706;
+            background: #fff7ed;
+            color: var(--accent-orange);
         }
 
         .section-title {
-            font-size: var(--text-4xl);
+            font-family: var(--font-primary);
+            font-size: 2rem;
             font-weight: 800;
-            line-height: 1.2;
-            color: var(--color-gray-900);
-            margin-bottom: var(--space-5);
+            color: var(--gray-900);
+            margin-bottom: 1rem;
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .section-title .gradient-text {
+            color: var(--primary-blue);
         }
 
         .section-description {
-            font-size: var(--text-lg);
-            line-height: 1.8;
-            color: var(--color-gray-600);
+            font-size: 1.0625rem;
+            color: var(--gray-600);
+            line-height: 1.7;
         }
 
         /* ===== FEATURE BANNER ===== */
         .feature-banner {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            border-radius: var(--radius-2xl);
-            padding: var(--space-10);
-            margin-bottom: var(--space-16);
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
             box-shadow: var(--shadow-xl);
         }
 
-        .feature-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .banner-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: var(--space-6);
-        }
-
         .banner-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             flex-shrink: 0;
         }
 
         .banner-content h3 {
-            color: var(--color-white);
-            font-size: var(--text-3xl);
-            font-weight: 800;
-            margin-bottom: var(--space-3);
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
         }
 
         .banner-content p {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: var(--text-lg);
-            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
             margin: 0;
         }
 
-        /* ===== PROGRAMS GRID ===== */
+        /* ===== PROGRAM CARDS ===== */
         .programs-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--space-6);
+            gap: 1.5rem;
         }
 
         .program-card {
-            background: var(--color-white);
-            padding: var(--space-10);
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-        }
-
-        .program-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--transition-base);
-        }
-
-        .program-card.innovation::before {
-            background: linear-gradient(90deg, var(--color-accent-orange), #ef4444);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: var(--transition);
         }
 
         .program-card:hover {
-            transform: translateY(-8px);
+            border-color: var(--primary-blue);
             box-shadow: var(--shadow-xl);
-            border-color: rgba(74, 144, 226, 0.2);
-        }
-
-        .program-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-4px);
         }
 
         .program-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: var(--space-6);
+            margin-bottom: 1.5rem;
         }
 
         .program-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            border-radius: var(--radius-xl);
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue-50);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-base);
+            font-size: 1.75rem;
         }
 
         .program-card.innovation .program-icon {
-            background: linear-gradient(135deg, var(--color-accent-orange), #ef4444);
-        }
-
-        .program-card:hover .program-icon {
-            transform: scale(1.1) rotate(5deg);
+            background: #fff7ed;
         }
 
         .program-tag {
-            padding: var(--space-2) var(--space-4);
-            background: var(--color-primary-50);
-            color: var(--color-primary-dark);
-            font-size: var(--text-xs);
+            padding: 0.375rem 0.75rem;
+            background: var(--primary-blue-50);
+            color: var(--primary-blue);
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            border-radius: var(--radius-full);
+            border-radius: 50px;
         }
 
         .program-tag.innovation {
-            background: rgba(255, 159, 67, 0.1);
-            color: #d97706;
+            background: #fff7ed;
+            color: var(--accent-orange);
         }
 
         .program-card h3 {
-            font-size: var(--text-2xl);
-            font-weight: 800;
-            color: var(--color-gray-900);
-            margin-bottom: var(--space-4);
+            font-family: var(--font-primary);
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
         }
 
         .program-card p {
-            font-size: var(--text-base);
-            line-height: 1.8;
-            color: var(--color-gray-600);
-            margin-bottom: var(--space-6);
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
         .program-features {
             display: flex;
             flex-direction: column;
-            gap: var(--space-3);
+            gap: 0.75rem;
         }
 
         .feature-item {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
-            color: var(--color-gray-700);
-            font-size: var(--text-sm);
+            gap: 0.75rem;
+            color: var(--gray-700);
+            font-size: 0.9375rem;
             font-weight: 500;
-            padding: var(--space-3) 0;
-            border-bottom: 1px solid var(--color-gray-100);
-            transition: all var(--transition-fast);
+            padding: 0.75rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            transition: var(--transition);
         }
 
-        .feature-item:last-child {
-            border-bottom: none;
+        .feature-item:hover {
+            background: var(--primary-blue-50);
+            color: var(--primary-blue);
         }
 
-        .program-card:hover .feature-item {
-            color: var(--color-primary);
-            transform: translateX(4px);
-        }
-
-        /* ===== FOOTER (From Homepage) ===== */
+        /* ===== FOOTER ===== */
         .footer {
-            background: var(--color-gray-900);
-            color: var(--color-gray-400);
-            padding: var(--space-16) 0 var(--space-8);
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 3rem 0 2rem;
         }
 
         .footer-main {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--space-12);
-            margin-bottom: var(--space-12);
-            padding-bottom: var(--space-12);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-800);
         }
 
-        .footer-brand .footer-logo {
+        .footer-logo {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
-            font-size: var(--text-xl);
+            gap: 0.75rem;
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
             font-weight: 700;
-            color: var(--color-white);
-            margin-bottom: var(--space-4);
+            color: var(--white);
+            margin-bottom: 1rem;
         }
 
         .footer-tagline {
-            font-size: var(--text-base);
+            color: var(--gray-400);
             line-height: 1.7;
-            color: var(--color-gray-400);
-            margin-bottom: var(--space-4);
-            max-width: 400px;
-        }
-
-        .footer-accreditation {
-            margin-top: var(--space-4);
+            margin-bottom: 1rem;
         }
 
         .accreditation-badge {
             display: inline-flex;
             align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-2) var(--space-4);
-            background: rgba(74, 144, 226, 0.1);
-            color: var(--color-primary-100);
-            font-size: var(--text-sm);
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-blue-light);
+            font-size: 0.875rem;
             font-weight: 600;
-            border-radius: var(--radius-full);
+            border-radius: 50px;
         }
 
         .footer-links-group {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-8);
+            gap: 2rem;
         }
 
         .footer-heading {
-            font-size: var(--text-lg);
+            font-family: var(--font-primary);
             font-weight: 700;
-            color: var(--color-white);
-            margin-bottom: var(--space-4);
+            color: var(--white);
+            margin-bottom: 1rem;
         }
 
         .footer-links {
@@ -817,53 +580,49 @@
         }
 
         .footer-links li {
-            margin-bottom: var(--space-3);
+            margin-bottom: 0.5rem;
         }
 
         .footer-links a {
-            color: var(--color-gray-400);
-            transition: color var(--transition-fast);
-            font-size: var(--text-sm);
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: var(--color-primary-100);
+            color: var(--white);
         }
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            gap: var(--space-3);
-            color: var(--color-gray-400);
-            font-size: var(--text-sm);
+            gap: 0.75rem;
+            color: var(--gray-400);
+            font-size: 0.9375rem;
+            margin-bottom: 0.75rem;
         }
 
         .contact-item svg {
             flex-shrink: 0;
-            margin-top: var(--space-1);
+            margin-top: 0.25rem;
         }
 
         .footer-bottom {
             display: flex;
             flex-direction: column;
-            gap: var(--space-6);
+            gap: 1.5rem;
             align-items: center;
             text-align: center;
         }
 
         .footer-copyright {
-            font-size: var(--text-sm);
-            color: var(--color-gray-500);
-        }
-
-        .footer-tagline-small {
-            color: var(--color-gray-600);
-            margin-top: var(--space-2);
+            font-size: 0.875rem;
+            color: var(--gray-500);
         }
 
         .footer-social {
             display: flex;
-            gap: var(--space-4);
+            gap: 0.75rem;
         }
 
         .social-link {
@@ -872,128 +631,121 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--color-gray-400);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-base);
+            background: var(--gray-800);
+            color: var(--gray-400);
+            border-radius: 8px;
+            transition: var(--transition);
         }
 
         .social-link:hover {
-            background: var(--color-primary);
-            color: var(--color-white);
-            transform: translateY(-3px);
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 2rem;
+            }
 
-        /* Tablet (768px and up) */
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .feature-banner {
+                padding: 3rem;
+            }
+        }
+
         @media (min-width: 768px) {
             .nav-menu {
                 display: block;
             }
-            
+
             .menu-toggle {
                 display: none;
             }
 
+            .hero {
+                padding: 10rem 0 6rem;
+            }
+
+            section {
+                padding: 6rem 0;
+            }
+
             .programs-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-8);
+                gap: 2rem;
             }
 
             .footer-main {
                 grid-template-columns: 1.5fr 1fr;
             }
-            
+
             .footer-links-group {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .footer-bottom {
                 flex-direction: row;
                 justify-content: space-between;
             }
         }
 
-        /* Desktop (1024px and up) */
         @media (min-width: 1024px) {
-            .programs-hero h1 {
-                font-size: var(--text-6xl);
+            .hero h1 {
+                font-size: 3.5rem;
             }
 
             .section-title {
-                font-size: var(--text-5xl);
-            }
-        }
-
-        /* Mobile Optimizations */
-        @media (max-width: 767px) {
-            .programs-hero {
-                padding: calc(70px + var(--space-12)) 0 var(--space-12);
-            }
-            
-            .programs-hero h1 {
-                font-size: var(--text-4xl);
-            }
-
-            .banner-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .banner-icon {
                 font-size: 3rem;
-            }
-
-            .banner-content h3 {
-                font-size: var(--text-2xl);
-            }
-
-            .section-title {
-                font-size: var(--text-3xl);
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-brand">
-                <div class="logo">
-                    <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
-                    <span class="logo-text">Ujjwal Kids World</span>
-                </div>
-            </div>
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Ujjwal Kids World" class="logo-img">
+                <span>Ujjwal Kids World</span>
+            </a>
             
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
             </button>
             
-            <div class="nav-menu" id="navMenu">
+            <div class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="programs.html">Academic Programs</a></li>
                     <li><a href="Campus.html">Our Campuses</a></li>
                     <li><a href="Achievements.html">Achievements</a></li>
-                    <li><a href="projects.html" class="btn-nav-cta">Student Projects</a></li>
+                    <li><a href="projects.html" class="btn-cta">Student Projects</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Navigation Overlay -->
+    <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay">
-        <nav class="mobile-nav" aria-label="Mobile navigation">
+        <nav class="mobile-nav">
             <div class="mobile-nav-header">
                 <div class="mobile-logo">
-                    <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="mobile-logo-img">
-                    <span class="mobile-logo-text">Ujjwal Kids World</span>
+                    <img src="logo.jpeg" alt="Logo" class="mobile-logo-img">
+                    <span>Ujjwal Kids World</span>
                 </div>
-                <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                <button class="mobile-close" id="mobileClose">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -1011,228 +763,175 @@
         </nav>
     </div>
 
-    <main id="main-content">
-        <!-- Programs Hero Section -->
-        <section class="programs-hero">
-            <div class="container">
-                <div class="programs-hero-content">
-                    <div class="hero-badge">
-                        <span class="badge-icon">🎓</span>
-                        <span class="badge-text">India's Skill First School</span>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🎓</span>
+                    <span>India's Skill First School</span>
+                </div>
+                
+                <h1>Academic Programs with <span class="highlight">Future-Ready Skills</span></h1>
+                
+                <p>Building rock-solid academic foundations aligned with CBSE & WB Board standards, while nurturing innovation and technology skills to prepare students for tomorrow's world.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Programs -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Core Excellence</span>
+                <h2 class="section-title">Foundational <span class="gradient-text">Academic Programs</span></h2>
+                <p class="section-description">Strong educational foundations that ensure every student excels in academics while developing critical thinking and problem-solving abilities.</p>
+            </div>
+
+            <div class="programs-grid">
+                <article class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">📚</div>
+                        <span class="program-tag">Primary Focus</span>
                     </div>
-                    
-                    <h1>
-                        Academic Programs with <span class="highlight">Future-Ready Skills</span>
-                    </h1>
-                    
-                    <p>
-                        Building rock-solid academic foundations aligned with CBSE & WB Board standards, 
-                        while nurturing innovation and technology skills to prepare students for tomorrow's world.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Academic Programs Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header centered">
-                    <span class="section-tag">Core Excellence</span>
-                    <h2 class="section-title">
-                        Foundational <span class="text-gradient">Academic Programs</span>
-                    </h2>
-                    <p class="section-description">
-                        Strong educational foundations that ensure every student excels in academics 
-                        while developing critical thinking and problem-solving abilities.
-                    </p>
-                </div>
-
-                <div class="programs-grid">
-                    <article class="program-card">
-                        <div class="program-header">
-                            <div class="program-icon">📚</div>
-                            <span class="program-tag">Primary Focus</span>
-                        </div>
-                        <h3>Academic Excellence</h3>
-                        <p>
-                            Comprehensive curriculum aligned with CBSE and WB Board standards, ensuring 
-                            holistic development through proven teaching methodologies and regular assessments 
-                            that drive outstanding academic results.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">✓ CBSE & WB Board Curriculum</div>
-                            <div class="feature-item">✓ Expert Faculty Guidance</div>
-                            <div class="feature-item">✓ Regular Progress Assessments</div>
-                            <div class="feature-item">✓ Holistic Development Focus</div>
-                        </div>
-                    </article>
-
-                    <article class="program-card">
-                        <div class="program-header">
-                            <div class="program-icon">🔢</div>
-                            <span class="program-tag">Core Subject</span>
-                        </div>
-                        <h3>Advanced Mathematics</h3>
-                        <p>
-                            Building strong analytical and problem-solving skills through comprehensive 
-                            mathematics curriculum designed to prepare students for academic excellence 
-                            and competitive examinations.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">✓ Concept-Based Learning</div>
-                            <div class="feature-item">✓ Practice-Oriented Approach</div>
-                            <div class="feature-item">✓ Competitive Exam Preparation</div>
-                            <div class="feature-item">✓ Individual Attention</div>
-                        </div>
-                    </article>
-
-                    <article class="program-card">
-                        <div class="program-header">
-                            <div class="program-icon">🗣️</div>
-                            <span class="program-tag">Essential Skill</span>
-                        </div>
-                        <h3>English Communication</h3>
-                        <p>
-                            Develop confidence and fluency through interactive sessions, practical exercises, 
-                            and immersive conversation practice that builds real-world communication skills 
-                            for global success.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">✓ Speaking & Writing Skills</div>
-                            <div class="feature-item">✓ Interactive Learning Sessions</div>
-                            <div class="feature-item">✓ Practical Applications</div>
-                            <div class="feature-item">✓ Confidence Building</div>
-                        </div>
-                    </article>
-
-                    <article class="program-card">
-                        <div class="program-header">
-                            <div class="program-icon">🔬</div>
-                            <span class="program-tag">STEM Focus</span>
-                        </div>
-                        <h3>Science & Technology</h3>
-                        <p>
-                            Hands-on learning experiences in modern laboratories with cutting-edge equipment, 
-                            fostering scientific inquiry, experimentation, and innovation in young minds.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">✓ Advanced Lab Facilities</div>
-                            <div class="feature-item">✓ Experimental Learning</div>
-                            <div class="feature-item">✓ Project-Based Approach</div>
-                            <div class="feature-item">✓ Scientific Thinking</div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Innovation Programs Section -->
-        <section class="section section-alternate">
-            <div class="container">
-                <div class="feature-banner">
-                    <div class="banner-content">
-                        <div class="banner-icon">💡</div>
-                        <div>
-                            <h3>Skill First, Innovation Always</h3>
-                            <p>
-                                We prioritize skill development first, building a rock-solid academic foundation 
-                                complemented by cutting-edge technology programs that prepare students for the future.
-                            </p>
-                        </div>
+                    <h3>Academic Excellence</h3>
+                    <p>Comprehensive curriculum aligned with CBSE and WB Board standards, ensuring holistic development through proven teaching methodologies.</p>
+                    <div class="program-features">
+                        <div class="feature-item">✓ CBSE & WB Board Curriculum</div>
+                        <div class="feature-item">✓ Expert Faculty Guidance</div>
+                        <div class="feature-item">✓ Regular Progress Assessments</div>
+                        <div class="feature-item">✓ Holistic Development Focus</div>
                     </div>
-                </div>
+                </article>
 
-                <div class="section-header centered">
-                    <span class="section-tag orange">Future-Ready Skills</span>
-                    <h2 class="section-title">
-                        Innovation & <span class="text-gradient">Technology Programs</span>
-                    </h2>
-                    <p class="section-description">
-                        Complementary programs designed to equip students with modern skills and 
-                        technological expertise for tomorrow's digital world.
-                    </p>
-                </div>
+                <article class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">🔢</div>
+                        <span class="program-tag">Core Subject</span>
+                    </div>
+                    <h3>Advanced Mathematics</h3>
+                    <p>Building strong analytical and problem-solving skills through comprehensive mathematics curriculum designed for academic excellence.</p>
+                    <div class="program-features">
+                        <div class="feature-item">✓ Concept-Based Learning</div>
+                        <div class="feature-item">✓ Practice-Oriented Approach</div>
+                        <div class="feature-item">✓ Competitive Exam Preparation</div>
+                        <div class="feature-item">✓ Individual Attention</div>
+                    </div>
+                </article>
 
-                <div class="programs-grid">
-                    <article class="program-card innovation">
-                        <div class="program-header">
-                            <div class="program-icon">💻</div>
-                            <span class="program-tag innovation">Tech Skill</span>
-                        </div>
-                        <h3>Full Stack Development</h3>
-                        <p>
-                            Master modern web technologies with hands-on projects and real-world applications. 
-                            Students learn HTML, CSS, JavaScript, backend development, and complete project 
-                            deployment from concept to production.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">⚡ HTML, CSS, JavaScript</div>
-                            <div class="feature-item">⚡ Backend Development</div>
-                            <div class="feature-item">⚡ Real-World Projects</div>
-                            <div class="feature-item">⚡ Industry-Standard Tools</div>
-                        </div>
-                    </article>
+                <article class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">🗣️</div>
+                        <span class="program-tag">Essential Skill</span>
+                    </div>
+                    <h3>English Communication</h3>
+                    <p>Develop confidence and fluency through interactive sessions and practical exercises that build real-world communication skills.</p>
+                    <div class="program-features">
+                        <div class="feature-item">✓ Speaking & Writing Skills</div>
+                        <div class="feature-item">✓ Interactive Learning Sessions</div>
+                        <div class="feature-item">✓ Practical Applications</div>
+                        <div class="feature-item">✓ Confidence Building</div>
+                    </div>
+                </article>
 
-                    <article class="program-card innovation">
-                        <div class="program-header">
-                            <div class="program-icon">🐍</div>
-                            <span class="program-tag innovation">Coding</span>
-                        </div>
-                        <h3>Python Programming</h3>
-                        <p>
-                            Learn Python from basics to advanced levels, including AI and machine learning 
-                            applications. Students work on innovative projects that bring their ideas to life 
-                            through code.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">⚡ Core Python Concepts</div>
-                            <div class="feature-item">⚡ AI & ML Fundamentals</div>
-                            <div class="feature-item">⚡ Project-Based Learning</div>
-                            <div class="feature-item">⚡ Creative Problem Solving</div>
-                        </div>
-                    </article>
+                <article class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">🔬</div>
+                        <span class="program-tag">STEM Focus</span>
+                    </div>
+                    <h3>Science & Technology</h3>
+                    <p>Hands-on learning experiences in modern laboratories fostering scientific inquiry, experimentation, and innovation.</p>
+                    <div class="program-features">
+                        <div class="feature-item">✓ Advanced Lab Facilities</div>
+                        <div class="feature-item">✓ Experimental Learning</div>
+                        <div class="feature-item">✓ Project-Based Approach</div>
+                        <div class="feature-item">✓ Scientific Thinking</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-                    <article class="program-card innovation">
-                        <div class="program-header">
-                            <div class="program-icon">📱</div>
-                            <span class="program-tag innovation">App Dev</span>
-                        </div>
-                        <h3>App Development</h3>
-                        <p>
-                            Create innovative mobile applications and bring ideas to life with cutting-edge 
-                            development tools, user experience design principles, and expert mentorship throughout 
-                            the development process.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">⚡ Mobile App Design</div>
-                            <div class="feature-item">⚡ User Experience (UX)</div>
-                            <div class="feature-item">⚡ App Publishing</div>
-                            <div class="feature-item">⚡ Innovation Labs</div>
-                        </div>
-                    </article>
-
-                    <article class="program-card innovation">
-                        <div class="program-header">
-                            <div class="program-icon">🤖</div>
-                            <span class="program-tag innovation">AI & Robotics</span>
-                        </div>
-                        <h3>Robotics & Artificial Intelligence</h3>
-                        <p>
-                            Explore robotics and artificial intelligence through interactive projects, national 
-                            competitions, and hands-on innovation labs that develop critical thinking and 
-                            engineering skills.
-                        </p>
-                        <div class="program-features">
-                            <div class="feature-item">⚡ Robot Building & Programming</div>
-                            <div class="feature-item">⚡ AI Fundamentals</div>
-                            <div class="feature-item">⚡ National Competitions</div>
-                            <div class="feature-item">⚡ Innovation Challenges</div>
-                        </div>
-                    </article>
+    <!-- Innovation Programs -->
+    <section style="background: var(--gray-50);">
+        <div class="container">
+            <div class="feature-banner">
+                <div class="banner-icon">💡</div>
+                <div class="banner-content">
+                    <h3>Skill First, Innovation Always</h3>
+                    <p>We prioritize skill development first, building a rock-solid academic foundation complemented by cutting-edge technology programs.</p>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <div class="section-header">
+                <span class="section-tag orange">Future-Ready Skills</span>
+                <h2 class="section-title">Innovation & <span class="gradient-text">Technology Programs</span></h2>
+                <p class="section-description">Complementary programs designed to equip students with modern skills and technological expertise for tomorrow's digital world.</p>
+            </div>
+
+            <div class="programs-grid">
+                <article class="program-card innovation">
+                    <div class="program-header">
+                        <div class="program-icon">💻</div>
+                        <span class="program-tag innovation">Tech Skill</span>
+                    </div>
+                    <h3>Full Stack Development</h3>
+                    <p>Master modern web technologies with hands-on projects. Learn HTML, CSS, JavaScript, backend development, and complete project deployment.</p>
+                    <div class="program-features">
+                        <div class="feature-item">⚡ HTML, CSS, JavaScript</div>
+                        <div class="feature-item">⚡ Backend Development</div>
+                        <div class="feature-item">⚡ Real-World Projects</div>
+                        <div class="feature-item">⚡ Industry-Standard Tools</div>
+                    </div>
+                </article>
+
+                <article class="program-card innovation">
+                    <div class="program-header">
+                        <div class="program-icon">🐍</div>
+                        <span class="program-tag innovation">Coding</span>
+                    </div>
+                    <h3>Python Programming</h3>
+                    <p>Learn Python from basics to advanced levels, including AI and machine learning applications through innovative projects.</p>
+                    <div class="program-features">
+                        <div class="feature-item">⚡ Core Python Concepts</div>
+                        <div class="feature-item">⚡ AI & ML Fundamentals</div>
+                        <div class="feature-item">⚡ Project-Based Learning</div>
+                        <div class="feature-item">⚡ Creative Problem Solving</div>
+                    </div>
+                </article>
+
+                <article class="program-card innovation">
+                    <div class="program-header">
+                        <div class="program-icon">📱</div>
+                        <span class="program-tag innovation">App Dev</span>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Create innovative mobile applications with cutting-edge development tools, UX design principles, and expert mentorship.</p>
+                    <div class="program-features">
+                        <div class="feature-item">⚡ Mobile App Design</div>
+                        <div class="feature-item">⚡ User Experience (UX)</div>
+                        <div class="feature-item">⚡ App Publishing</div>
+                        <div class="feature-item">⚡ Innovation Labs</div>
+                    </div>
+                </article>
+
+                <article class="program-card innovation">
+                    <div class="program-header">
+                        <div class="program-icon">🤖</div>
+                        <span class="program-tag innovation">AI & Robotics</span>
+                    </div>
+                    <h3>Robotics & AI</h3>
+                    <p>Explore robotics and AI through interactive projects, national competitions, and hands-on innovation labs.</p>
+                    <div class="program-features">
+                        <div class="feature-item">⚡ Robot Building & Programming</div>
+                        <div class="feature-item">⚡ AI Fundamentals</div>
+                        <div class="feature-item">⚡ National Competitions</div>
+                        <div class="feature-item">⚡ Innovation Challenges</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1240,18 +939,14 @@
             <div class="footer-main">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
-                        <span class="logo-text">Ujjwal Kids World</span>
+                        <img src="logo.jpeg" alt="Logo" class="logo-img">
+                        <span>Ujjwal Kids World</span>
                     </div>
-                    <p class="footer-tagline">
-                        A premier educational institution dedicated to cultivating excellence, character, 
-                        and leadership in every student.
-                    </p>
+                    <p class="footer-tagline">A premier educational institution dedicated to cultivating excellence, character, and leadership in every student.</p>
                     <div class="footer-accreditation">
                         <span class="accreditation-badge">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z" 
-                                      fill="currentColor"/>
+                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z" fill="currentColor"/>
                             </svg>
                             CBSE Affiliated
                         </span>
@@ -1259,45 +954,35 @@
                 </div>
 
                 <div class="footer-links-group">
-                    <div class="footer-column">
+                    <div>
                         <h4 class="footer-heading">Academics</h4>
                         <ul class="footer-links">
                             <li><a href="#curriculum">Curriculum</a></li>
                             <li><a href="#programs">Programs</a></li>
                             <li><a href="#faculty">Faculty</a></li>
                             <li><a href="#innovation">Innovation Labs</a></li>
-                            <li><a href="#results">Results</a></li>
                         </ul>
                     </div>
 
-                    <div class="footer-column">
+                    <div>
                         <h4 class="footer-heading">Campus</h4>
                         <ul class="footer-links">
                             <li><a href="#facilities">Facilities</a></li>
                             <li><a href="#athletics">Athletics</a></li>
                             <li><a href="#arts">Arts & Culture</a></li>
                             <li><a href="#library">Library</a></li>
-                            <li><a href="#locations">Locations</a></li>
                         </ul>
                     </div>
 
-                    <div class="footer-column">
+                    <div>
                         <h4 class="footer-heading">Contact</h4>
                         <ul class="footer-links">
                             <li class="contact-item">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z" 
-                                          stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                                     <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
                                 </svg>
-                                <span>Gangarampur, Dakshin Dinajpur<br>West Bengal, India</span>
-                            </li>
-                            <li class="contact-item">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
-                                </svg>
-                                <a href="mailto:admissions@ujjwalkidsworld.edu">admissions@ujjwalkidsworld.edu</a>
+                                <span>Gangarampur, West Bengal</span>
                             </li>
                             <li class="contact-item">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -1314,23 +999,23 @@
             <div class="footer-bottom">
                 <div class="footer-copyright">
                     <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
-                    <p class="footer-tagline-small">Excellence Since 2010</p>
+                    <p style="margin-top: 0.25rem; color: var(--gray-600);">Excellence Since 2010</p>
                 </div>
                 
                 <div class="footer-social">
-                    <a href="#facebook" aria-label="Visit our Facebook page" class="social-link">
+                    <a href="#facebook" class="social-link" aria-label="Facebook">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM11 10.5V14H9V10.5H8V9H9V8C9 6.9 9.9 6 11 6H12V7.5H11.5C11.22 7.5 11 7.72 11 8V9H12L11.75 10.5H11Z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#instagram" aria-label="Visit our Instagram page" class="social-link">
+                    <a href="#instagram" class="social-link" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
                             <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
                             <circle cx="14.5" cy="5.5" r="0.5" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#linkedin" aria-label="Visit our LinkedIn page" class="social-link">
+                    <a href="#linkedin" class="social-link" aria-label="LinkedIn">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M3 3H17V17H3V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                             <path d="M6 8V14M6 6.5V6M10 14V10.5C10 9.5 10.5 9 11.5 9C12.5 9 13 9.5 13 10.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1342,151 +1027,45 @@
     </footer>
 
     <script>
-        // ========================================
-        // UJJWAL KIDS WORLD - PROGRAMS PAGE JS
-        // Matching Homepage Functionality
-        // ========================================
-
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // ===== MOBILE MENU TOGGLE =====
             const menuToggle = document.getElementById('menuToggle');
             const mobileOverlay = document.getElementById('mobileOverlay');
             const mobileClose = document.getElementById('mobileClose');
             const mobileLinks = document.querySelectorAll('.mobile-link');
-            const body = document.body;
+            const navbar = document.getElementById('navbar');
             
-            if (menuToggle && mobileOverlay) {
-                menuToggle.addEventListener('click', function() {
-                    const isActive = mobileOverlay.classList.contains('active');
-                    
-                    if (isActive) {
-                        closeMobileMenu();
-                    } else {
-                        openMobileMenu();
-                    }
-                });
-                
-                if (mobileClose) {
-                    mobileClose.addEventListener('click', closeMobileMenu);
-                }
-                
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        closeMobileMenu();
-                    });
-                });
-                
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
-                        closeMobileMenu();
-                    }
-                });
-                
-                mobileOverlay.addEventListener('click', function(e) {
-                    if (e.target === mobileOverlay) {
-                        closeMobileMenu();
-                    }
-                });
-            }
+            // Mobile Menu
+            menuToggle?.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+            });
             
-            function openMobileMenu() {
-                menuToggle.classList.add('active');
-                mobileOverlay.classList.add('active');
-                body.style.overflow = 'hidden';
-                menuToggle.setAttribute('aria-expanded', 'true');
-            }
-            
-            function closeMobileMenu() {
+            mobileClose?.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 mobileOverlay.classList.remove('active');
-                body.style.overflow = '';
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
+                document.body.style.overflow = '';
+            });
             
-            // ===== NAVBAR SCROLL EFFECT =====
-            const navbar = document.getElementById('navbar');
-            let lastScrollTop = 0;
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Navbar Scroll
             let ticking = false;
-            
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', () => {
                 if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        updateNavbar();
+                    window.requestAnimationFrame(() => {
+                        navbar.classList.toggle('scrolled', window.pageYOffset > 50);
                         ticking = false;
                     });
                     ticking = true;
                 }
-            });
-            
-            function updateNavbar() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                lastScrollTop = scrollTop;
-            }
-            
-            // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-            const anchorLinks = document.querySelectorAll('a[href^="#"]');
-            
-            anchorLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    
-                    if (href === '#') {
-                        e.preventDefault();
-                        return;
-                    }
-                    
-                    const target = document.querySelector(href);
-                    
-                    if (target) {
-                        e.preventDefault();
-                        const navbarHeight = navbar ? navbar.offsetHeight : 80;
-                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        
-                        if (history.pushState) {
-                            history.pushState(null, null, href);
-                        }
-                    }
-                });
-            });
-            
-            // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const fadeInObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        fadeInObserver.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            const fadeElements = document.querySelectorAll('.program-card');
-            
-            fadeElements.forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                fadeInObserver.observe(el);
-            });
-            
+            }, { passive: true });
         });
     </script>
 </body>
