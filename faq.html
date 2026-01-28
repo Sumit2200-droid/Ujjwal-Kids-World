@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ujjwal Kids World - A premier educational institution nurturing young minds through excellence in academics, character development, and holistic growth.">
     <title>Ujjwal Kids World | Excellence in Education</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
 </head>
 <body>
     <style>
@@ -27,18 +27,18 @@
     --color-primary-dark: #3A7BC8;
     --color-primary-50: #E3F2FD;
     --color-primary-100: #BBDEFB;
-    
+
     /* Secondary Color Palette - Gentle Purples */
     --color-secondary: #8E7CC3;
     --color-secondary-light: #A796D6;
     --color-secondary-dark: #7461B8;
     --color-secondary-50: #F3E5F5;
-    
+
     /* Accent Colors */
     --color-accent-orange: #FF9F43;
     --color-accent-green: #26C281;
     --color-accent-pink: #EE5A6F;
-    
+
     /* Neutral Colors */
     --color-white: #FFFFFF;
     --color-gray-50: #F8F9FA;
@@ -51,11 +51,11 @@
     --color-gray-700: #495057;
     --color-gray-800: #343A40;
     --color-gray-900: #212529;
-    
+
     /* Typography */
     --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-secondary: 'Quicksand', sans-serif;
-    
+
     /* Font Sizes */
     --text-xs: 0.75rem;      /* 12px */
     --text-sm: 0.875rem;     /* 14px */
@@ -67,7 +67,7 @@
     --text-4xl: 2.25rem;     /* 36px */
     --text-5xl: 3rem;        /* 48px */
     --text-6xl: 3.75rem;     /* 60px */
-    
+
     /* Spacing Scale */
     --space-1: 0.25rem;   /* 4px */
     --space-2: 0.5rem;    /* 8px */
@@ -81,7 +81,7 @@
     --space-16: 4rem;     /* 64px */
     --space-20: 5rem;     /* 80px */
     --space-24: 6rem;     /* 96px */
-    
+
     /* Border Radius */
     --radius-sm: 0.375rem;   /* 6px */
     --radius-md: 0.5rem;     /* 8px */
@@ -89,7 +89,7 @@
     --radius-xl: 1rem;       /* 16px */
     --radius-2xl: 1.5rem;    /* 24px */
     --radius-full: 9999px;
-    
+
     /* Shadows */
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -97,12 +97,12 @@
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.06);
     --shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
-    
+
     /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Z-index Scale */
     --z-dropdown: 1000;
     --z-sticky: 1020;
@@ -541,13 +541,13 @@ img {
         display: flex;
         flex-direction: column;
     }
-    
+
     .hero-visual {
         order: -1; /* This moves the visual to the top */
         width: 100%;
         margin-bottom: var(--space-8);
     }
-    
+
     .hero-content {
         order: 1;
     }
@@ -875,6 +875,221 @@ section {
     font-size: var(--text-lg);
     line-height: 1.8;
     color: var(--color-gray-600);
+}
+
+/* ===== FAQ SECTION ===== */
+.faq-section {
+    background: var(--color-gray-50);
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10%;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-intro {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.faq-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-gray-600);
+    max-width: 600px;
+    margin: 0 auto var(--space-8);
+}
+
+.faq-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-12);
+}
+
+.category-pill {
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.category-pill:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.category-pill.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.faq-item {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    opacity: 0;
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.15s; }
+.faq-item:nth-child(3) { animation-delay: 0.2s; }
+.faq-item:nth-child(4) { animation-delay: 0.25s; }
+.faq-item:nth-child(5) { animation-delay: 0.3s; }
+.faq-item:nth-child(6) { animation-delay: 0.35s; }
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: var(--space-6);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-gray-900);
+    transition: color var(--transition-base);
+}
+
+.faq-question:hover {
+    color: var(--color-primary);
+}
+
+.question-text {
+    flex: 1;
+    text-align: left;
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-50);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.faq-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-primary);
+    transition: transform var(--transition-base);
+}
+
+.faq-item.active .faq-icon {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+}
+
+.faq-item.active .faq-icon svg {
+    stroke: var(--color-white);
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow), padding var(--transition-slow);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 var(--space-6) var(--space-6);
+}
+
+.faq-answer-content {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-gray-600);
+}
+
+.faq-answer-content p {
+    margin-bottom: var(--space-4);
+}
+
+.faq-answer-content p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-answer-content ul {
+    margin-left: var(--space-6);
+    margin-bottom: var(--space-4);
+}
+
+.faq-answer-content li {
+    margin-bottom: var(--space-2);
+}
+
+.faq-cta {
+    margin-top: var(--space-12);
+    padding: var(--space-10);
+    background: linear-gradient(135deg, var(--color-primary-50), var(--color-secondary-50));
+    border-radius: var(--radius-2xl);
+    text-align: center;
+}
+
+.faq-cta-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-4);
+}
+
+.faq-cta-text {
+    font-size: var(--text-base);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.faq-cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -1367,73 +1582,73 @@ section {
     .nav-menu {
         display: block;
     }
-    
+
     .menu-toggle {
         display: none;
     }
-    
+
     .hero-container {
         display: grid;
         grid-template-columns: 1fr 1.1fr;
         gap: var(--space-16);
     }
-    
+
     /* Reset mobile flexbox order - grid will use natural HTML order */
     .hero-visual {
         order: 0;
     }
-    
+
     .hero-content {
         order: 0;
     }
-    
+
     .hero-title {
         font-size: var(--text-6xl);
     }
-    
+
     .hero-stats {
         grid-template-columns: auto 1px auto 1px auto 1px auto;
     }
-    
+
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-8);
     }
-    
+
     .leadership-content {
         grid-template-columns: 0.9fr 1.1fr;
         gap: var(--space-16);
     }
-    
+
     .gallery-grid {
         grid-template-columns: repeat(12, 1fr);
         grid-auto-rows: 250px;
         gap: var(--space-4);
     }
-    
+
     .gallery-item.large {
         grid-column: span 7;
         grid-row: span 2;
     }
-    
+
     .gallery-item.medium {
         grid-column: span 5;
         grid-row: span 1;
     }
-    
+
     .gallery-item.small {
         grid-column: span 4;
         grid-row: span 1;
     }
-    
+
     .footer-main {
         grid-template-columns: 1.5fr 1fr;
     }
-    
+
     .footer-links-group {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .footer-bottom {
         flex-direction: row;
         justify-content: space-between;
@@ -1445,7 +1660,7 @@ section {
     .section-title {
         font-size: var(--text-5xl);
     }
-    
+
     .cta-title {
         font-size: var(--text-5xl);
     }
@@ -1463,57 +1678,65 @@ section {
     .hero {
         padding: calc(70px + var(--space-12)) 0 var(--space-12);
     }
-    
+
     .hero-title {
         font-size: var(--text-4xl);
     }
-    
+
     .hero-stats {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-4);
     }
-    
+
     .stat-divider {
         display: none;
     }
-    
+
     .stat-divider:nth-child(4) {
         display: block;
         grid-column: 1 / -1;
         height: 1px;
         width: 100%;
     }
-    
+
     .hero-image-wrapper {
         height: 450px;
     }
-    
+
     .primary-card {
         width: 75%;
         height: 75%;
     }
-    
+
     .secondary-card {
         width: 55%;
         height: 40%;
     }
-    
+
     .floating-element {
         font-size: var(--text-xs);
         padding: var(--space-2) var(--space-3);
     }
-    
+
     .section-title {
         font-size: var(--text-3xl);
     }
-    
+
     .leadership-stats {
         grid-template-columns: 1fr;
         gap: var(--space-6);
     }
-    
+
     .cta-title {
         font-size: var(--text-3xl);
+    }
+
+    .faq-cta-actions {
+        flex-direction: column;
+    }
+
+    .faq-cta-actions .btn {
+        width: 100%;
     }
 }
 
@@ -1523,7 +1746,7 @@ section {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .btn {
         width: 100%;
         justify-content: center;
@@ -1540,17 +1763,17 @@ section {
     .footer-social {
         display: none;
     }
-    
+
     body {
         font-size: 12pt;
     }
-    
+
     .hero {
         padding-top: var(--space-8);
     }
 }
     </style>
-    
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
@@ -1560,13 +1783,13 @@ section {
                     <span class="logo-text">Ujjwal Kids World</span>
                 </div>
             </div>
-            
+
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
             </button>
-            
+
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -1602,371 +1825,177 @@ section {
                 <li><a href="Achievements.html" class="mobile-link">Achievements</a></li>
                 <li><a href="projects.html" class="mobile-link">Student Projects</a></li>
                 <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
-                
             </ul>
         </nav>
     </div>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-container">
-                <div class="hero-visual">
-                    <div class="hero-image-wrapper">
-                        <div class="image-card primary-card">
-                            <img src="home image.jpg"
-                                  alt="Students engaged in collaborative learning activities"
-                                  loading="eager">
-                        </div>
-                        <div class="image-card secondary-card">
-                            <img src="home image 1.jpg"
-                                  alt="Student achieving academic excellence"
-                                  loading="eager">
-                        </div>
-                        <div class="floating-element element-1">
-                            <div class="icon-circle">🎓</div>
-                            <span>CBSE Curriculum</span>
-                        </div>
-                        <div class="floating-element element-2">
-                            <div class="icon-circle">⭐</div>
-                            <span>Award Winning</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <span class="badge-icon">✨</span>
-                        <span class="badge-text">Established 2017 • West Bengal</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        Nurturing Young Minds for a 
-                        <span class="highlight">Brighter Future</span>
-                    </h1>
-                    
-                    <p class="hero-description">
-                        Welcome to Ujjwal Kids World, where academic excellence meets holistic development. 
-                        We create an inspiring learning environment that empowers students to discover their 
-                        potential, build character, and develop into confident, compassionate leaders of tomorrow.
-                    </p>
-                    
-                    <div class="hero-actions">
-                        <a href="#admissions" class="btn btn-primary">
-                            <span>Apply for Admission</span>
-                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">10,000+</div>
-                            <div class="stat-label">Happy Students</div>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <div class="stat-number">5</div>
-                            <div class="stat-label">Modern Campuses</div>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <div class="stat-number">9+</div>
-                            <div class="stat-label">Years of Excellence</div>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Success Rate</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about-section" id="about">
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
             <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Our Philosophy</span>
-                    <h2 class="section-title">
-                        Where Learning Meets <span class="text-gradient">Innovation</span>
-                    </h2>
-                    <p class="section-description">
-                        At Ujjwal Kids World, education goes beyond textbooks. We believe in nurturing 
-                        well-rounded individuals who are equipped with knowledge, values, and skills to 
-                        excel in an ever-evolving world.
-                    </p>
-                </div>
-
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <rect width="48" height="48" rx="12" fill="#E3F2FD"/>
-                                <path d="M24 14L28 22H32L26 30L22 22H18L24 14Z" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="feature-number">01</div>
-                        <h3 class="feature-title">Academic Excellence</h3>
-                        <p class="feature-text">
-                            Our CBSE-aligned curriculum integrates traditional wisdom with modern technology. 
-                            Advanced labs, digital learning, coding, and robotics prepare students for the future 
-                            while building strong academic foundations.
-                        </p>
-                        <div class="feature-badge">
-                            <span class="badge-dot"></span>
-                            <span>Technology Integration: 95%</span>
-                        </div>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <rect width="48" height="48" rx="12" fill="#F3E5F5"/>
-                                <circle cx="24" cy="20" r="6" stroke="#7B1FA2" stroke-width="2"/>
-                                <path d="M14 34C14 28 18 26 24 26C30 26 34 28 34 34" stroke="#7B1FA2" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div class="feature-number">02</div>
-                        <h3 class="feature-title">Character Development</h3>
-                        <p class="feature-text">
-                            We focus on holistic growth through arts, sports, community service, and leadership 
-                            programs. Students develop resilience, empathy, creativity, and strong moral values 
-                            essential for meaningful lives.
-                        </p>
-                        <div class="feature-badge">
-                            <span class="badge-dot"></span>
-                            <span>Holistic Approach: 360°</span>
-                        </div>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <rect width="48" height="48" rx="12" fill="#FFF3E0"/>
-                                <path d="M24 14V24M24 24L30 18M24 24L18 18" stroke="#E65100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="16" y="28" width="16" height="8" rx="1" stroke="#E65100" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="feature-number">03</div>
-                        <h3 class="feature-title">Expert Educators</h3>
-                        <p class="feature-text">
-                            Our 50+ exceptional teachers bring expertise, passion, and dedication to every classroom. 
-                            They mentor, inspire, and guide each student's journey with personalized attention and 
-                            genuine care for their success.
-                        </p>
-                        <div class="feature-badge">
-                            <span class="badge-dot"></span>
-                            <span>Qualified Teachers: 50+</span>
-                        </div>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <rect width="48" height="48" rx="12" fill="#E8F5E9"/>
-                                <rect x="14" y="18" width="20" height="16" rx="2" stroke="#2E7D32" stroke-width="2"/>
-                                <path d="M18 14L24 18L30 14" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="feature-number">04</div>
-                        <h3 class="feature-title">World-Class Infrastructure</h3>
-                        <p class="feature-text">
-                            Five state-of-the-art campuses equipped with advanced science labs, digital libraries, 
-                            innovation hubs, performing arts theaters, sports complexes, and collaborative spaces 
-                            that inspire learning and achievement.
-                        </p>
-                        <div class="feature-badge">
-                            <span class="badge-dot"></span>
-                            <span>Modern Facilities: 5 Campuses</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leadership Section -->
-        <section class="leadership-section" id="leadership">
-            <div class="container">
-                <div class="leadership-content">
-                    <div class="leadership-image">
-                        <div class="image-frame">
-                            <img src="founder.jpg"
-                                  alt="Mr. Ashim Ghosh, Founder of Ujjwal Kids World"
-                                  loading="lazy">
-                        </div>
-                        <div class="quote-mark">"</div>
-                    </div>
-                    
-                    <div class="leadership-text">
-                        <span class="section-tag">Visionary Leadership</span>
-                        <h2 class="leadership-name">Mr. Ashim Ghosh</h2>
-                        <p class="leadership-role">Founder & Educational Pioneer</p>
-                        
-                        <blockquote class="leadership-quote">
-                            "True education illuminates not only the mind but also the spirit. It awakens 
-                            potential, cultivates character, and empowers individuals to contribute meaningfully 
-                            to society."
-                        </blockquote>
-                        
-                        <div class="leadership-bio">
-                            <p>
-                                With an unwavering commitment to educational transformation, Mr. Ashim Ghosh has 
-                                pioneered an innovative approach that honors traditional values while embracing 
-                                progressive methodologies.
-                            </p>
-                            <p>
-                                Under his visionary leadership, Ujjwal Kids World has become one of West Bengal's 
-                                most distinguished educational institutions, positively impacting over 10,000 students 
-                                across five exceptional campuses since 2010.
+                <div class="faq-container">
+                    <div class="faq-intro">
+                        <div class="section-header centered">
+                            <span class="section-tag">FAQ</span>
+                            <h2 class="section-title">
+                                Frequently Asked <span class="text-gradient">Questions</span>
+                            </h2>
+                            <p class="faq-subtitle">
+                                Find answers to common questions about admissions, curriculum, facilities, and more. Can't find what you're looking for? Feel free to contact us directly.
                             </p>
                         </div>
-                        
-                        <div class="leadership-stats">
-                            <div class="leadership-stat">
-                                <div class="stat-value">9+</div>
-                                <div class="stat-text">Years of Impact</div>
-                            </div>
-                            <div class="leadership-stat">
-                                <div class="stat-value">10,000+</div>
-                                <div class="stat-text">Students Guided</div>
-                            </div>
-                            <div class="leadership-stat">
-                                <div class="stat-value">100%</div>
-                                <div class="stat-text">Dedication</div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Campus Gallery Section -->
-        <section class="gallery-section" id="campus">
-            <div class="container">
-                <div class="section-header centered">
-                    <span class="section-tag">Campus Life</span>
-                    <h2 class="section-title">
-                        Where Learning Comes <span class="text-gradient">Alive</span>
-                    </h2>
-                    <p class="section-description">
-                        Explore our vibrant learning spaces designed to inspire creativity, collaboration, 
-                        and academic excellence.
-                    </p>
-                </div>
+                    <div class="faq-list">
+                        <!-- FAQ Item 1 -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What age groups do you accept for admission?</span>
+                                <div class="faq-icon">
+                                    <svg viewBox="0 0 16 16" fill="none">
+                                        <line x1="8" y1="4" x2="8" y2="12" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="4" y1="8" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Ujjwal Kids World accepts students from age 3 to 18, spanning from Pre-Nursery through Class 12. We offer comprehensive education aligned with the CBSE curriculum across all grade levels.</p>
+                                    <p>Our early childhood programs (Pre-Nursery to Class 2) focus on foundational learning through play-based activities, while our primary and secondary programs provide rigorous academic preparation.</p>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="gallery-grid">
-                    <div class="gallery-item large">
-                        <img src="student1.jpg"
-                              alt="Students collaborating in modern learning environment"
-                              loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>Childrens Day!</h3>
-                            <p>Happy Childrens Day!</p>
+                        <!-- FAQ Item 2 -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What is your admission process and timeline?</span>
+                                <div class="faq-icon">
+                                    <svg viewBox="0 0 16 16" fill="none">
+                                        <line x1="8" y1="4" x2="8" y2="12" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="4" y1="8" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Our admission process typically begins in December each year for the following academic session. The process includes:</p>
+                                    <ul>
+                                        <li>Submission of online application form</li>
+                                        <li>Document verification and review</li>
+                                        <li>Interaction/assessment (for applicable grades)</li>
+                                        <li>Admission offer and fee payment</li>
+                                        <li>Orientation session for new students and parents</li>
+                                    </ul>
+                                    <p>We recommend applying early as seats fill quickly. Please contact our admissions office for specific deadlines and requirements.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="gallery-item medium">
-                        <img src="student images 2.jpg"
-                              alt="Group discussion and learning activities"
-                              loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>Student Performance</h3>
-                            <p>Childrens Performance on stage</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item medium">
-                        <img src="student image 3.jpg"
-                              alt="Contemporary classroom with digital learning tools"
-                              loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>Smart Classrooms</h3>
-                            <p>Technology-enabled learning spaces</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item small">
-                        <img src="teachers 5.jpg"
-                              alt="Advanced science laboratory facilities"
-                              loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>Science Labs</h3>
-                            <p>Hands-on experimentation</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item small">
-                        <img src="teacher 6.jpg"
-                              alt="Arts and creative programs"
-                              loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>Arts Program</h3>
-                            <p>Creative expression & talent</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item small">
-                        <img src="teacher 7.jpg"
-                              alt="Sports and athletic facilities"
-                              loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>Sports Complex</h3>
-                            <p>Physical fitness & wellness</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Call to Action Section -->
-        <section class="cta-section" id="admissions">
-            <div class="container">
-                <div class="cta-content">
-                    <div class="cta-icon">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.1)"/>
-                            <path d="M32 20L36 28L44 30L38 36L40 44L32 40L24 44L26 36L20 30L28 28L32 20Z"
-                                   fill="white" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    
-                    <h2 class="cta-title">
-                        Begin Your Child's Journey to Excellence
-                    </h2>
-                    
-                    <p class="cta-description">
-                        Discover how Ujjwal Kids World can provide your child with an exceptional foundation 
-                        for lifelong success. Schedule a personalized campus tour and experience our 
-                        distinguished educational community firsthand.
-                    </p>
-                    
-                    <div class="cta-actions">
-                        <a href="#visit" class="btn btn-light">
-                            <span>Schedule Campus Visit</span>
-                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                        
-                    </div>
-                    
-                    <div class="cta-trust">
-                        <div class="trust-badge">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M10 2L12 7L17 8L13.5 12L15 17L10 14.5L5 17L6.5 12L3 8L8 7L10 2Z"
-                                       fill="currentColor"/>
-                            </svg>
-                            <span>CBSE Curriculum</span>
+                        <!-- FAQ Item 3 -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What curriculum and board does your school follow?</span>
+                                <div class="faq-icon">
+                                    <svg viewBox="0 0 16 16" fill="none">
+                                        <line x1="8" y1="4" x2="8" y2="12" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="4" y1="8" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Ujjwal Kids World follows the CBSE (Central Board of Secondary Education) curriculum, which is recognized nationwide and provides a strong foundation for higher education in India and abroad.</p>
+                                    <p>We complement the CBSE framework with innovative teaching methodologies, project-based learning, and extensive co-curricular activities to ensure holistic development of every student.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="trust-badge">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
-                                <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <span>9+ Years Trusted</span>
+
+                        <!-- FAQ Item 4 -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What facilities and infrastructure do you provide?</span>
+                                <div class="faq-icon">
+                                    <svg viewBox="0 0 16 16" fill="none">
+                                        <line x1="8" y1="4" x2="8" y2="12" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="4" y1="8" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Our state-of-the-art campus includes:</p>
+                                    <ul>
+                                        <li>Smart classrooms with digital learning tools</li>
+                                        <li>Well-equipped science and computer laboratories</li>
+                                        <li>Extensive library with digital resources</li>
+                                        <li>Sports facilities including playground and indoor games</li>
+                                        <li>Arts and music rooms for creative development</li>
+                                        <li>Safe and secure campus with CCTV surveillance</li>
+                                        <li>Comfortable transportation services</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 5 -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What is the teacher-to-student ratio?</span>
+                                <div class="faq-icon">
+                                    <svg viewBox="0 0 16 16" fill="none">
+                                        <line x1="8" y1="4" x2="8" y2="12" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="4" y1="8" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>We maintain an optimal teacher-to-student ratio to ensure personalized attention for every child. For early years (Pre-Nursery to Class 2), we maintain approximately 1:15 ratio, while for primary and secondary levels, we keep it around 1:25.</p>
+                                    <p>This allows our teachers to focus on individual learning needs, identify strengths and areas for improvement, and provide targeted support to help each student reach their full potential.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 6 -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">Do you offer transportation services?</span>
+                                <div class="faq-icon">
+                                    <svg viewBox="0 0 16 16" fill="none">
+                                        <line x1="8" y1="4" x2="8" y2="12" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="4" y1="8" x2="12" y2="8" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Yes, we provide safe and reliable transportation services covering Gangarampur and surrounding areas. Our fleet of buses is equipped with GPS tracking, first-aid kits, and trained staff to ensure student safety.</p>
+                                    <p>Each bus has an experienced driver and a dedicated attendant. Parents can track bus locations in real-time through our mobile app. Transportation fees are separate from tuition fees.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ CTA -->
+                    <div class="faq-cta">
+                        <h3 class="faq-cta-title">Still Have Questions?</h3>
+                        <p class="faq-cta-text">
+                            Our admissions team is here to help. Reach out to us for personalized assistance and campus tours.
+                        </p>
+                        <div class="faq-cta-actions">
+                            <a href="mailto:admissions@ujjwalkidsworld.edu" class="btn btn-primary">
+                                Contact Admissions
+                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                Schedule Campus Visit
+                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1984,7 +2013,7 @@ section {
                         <span class="logo-text">Ujjwal Kids World</span>
                     </div>
                     <p class="footer-tagline">
-                        A premier educational institution dedicated to cultivating excellence, character, 
+                        A premier educational institution dedicated to cultivating excellence, character,
                         and leadership in every student.
                     </p>
                     <div class="footer-accreditation">
@@ -2053,7 +2082,7 @@ section {
                     <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
                     <p class="footer-tagline-small">Excellence Since 2010</p>
                 </div>
-                
+
                 <div class="footer-social">
                     <a href="#facebook" aria-label="Visit our Facebook page" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -2077,52 +2106,53 @@ section {
             </div>
         </div>
     </footer>
-<script>
-    // ========================================
+
+    <script>
+// ========================================
 // UJJWAL KIDS WORLD - INTERACTIVE SCRIPT
 // Modern, accessible, educational website
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     // ===== MOBILE MENU TOGGLE =====
     const menuToggle = document.getElementById('menuToggle');
     const mobileOverlay = document.getElementById('mobileOverlay');
     const mobileClose = document.getElementById('mobileClose');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const body = document.body;
-    
+
     if (menuToggle && mobileOverlay) {
         // Toggle mobile menu
         menuToggle.addEventListener('click', function() {
             const isActive = mobileOverlay.classList.contains('active');
-            
+
             if (isActive) {
                 closeMobileMenu();
             } else {
                 openMobileMenu();
             }
         });
-        
+
         // Close menu with close button
         if (mobileClose) {
             mobileClose.addEventListener('click', closeMobileMenu);
         }
-        
+
         // Close menu when clicking on a link
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 closeMobileMenu();
             });
         });
-        
+
         // Close menu on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
                 closeMobileMenu();
             }
         });
-        
+
         // Close menu when clicking outside
         mobileOverlay.addEventListener('click', function(e) {
             if (e.target === mobileOverlay) {
@@ -2130,26 +2160,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     function openMobileMenu() {
         menuToggle.classList.add('active');
         mobileOverlay.classList.add('active');
         body.style.overflow = 'hidden';
         menuToggle.setAttribute('aria-expanded', 'true');
     }
-    
+
     function closeMobileMenu() {
         menuToggle.classList.remove('active');
         mobileOverlay.classList.remove('active');
         body.style.overflow = '';
         menuToggle.setAttribute('aria-expanded', 'false');
     }
-    
+
     // ===== NAVBAR SCROLL EFFECT =====
     const navbar = document.getElementById('navbar');
     let lastScrollTop = 0;
     let ticking = false;
-    
+
     window.addEventListener('scroll', function() {
         if (!ticking) {
             window.requestAnimationFrame(function() {
@@ -2159,44 +2189,73 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
-    
+
     function updateNavbar() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (scrollTop > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-        
+
         lastScrollTop = scrollTop;
     }
-    
+
+    // ===== FAQ ACCORDION =====
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle current item
+            if (isActive) {
+                item.classList.remove('active');
+                question.setAttribute('aria-expanded', 'false');
+            } else {
+                item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
     // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
+
             // Skip if href is just "#"
             if (href === '#') {
                 e.preventDefault();
                 return;
             }
-            
+
             const target = document.querySelector(href);
-            
+
             if (target) {
                 e.preventDefault();
                 const navbarHeight = navbar ? navbar.offsetHeight : 80;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
+
                 // Update URL without jumping
                 if (history.pushState) {
                     history.pushState(null, null, href);
@@ -2204,13 +2263,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const fadeInObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -2220,199 +2279,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-    
+
     // Apply fade-in animation to elements
     const fadeElements = document.querySelectorAll('.feature-card, .gallery-item, .leadership-stat');
-    
+
     fadeElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         fadeInObserver.observe(el);
     });
-    
-    // ===== PARALLAX EFFECT FOR HERO VISUAL =====
-    const heroVisual = document.querySelector('.hero-visual');
-    
-    if (heroVisual) {
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            if (scrolled < 1000) {
-                heroVisual.style.transform = `translateY(${scrolled * 0.2}px)`;
-            }
-        });
-    }
-    
+
     // ===== LOADING ANIMATION =====
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
-    
-    // ===== ACTIVE NAVIGATION LINK =====
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a:not(.btn-nav-cta)');
-    
-    function highlightNavigation() {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', highlightNavigation);
-    
-    // ===== FORM VALIDATION (if forms are added later) =====
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                } else {
-                    input.classList.remove('error');
-                }
-            });
-            
-            if (!isValid) {
-                e.preventDefault();
-            }
-        });
-    });
-    
-    // ===== ACCESSIBILITY: TRAP FOCUS IN MOBILE MENU =====
-    function trapFocus(element) {
-        const focusableElements = element.querySelectorAll(
-            'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-        );
-        
-        const firstFocusable = focusableElements[0];
-        const lastFocusable = focusableElements[focusableElements.length - 1];
-        
-        element.addEventListener('keydown', function(e) {
-            if (e.key !== 'Tab') return;
-            
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusable) {
-                    lastFocusable.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastFocusable) {
-                    firstFocusable.focus();
-                    e.preventDefault();
-                }
-            }
-        });
-    }
-    
-    if (mobileOverlay) {
-        trapFocus(mobileOverlay);
-    }
-    
-    // ===== PERFORMANCE: LAZY LOADING IMAGES =====
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('loading' in HTMLImageElement.prototype) {
-        // Browser supports native lazy loading
-        images.forEach(img => {
-            img.src = img.dataset.src || img.src;
-        });
-    } else {
-        // Fallback for browsers that don't support lazy loading
-        const imageObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    }
-    
+
     // ===== CONSOLE MESSAGE =====
     console.log('%cUjjwal Kids World', 'font-size: 24px; color: #4A90E2; font-weight: bold;');
     console.log('%cExcellence in Education Since 2010', 'font-size: 14px; color: #6C757D;');
     console.log('%c🎓 Building Bright Futures', 'font-size: 12px; color: #26C281;');
-    
+
 });
-
-// ===== UTILITY FUNCTIONS =====
-
-// Debounce function for performance optimization
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// Check if element is in viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// ===== PERFORMANCE MONITORING =====
-if ('PerformanceObserver' in window) {
-    try {
-        const perfObserver = new PerformanceObserver((entryList) => {
-            const entries = entryList.getEntries();
-            entries.forEach((entry) => {
-                if (entry.entryType === 'largest-contentful-paint') {
-                    console.log('LCP:', entry.startTime);
-                }
-            });
-        });
-        
-        perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-    } catch (e) {
-        // PerformanceObserver not supported
-    }
-}
-</script>
+    </script>
 </body>
 </html>
