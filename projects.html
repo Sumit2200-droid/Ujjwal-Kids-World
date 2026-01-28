@@ -3,1281 +3,539 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujjwal Kids World -- Projects</title>
+    <meta name="description" content="Ujjwal Kids World - Student Projects and Innovations">
+    <title>Student Projects | Ujjwal Kids World</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #0f172a;
-            overflow-x: hidden;
-            background: #ffffff;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.3s;
-        }
-
-        .header.scrolled {
-            padding: 0.7rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            z-index: 1001;
-        }
-
-        .logo-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 14px;
-            object-fit: contain;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .logo-text {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-menu a {
-            color: #334155;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            transition: transform 0.3s;
-            border-radius: 2px;
-        }
-
-        .nav-menu a:hover::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .nav-menu a:hover {
-            color: #6366f1;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0.5rem;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #6366f1;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 3px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            color: white;
-            padding: 10rem 2rem 8rem;
-            position: relative;
-            overflow: hidden;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-bg-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-bg-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 6s ease-in-out;
-        }
-
-        .hero-bg-slide.active {
-            opacity: 0.8;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.35));
-            z-index: 1;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(99, 102, 241, 0.5);
-            border-radius: 50%;
-            animation: particleFloat linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridSlide 20s linear infinite;
-            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-            z-index: 2;
-        }
-
-        @keyframes gridSlide {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(60px, 60px); }
-        }
-
-        .hero-content {
-            max-width: 680px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            width: 100%;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            animation: slideDown 0.8s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            color: rgba(255,255,255,0.9);
-            max-width: 680px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-            animation: fadeIn 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes fadeIn {
-            from { 
-                opacity: 0;
-            }
-            to { 
-                opacity: 1;
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: buttonScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
-        }
-
-        @keyframes buttonScale {
-            from {
-                opacity: 0;
-                transform: scale(0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-            padding: 1.2rem 3rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4), 0 0 30px rgba(99, 102, 241, 0.2);
-            position: relative;
-            overflow: hidden;
-            border: none;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
-        }
-
-        .cta-button-secondary {
-            background: rgba(255,255,255,0.08);
-            border: 2px solid rgba(255,255,255,0.4);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-
-        .cta-button-secondary:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.6);
-            box-shadow: 0 12px 40px rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-
-        .stats {
-            background: #ffffff;
-            padding: 0;
-            margin-top: -5rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .stats-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .stat-item {
-            padding: 2rem 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .stat-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-
-        .stat-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 1.05rem;
-            color: #64748b;
-            font-weight: 600;
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-alternate {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            font-weight: 900;
-            position: relative;
-           
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-           
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            border-radius: 3px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.3rem;
-            color: #64748b;
-            margin-bottom: 5rem;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .why-choose-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .why-choose-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .features-grid-enhanced {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card-enhanced {
-            padding: 2.5rem 2rem;
-            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-            border-radius: 28px;
-            border: 2px solid transparent;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-            transform-style: preserve-3d;
-            cursor: pointer;
-        }
-
-        .feature-card-enhanced::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef, #6366f1);
-            background-size: 300% 300%;
-            border-radius: 28px;
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: -1;
-            animation: gradientShift 8s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .feature-card-enhanced:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card-enhanced:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 70px rgba(99, 102, 241, 0.25);
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        }
-
-        .feature-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.5s;
-            pointer-events: none;
-        }
-
-        .feature-card-enhanced:hover .feature-glow {
-            transform: translate(-50%, -50%) scale(2);
-        }
-
-        .feature-number {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0.08;
-            line-height: 1;
-            transition: all 0.4s;
-        }
-
-        .feature-card-enhanced:hover .feature-number {
-            opacity: 0.15;
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-icon-enhanced {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card-enhanced:hover .feature-icon-enhanced {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
-        }
-
-        .feature-card-enhanced h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            color: #0f172a;
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s;
-        }
-
-        .feature-card-enhanced:hover h3,
-        .feature-card-enhanced:hover p,
-        .feature-card-enhanced:hover .stat-desc {
-            color: #ffffff;
-        }
-
-        .feature-card-enhanced p {
-            color: #64748b;
-            line-height: 1.8;
-            font-size: 1rem;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-stats {
-            display: flex;
-            gap: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid rgba(99, 102, 241, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-mini {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-        }
-
-        .stat-desc {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .campuses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .campus-card {
-            background: white;
-            border: 2px solid rgba(99, 102, 241, 0.15);
-            padding: 2.5rem 2rem;
-            border-radius: 24px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-
-        .campus-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            z-index: 0;
-        }
-
-        .campus-card:hover::before {
-            opacity: 1;
-        }
-
-        .campus-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .campus-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.25);
-            border-color: transparent;
-        }
-
-        .campus-card:hover h3,
-        .campus-card:hover p {
-            color: white;
-        }
-
-        .campus-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .campus-card:hover .campus-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .campus-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-            color: #0f172a;
-            transition: color 0.3s;
-        }
-
-        .campus-card p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .campus-badge {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #6366f1;
-            transition: all 0.3s;
-        }
-
-        .campus-card:hover .campus-badge {
-            background: rgba(255,255,255,0.25);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .founder-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 6rem 2rem;
-            margin-top: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .founder-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridSlide 20s linear infinite;
-        }
-
-        .founder-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .founder-image-wrapper {
-            position: relative;
-            flex-shrink: 0;
-            margin: 0 auto;
-        }
-
-        .founder-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            box-shadow: 0 25px 80px rgba(99, 102, 241, 0.5);
-            position: relative;
-            overflow: hidden;
-            animation: founderPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes founderPulse {
-            0%, 100% {
-                box-shadow: 0 25px 80px rgba(99, 102, 241, 0.5);
-            }
-            50% {
-                box-shadow: 0 25px 100px rgba(139, 92, 246, 0.6);
-            }
-        }
-
-        .founder-emoji {
-            animation: wave 2s ease-in-out infinite;
-            transform-origin: 70% 70%;
-            display: inline-block;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            40%, 60% { transform: rotate(14deg); }
-            50% { transform: rotate(-8deg); }
-            70%, 100% { transform: rotate(0deg); }
-        }
-
-        .founder-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            filter: blur(40px);
-            opacity: 0.5;
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        .founder-text {
-            flex: 1;
-            min-width: 280px;
-            color: white;
-        }
-
-        .founder-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .founder-text h3 {
-            color: #a78bfa;
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-            font-weight: 800;
-        }
-
-        .founder-text p {
-            font-size: 1.1rem;
-            line-height: 2;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .footer {
-            background: #0a0a0a;
-            color: white;
-            padding: 4rem 2rem 2rem;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-section p,
-        .footer-section div {
-            color: rgba(255,255,255,0.7);
-            line-height: 2;
-            font-size: 1rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .footer-section a:hover {
-            color: #a78bfa;
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Mobile Responsive Styles */
-        @media (max-width: 1024px) {
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 280px;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-                gap: 2rem;
-                align-items: flex-start;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu a {
-                font-size: 1.1rem;
-                width: 100%;
-                padding: 0.8rem 0;
-            }
-
-            .hero {
-                padding: 8rem 1.5rem 6rem;
-                min-height: auto;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-badge {
-                font-size: 0.8rem;
-                padding: 0.5rem 1.2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .cta-button {
-                width: 100%;
-                justify-content: center;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                padding: 0 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .stat-icon {
-                font-size: 2.5rem;
-            }
-
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .section-subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 3rem;
-            }
-
-            .features-grid-enhanced {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .feature-number {
-                font-size: 2.5rem;
-            }
-
-            .feature-icon-enhanced {
-                width: 70px;
-                height: 70px;
-                font-size: 2rem;
-            }
-
-            .feature-card-enhanced h3 {
-                font-size: 1.3rem;
-            }
-
-            .feature-card-enhanced p {
-                font-size: 0.95rem;
-            }
-
-            .campuses-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .founder-content {
-                justify-content: center;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .founder-image {
-                width: 220px;
-                height: 220px;
-                font-size: 6rem;
-            }
-
-            .founder-text h2 {
-                font-size: 2rem;
-            }
-
-            .founder-text h3 {
-                font-size: 1.3rem;
-            }
-
-            .founder-text p {
-                font-size: 1rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-text {
-                font-size: 1.2rem;
-            }
-
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-            }
-
-            .feature-card-enhanced {
-                padding: 2rem 1.5rem;
-            }
-
-            .campus-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .founder-section {
-                padding: 4rem 1.5rem;
-            }
-        }
-
-        /* Tablet specific */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .features-grid-enhanced {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .campuses-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        /* Add this CSS to your existing <style> section */
-
-/* Projects Section */
-.projects-section {
-    padding: 6rem 2rem;
+        /* ========================================
+   UJJWAL KIDS WORLD - PROJECTS PAGE
+   Educational Design System
+   ======================================== */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    /* Primary Color Palette - Soft Educational Blues */
+    --color-primary: #4A90E2;
+    --color-primary-light: #6BA3E8;
+    --color-primary-dark: #3A7BC8;
+    --color-primary-50: #E3F2FD;
+    --color-primary-100: #BBDEFB;
+
+    /* Secondary Color Palette - Gentle Purples */
+    --color-secondary: #8E7CC3;
+    --color-secondary-light: #A796D6;
+    --color-secondary-dark: #7461B8;
+    --color-secondary-50: #F3E5F5;
+
+    /* Accent Colors */
+    --color-accent-orange: #FF9F43;
+    --color-accent-green: #26C281;
+    --color-accent-pink: #EE5A6F;
+
+    /* Neutral Colors */
+    --color-white: #FFFFFF;
+    --color-gray-50: #F8F9FA;
+    --color-gray-100: #F1F3F5;
+    --color-gray-200: #E9ECEF;
+    --color-gray-300: #DEE2E6;
+    --color-gray-400: #CED4DA;
+    --color-gray-500: #ADB5BD;
+    --color-gray-600: #6C757D;
+    --color-gray-700: #495057;
+    --color-gray-800: #343A40;
+    --color-gray-900: #212529;
+
+    /* Typography */
+    --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-secondary: 'Quicksand', sans-serif;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.12);
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Z-index */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-gray-800);
+    background-color: var(--color-gray-50);
+    overflow-x: hidden;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-2) var(--space-4);
+    text-decoration: none;
+    border-radius: 0 0 var(--radius-md) 0;
+    z-index: calc(var(--z-modal) + 10);
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-gray-900);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--space-8);
+    }
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    z-index: var(--z-fixed);
+    transition: all var(--transition-base);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.section-title-wrapper {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.filter-tabs {
+    padding: var(--space-4) var(--space-6);
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.filter-btn {
-    padding: 0.8rem 2rem;
-    background: white;
-    border: 2px solid rgba(99, 102, 241, 0.2);
-    color: #334155;
-    border-radius: 50px;
-    cursor: pointer;
+.nav-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.logo-text {
+    font-family: var(--font-secondary);
+    letter-spacing: -0.02em;
+}
+
+.nav-menu {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-gray-700);
+    transition: color var(--transition-fast);
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width var(--transition-base);
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.btn-nav-cta {
+    padding: var(--space-3) var(--space-6);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-white) !important;
+    border-radius: var(--radius-full);
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s;
-    font-family: inherit;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
 }
 
-.filter-btn:hover {
-    border-color: #6366f1;
-    color: #6366f1;
+.btn-nav-cta::after {
+    display: none;
+}
+
+.btn-nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+    box-shadow: var(--shadow-md);
 }
 
-.filter-btn.active {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    z-index: var(--z-modal);
+}
+
+.hamburger {
+    width: 24px;
+    height: 2px;
+    background: var(--color-gray-800);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.menu-toggle.active .hamburger:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Navigation */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-white);
+    z-index: var(--z-modal-backdrop);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-slow);
+    overflow-y: auto;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--color-white);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-fixed);
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-gray-900);
+}
+
+.mobile-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.mobile-logo-text {
+    font-family: var(--font-secondary);
+    letter-spacing: -0.02em;
+}
+
+.mobile-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    color: var(--color-gray-800);
+    transition: all var(--transition-fast);
+}
+
+.mobile-close:hover {
+    color: var(--color-primary);
+    transform: rotate(90deg);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    padding: var(--space-4) 0;
+}
+
+.mobile-link {
+    display: block;
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-gray-700);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
+}
+
+.mobile-link:hover,
+.mobile-link.active {
+    background: var(--color-primary-50);
+    color: var(--color-primary-dark);
+    border-left-color: var(--color-primary);
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-light) 100%);
     color: white;
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    padding: 8rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 72px;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: var(--space-4);
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-hero p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section {
+    padding: var(--space-20) 0;
+    background: var(--color-white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-4);
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-gray-600);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+}
+
+@media (min-width: 640px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .project-card {
-    background: white;
-    border-radius: 24px;
+    background: var(--color-white);
+    border-radius: var(--radius-2xl);
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-slow);
     border: 2px solid transparent;
-    opacity: 1;
-}
-
-.project-card.hidden {
-    display: none;
 }
 
 .project-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 60px rgba(99, 102, 241, 0.2);
-    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary-100);
 }
 
 .project-video-wrapper {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
     overflow: hidden;
 }
 
@@ -1298,7 +556,7 @@
     height: 100%;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform var(--transition-slow);
 }
 
 .project-card:hover .project-thumbnail {
@@ -1312,13 +570,13 @@
     transform: translate(-50%, -50%);
     width: 70px;
     height: 70px;
-    background: rgba(99, 102, 241, 0.95);
+    background: rgba(74, 144, 226, 0.95);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all var(--transition-base);
     z-index: 2;
 }
 
@@ -1334,695 +592,956 @@
 
 .play-button:hover {
     transform: translate(-50%, -50%) scale(1.1);
-    background: rgba(139, 92, 246, 0.95);
-    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.5);
+    background: rgba(74, 144, 226, 1);
+    box-shadow: 0 10px 40px rgba(74, 144, 226, 0.5);
 }
 
 .project-content {
-    padding: 2rem;
+    padding: var(--space-6);
 }
 
 .project-category {
     display: inline-block;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    color: #6366f1;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(142, 124, 195, 0.1) 100%);
+    color: var(--color-primary);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
 }
 
 .project-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-3);
 }
 
 .project-description {
-    color: #64748b;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    line-height: 1.7;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.project-description strong {
+    color: var(--color-primary-dark);
+    font-weight: 600;
 }
 
 .project-meta {
     display: flex;
-    gap: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 2px solid rgba(99, 102, 241, 0.1);
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 2px solid var(--color-gray-100);
 }
 
 .meta-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: #64748b;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-gray-600);
     font-weight: 600;
 }
 
 .meta-icon {
-    font-size: 1.2rem;
+    font-size: var(--text-base);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--color-gray-900);
+    color: var(--color-gray-400);
+    padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+    .footer-main {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+.footer-brand .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.footer-tagline {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-4);
+    max-width: 400px;
+}
+
+.accreditation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--color-primary-100);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.footer-links-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .footer-links-group {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.footer-heading {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: var(--space-3);
+}
+
+.footer-links a {
+    color: var(--color-gray-400);
+    transition: color var(--transition-fast);
+    font-size: var(--text-sm);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary-100);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--color-gray-400);
+    font-size: var(--text-sm);
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.footer-copyright {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+}
+
+.footer-tagline-small {
+    color: var(--color-gray-600);
+    margin-top: var(--space-2);
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-gray-400);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.social-link:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .logo-text {
+        font-size: var(--text-base);
+    }
+
+    .page-hero {
+        padding: 6rem 1.5rem 3rem;
+        margin-top: 64px;
+    }
+
     .projects-section {
-        padding: 4rem 1.5rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .filter-tabs {
-        gap: 0.8rem;
-    }
-
-    .filter-btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.85rem;
-    }
-
-    .project-title {
-        font-size: 1.3rem;
+        padding: var(--space-12) 0;
     }
 }
 
-@media (max-width: 480px) {
-    .project-content {
-        padding: 1.5rem;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-
-    .filter-btn {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.8rem;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+.project-card {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+.project-card:nth-child(7) { animation-delay: 0.7s; }
+.project-card:nth-child(8) { animation-delay: 0.8s; }
+.project-card:nth-child(9) { animation-delay: 0.9s; }
+.project-card:nth-child(10) { animation-delay: 1s; }
+.project-card:nth-child(11) { animation-delay: 1.1s; }
+.project-card:nth-child(12) { animation-delay: 1.2s; }
+.project-card:nth-child(13) { animation-delay: 1.3s; }
+.project-card:nth-child(14) { animation-delay: 1.4s; }
+.project-card:nth-child(15) { animation-delay: 1.5s; }
+.project-card:nth-child(16) { animation-delay: 1.6s; }
+.project-card:nth-child(17) { animation-delay: 1.7s; }
+.project-card:nth-child(18) { animation-delay: 1.8s; }
+.project-card:nth-child(19) { animation-delay: 1.9s; }
+.project-card:nth-child(20) { animation-delay: 2s; }
     </style>
 </head>
 <body>
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="logo.jpeg" alt="Kids World Logo" class="logo-icon">
-            </a>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
+                    <span class="logo-text">Ujjwal Kids World</span>
+                </a>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                
-                <li><a href="programs.html">Academics</a></li>
-                <li><a href="projects.html">Our Projects</a></li>
-                <li><a href="Achievements.html">Achievements</a></li>
-                <li><a href="Campus.html">Campuses</a></li>
-                <li><a href="gallery.html">Fun Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Academic Programs</a></li>
+                    <li><a href="Campus.html">Our Campuses</a></li>
+                    <li><a href="Achievements.html">Achievements</a></li>
+                    <li><a href="projects.html" class="btn-nav-cta active">Student Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+            <div class="mobile-nav-header">
+                <div class="mobile-logo">
+                    <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="mobile-logo-img">
+                    <span class="mobile-logo-text">Ujjwal Kids World</span>
+                </div>
+                <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html" class="mobile-link">Home</a></li>
+                <li><a href="programs.html" class="mobile-link">Academic Programs</a></li>
+                <li><a href="Campus.html" class="mobile-link">Our Campuses</a></li>
+                <li><a href="Achievements.html" class="mobile-link">Achievements</a></li>
+                <li><a href="projects.html" class="mobile-link">Student Projects</a></li>
+                <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
             </ul>
         </nav>
-    </header>
-
-    <!-- Add this section after your hero section and before the footer -->
-<section class="projects-section" id="projects">
-    <div class="section-title-wrapper">
-        <h2 class="section-title">Our Student Projects</h2>
-        <p class="section-subtitle">Witness the incredible creativity and innovation of our young learners through their amazing projects and achievements</p>
     </div>
 
-  
-
-    <div class="projects-grid" id="projectsGrid">
-        <!-- Project Card 1 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'QiSkOGmduzU')"></div>
-                <img src="https://img.youtube.com/vi/QiSkOGmduzU/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="hero-pattern"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    🚀 Innovation & Creativity
+                </div>
+                <h1>Our Student Projects</h1>
+                <p>Witness the incredible creativity and innovation of our young learners through their amazing projects and achievements</p>
             </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Pyversity - Python Learning Platform</h3>
-                <p class="project-description">Our students built Pyversity, a comprehensive Python learning platform featuring interactive courses, hands-on projects, and a vibrant community for aspiring programmers.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Grade 5-6</span>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Project Card 1 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'QiSkOGmduzU')"></div>
+                            <img src="https://img.youtube.com/vi/QiSkOGmduzU/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Pyversity - Python Learning Platform</h3>
+                            <p class="project-description">Our students built Pyversity, a comprehensive Python learning platform featuring interactive courses, hands-on projects, and a vibrant community for aspiring programmers.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Grade 5-6</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⏱️</span>
+                                    <span>Completed</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">⏱️</span>
-                        <span>Completed</span>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, '2-66aD1g618')"></div>
+                            <img src="https://img.youtube.com/vi/2-66aD1g618/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Python Learning Journey - Grades 5-6</h3>
+                            <p class="project-description">Watch our Grade 5-6 students engaging in hands-on Python programming lessons, building their coding skills and computational thinking through interactive learning experiences.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Grade 5-6</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⏱️</span>
+                                    <span>Ongoing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'XHs13uNCOTI')"></div>
+                            <img src="https://img.youtube.com/vi/XHs13uNCOTI/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Grass Cutter Machine</h3>
+                            <p class="project-description">Our Grade 10 students engineered and built a fully functional grass cutter machine, demonstrating mechanical design and practical engineering skills.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Grade 10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'H7bKnW8N6kY')"></div>
+                            <img src="https://img.youtube.com/vi/H7bKnW8N6kY/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Soil Moisture Detection using Arduino</h3>
+                            <p class="project-description">An innovative Arduino-based project to detect soil moisture levels and enable automated plant watering systems for smart agriculture.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>4-5 Students</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">📚</span>
+                                    <span>Grade 5-6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="project-card" data-category="robotics">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'sHrU5IdK87s')"></div>
+                            <img src="https://img.youtube.com/vi/sHrU5IdK87s/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Robotics</span>
+                            <h3 class="project-title">Fuchka Water Dispenser Automatic</h3>
+                            <p class="project-description">An intelligent automated water dispensing system designed to efficiently distribute water using robotics and sensor technology.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Team Project</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">📚</span>
+                                    <span>Grade 5-6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'o31odiLLOT4')"></div>
+                            <img src="https://img.youtube.com/vi/o31odiLLOT4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Automatic Street Light On/Off</h3>
+                            <p class="project-description">An innovative automatic street lighting system using sensors that intelligently turns lights on and off based on ambient light levels, demonstrating energy efficiency principles.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Class 3-4</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">📚</span>
+                                    <span>Grade 3-4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 7 -->
+                    <div class="project-card" data-category="robotics">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'Kx0HiUMKzTA')"></div>
+                            <img src="https://img.youtube.com/vi/Kx0HiUMKzTA/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Robotics</span>
+                            <h3 class="project-title">Obstacle Avoidance System</h3>
+                            <p class="project-description">An intelligent robot project that autonomously detects and avoids obstacles using sensor technology, demonstrating advanced robotics and real-time decision-making capabilities.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Class 4-5</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">📚</span>
+                                    <span>Grade 4-5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 8 -->
+                    <div class="project-card" data-category="robotics">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'YmMoccBnqN4')"></div>
+                            <img src="https://img.youtube.com/vi/YmMoccBnqN4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Robotics</span>
+                            <h3 class="project-title">Maglev Train Prototype Model</h3>
+                            <p class="project-description">A student of Ujjwal Kids World created an innovative Maglev Train prototype model, showcasing advanced engineering and magnetic levitation technology.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>1 Student</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">🚄</span>
+                                    <span>Maglev Tech</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 9 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'Lc7JzHOER5I')"></div>
+                            <img src="https://img.youtube.com/vi/Lc7JzHOER5I/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Class 3 Student Solving Class 12th Maths</h3>
+                            <p class="project-description">A remarkable achievement where a Class 3 student from Ujjwal Kids World demonstrates exceptional mathematical aptitude by solving advanced 12th-grade level mathematics problems.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>Class 3 Student</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">🧮</span>
+                                    <span>Advanced Maths</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 10 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'm1bpdf7uXzo')"></div>
+                            <img src="https://img.youtube.com/vi/m1bpdf7uXzo/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Class 4-5 Students Explaining Python Basics</h3>
+                            <p class="project-description">Class 4 and 5 students from Ujjwal Kids World are learning the fundamentals of Python programming and attempting to explain these concepts, showcasing their growing understanding and enthusiasm for coding. ❤️</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>Class 4-5 Students</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">🐍</span>
+                                    <span>Python Basics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 11 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'ZHvkKxMpKm8')"></div>
+                            <img src="https://img.youtube.com/vi/ZHvkKxMpKm8/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Class 4-5 Students Learning Web Development</h3>
+                            <p class="project-description">Students of class 4 and 5 are learning web development from AI lead Scientist Dr. Saikat Basu, gaining valuable skills in programming and technology under expert guidance.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>Class 4-5 Students</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">🌐</span>
+                                    <span>Web Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 12 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'fhgWdIa7YaQ')"></div>
+                            <img src="https://img.youtube.com/vi/fhgWdIa7YaQ/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Class 5 Student Becomes Full Stack Developer</h3>
+                            <p class="project-description">A remarkable achievement where a Class 5 student from Ujjwal Kids World has become a full stack developer, mastering both frontend and backend technologies at an incredibly young age.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>Class 5 Student</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">💻</span>
+                                    <span>Full Stack Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 13 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, '3j7evau_Ut4')"></div>
+                            <img src="https://img.youtube.com/vi/3j7evau_Ut4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Class 1 Student Solving Class 11th Mathematics</h3>
+                            <p class="project-description">An exceptional achievement where a Class 1 student from Ujjwal Kids World demonstrates remarkable mathematical aptitude by solving advanced 11th-grade level mathematics problems, showcasing accelerated learning and cognitive development.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>Class 1 Student</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">🧮</span>
+                                    <span>Advanced Maths</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 14 -->
+                    <div class="project-card" data-category="robotics">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, '60MSeiN-mlE')"></div>
+                            <img src="https://img.youtube.com/vi/60MSeiN-mlE/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Robotics</span>
+                            <h3 class="project-title">Class 5-6 Students Made Electric Prepaid Meter</h3>
+                            <p class="project-description">Class 5 and 6 students from Ujjwal Kids World successfully designed and built an innovative electric prepaid meter system, demonstrating advanced understanding of electronics, IoT technology, and practical engineering applications.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Class 5-6 Students</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⚡</span>
+                                    <span>Electronics & IoT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 15 -->
+                    <div class="project-card" data-category="robotics">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'xETTnfRFEa8')"></div>
+                            <img src="https://img.youtube.com/vi/xETTnfRFEa8/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Robotics</span>
+                            <h3 class="project-title">Class 7 Students Electric Safety Project</h3>
+                            <p class="project-description">Class 7 students from Ujjwal Kids World created an innovative electric safety project, demonstrating their understanding of electrical safety principles, circuit design, and practical engineering skills in building safe electrical systems.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👥</span>
+                                    <span>Class 7 Students</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⚡</span>
+                                    <span>Electrical Safety</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 16 -->
+                    <div class="project-card" data-category="science">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'IKYLFZVdKuQ')"></div>
+                            <img src="https://img.youtube.com/vi/IKYLFZVdKuQ/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Science & Tech</span>
+                            <h3 class="project-title">Class 6 Student Solving Class 8th Mathematics</h3>
+                            <p class="project-description">An impressive achievement where a Class 6 girl student from Ujjwal Kids World demonstrates exceptional mathematical ability by solving advanced 8th-grade level mathematics problems, showcasing her dedication to learning and problem-solving skills.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👩‍🎓</span>
+                                    <span>Class 6 Student</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">🧮</span>
+                                    <span>Advanced Maths</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 17 -->
+                    <div class="project-card" data-category="robotics">
+                        <div class="project-video-wrapper">
+                            <div class="play-button" onclick="loadVideo(this, 'UmqTQ2yDG5k')"></div>
+                            <img src="https://img.youtube.com/vi/UmqTQ2yDG5k/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Robotics</span>
+                            <h3 class="project-title">Super Smart Dustbin by Class 6 Student</h3>
+                            <p class="project-description">A Class 6 student from Ujjwal Kids World created an innovative smart dustbin using IoT and sensor technology that automatically segregates and manages waste, demonstrating exceptional engineering and environmental awareness.</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👨‍🎓</span>
+                                    <span>Class 6 Student</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">♻️</span>
+                                    <span>Smart Tech</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- Project Card 2 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, '2-66aD1g618')"></div>
-                <img src="https://img.youtube.com/vi/2-66aD1g618/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Python Learning Journey - Grades 5-6</h3>
-                <p class="project-description">Watch our Grade 5-6 students engaging in hands-on Python programming lessons, building their coding skills and computational thinking through interactive learning experiences.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Grade 5-6</span>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
+                        <span class="logo-text">Ujjwal Kids World</span>
                     </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">⏱️</span>
-                        <span>Ongoing</span>
+                    <p class="footer-tagline">
+                        A premier educational institution dedicated to cultivating excellence, character,
+                        and leadership in every student.
+                    </p>
+                    <div class="footer-accreditation">
+                        <span class="accreditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z"
+                                       fill="currentColor"/>
+                            </svg>
+                            CBSE Curriculum
+                        </span>
+                    </div>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Academics</h4>
+                        <ul class="footer-links">
+                            <li><a href="#curriculum">Curriculum</a></li>
+                            <li><a href="#programs">Programs</a></li>
+                            <li><a href="#faculty">Faculty</a></li>
+                            <li><a href="#innovation">Innovation Labs</a></li>
+                            <li><a href="#results">Results</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Campus</h4>
+                        <ul class="footer-links">
+                            <li><a href="#facilities">Facilities</a></li>
+                            <li><a href="#athletics">Athletics</a></li>
+                            <li><a href="#arts">Arts & Culture</a></li>
+                            <li><a href="#library">Library</a></li>
+                            <li><a href="#locations">Locations</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact</h4>
+                        <ul class="footer-links">
+                            <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z"
+                                           stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                </svg>
+                                <span>Gangarampur, Dakshin Dinajpur<br>West Bengal, India</span>
+                            </li>
+                            <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <a href="mailto:admissions@ujjwalkidsworld.edu">admissions@ujjwalkidsworld.edu</a>
+                            </li>
+                            <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <a href="mailto:info@ujjwalkidsworld.edu">info@ujjwalkidsworld.edu</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Project Card 4 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'XHs13uNCOTI')"></div>
-                <img src="https://img.youtube.com/vi/XHs13uNCOTI/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Grass Cutter Machine</h3>
-                <p class="project-description">Our Grade 10 students engineered and built a fully functional grass cutter machine, demonstrating mechanical design and practical engineering skills.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Grade 10</span>
-                    </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
+                    <p class="footer-tagline-small">Excellence Since 2010</p>
+                </div>
+
+                <div class="footer-social">
+                    <a href="#facebook" aria-label="Visit our Facebook page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM11 10.5V14H9V10.5H8V9H9V8C9 6.9 9.9 6 11 6H12V7.5H11.5C11.22 7.5 11 7.72 11 8V9H12L11.75 10.5H11Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#instagram" aria-label="Visit our Instagram page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="14.5" cy="5.5" r="0.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#linkedin" aria-label="Visit our LinkedIn page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 3H17V17H3V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M6 8V14M6 6.5V6M10 14V10.5C10 9.5 10.5 9 11.5 9C12.5 9 13 9.5 13 10.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div>
-
-        <!-- Project Card 7 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'H7bKnW8N6kY')"></div>
-                <img src="https://img.youtube.com/vi/H7bKnW8N6kY/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Soil Moisture Detection using Arduino</h3>
-                <p class="project-description">An innovative Arduino-based project to detect soil moisture levels and enable automated plant watering systems for smart agriculture.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>4-5 Students</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">📚</span>
-                        <span>Grade 5-6</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 8 -->
-        <div class="project-card" data-category="robotics">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'sHrU5IdK87s')"></div>
-                <img src="https://img.youtube.com/vi/sHrU5IdK87s/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Robotics</span>
-                <h3 class="project-title">Fuchka Water Dispenser Automatic</h3>
-                <p class="project-description">An intelligent automated water dispensing system designed to efficiently distribute water using robotics and sensor technology.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Team Project</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">📚</span>
-                        <span>Grade 5-6</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 9 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'o31odiLLOT4')"></div>
-                <img src="https://img.youtube.com/vi/o31odiLLOT4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Automatic Street Light On/Off</h3>
-                <p class="project-description">An innovative automatic street lighting system using sensors that intelligently turns lights on and off based on ambient light levels, demonstrating energy efficiency principles.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Class 3-4</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">📚</span>
-                        <span>Grade 3-4</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 10 -->
-        <div class="project-card" data-category="robotics">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'Kx0HiUMKzTA')"></div>
-                <img src="https://img.youtube.com/vi/Kx0HiUMKzTA/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Robotics</span>
-                <h3 class="project-title">Obstacle Avoidance System</h3>
-                <p class="project-description">An intelligent robot project that autonomously detects and avoids obstacles using sensor technology, demonstrating advanced robotics and real-time decision-making capabilities.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Class 4-5</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">📚</span>
-                        <span>Grade 4-5</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 11 -->
-        <div class="project-card" data-category="robotics">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'YmMoccBnqN4')"></div>
-                <img src="https://img.youtube.com/vi/YmMoccBnqN4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Robotics</span>
-                <h3 class="project-title">Maglev Train Prototype Model</h3>
-                <p class="project-description">A student of Ujjwal Kids World created an innovative Maglev Train prototype model, showcasing advanced engineering and magnetic levitation technology.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>1 Student</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🚄</span>
-                        <span>Maglev Tech</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 12 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'Lc7JzHOER5I')"></div>
-                <img src="https://img.youtube.com/vi/Lc7JzHOER5I/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Class 3 Student Solving Class 12th Maths</h3>
-                <p class="project-description">A remarkable achievement where a Class 3 student from Ujjwal Kids World demonstrates exceptional mathematical aptitude by solving advanced 12th-grade level mathematics problems.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>Class 3 Student</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🧮</span>
-                        <span>Advanced Maths</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 13 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'm1bpdf7uXzo')"></div>
-                <img src="https://img.youtube.com/vi/m1bpdf7uXzo/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Class 4-5 Students Explaining Python Basics</h3>
-                <p class="project-description">Class 4 and 5 students from Ujjwal Kids World are learning the fundamentals of Python programming and attempting to explain these concepts, showcasing their growing understanding and enthusiasm for coding. ❤️</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>Class 4-5 Students</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🐍</span>
-                        <span>Python Basics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 14 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'ZHvkKxMpKm8')"></div>
-                <img src="https://img.youtube.com/vi/ZHvkKxMpKm8/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Class 4-5 Students Learning Web Development</h3>
-                <p class="project-description">Students of class 4 and 5 are learning web development from AI lead Scientist Dr. Saikat Basu, gaining valuable skills in programming and technology under expert guidance.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>Class 4-5 Students</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🌐</span>
-                        <span>Web Development</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 15 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'fhgWdIa7YaQ')"></div>
-                <img src="https://img.youtube.com/vi/fhgWdIa7YaQ/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Class 5 Student Becomes Full Stack Developer</h3>
-                <p class="project-description">A remarkable achievement where a Class 5 student from Ujjwal Kids World has become a full stack developer, mastering both frontend and backend technologies at an incredibly young age.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>Class 5 Student</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">💻</span>
-                        <span>Full Stack Development</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 16 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, '3j7evau_Ut4')"></div>
-                <img src="https://img.youtube.com/vi/3j7evau_Ut4/maxresdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Class 1 Student Solving Class 11th Mathematics</h3>
-                <p class="project-description">An exceptional achievement where a Class 1 student from Ujjwal Kids World demonstrates remarkable mathematical aptitude by solving advanced 11th-grade level mathematics problems, showcasing accelerated learning and cognitive development.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>Class 1 Student</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🧮</span>
-                        <span>Advanced Maths</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 17 -->
-        <div class="project-card" data-category="robotics">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, '60MSeiN-mlE')"></div>
-                <img src="https://img.youtube.com/vi/60MSeiN-mlE/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Robotics</span>
-                <h3 class="project-title">Class 5-6 Students Made Electric Prepaid Meter</h3>
-                <p class="project-description">Class 5 and 6 students from Ujjwal Kids World successfully designed and built an innovative electric prepaid meter system, demonstrating advanced understanding of electronics, IoT technology, and practical engineering applications.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Class 5-6 Students</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">⚡</span>
-                        <span>Electronics & IoT</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 18 -->
-        <div class="project-card" data-category="robotics">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'xETTnfRFEa8')"></div>
-                <img src="https://img.youtube.com/vi/xETTnfRFEa8/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Robotics</span>
-                <h3 class="project-title">Class 7 Students Electric Safety Project</h3>
-                <p class="project-description">Class 7 students from Ujjwal Kids World created an innovative electric safety project, demonstrating their understanding of electrical safety principles, circuit design, and practical engineering skills in building safe electrical systems.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span>Class 7 Students</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">⚡</span>
-                        <span>Electrical Safety</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 19 -->
-        <div class="project-card" data-category="science">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'IKYLFZVdKuQ')"></div>
-                <img src="https://img.youtube.com/vi/IKYLFZVdKuQ/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Science & Tech</span>
-                <h3 class="project-title">Class 6 Student Solving Class 8th Mathematics</h3>
-                <p class="project-description">An impressive achievement where a Class 6 girl student from Ujjwal Kids World demonstrates exceptional mathematical ability by solving advanced 8th-grade level mathematics problems, showcasing her dedication to learning and problem-solving skills.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👩‍🎓</span>
-                        <span>Class 6 Student</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🧮</span>
-                        <span>Advanced Maths</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Card 20 -->
-        <div class="project-card" data-category="robotics">
-            <div class="project-video-wrapper">
-                <div class="play-button" onclick="loadVideo(this, 'UmqTQ2yDG5k')"></div>
-                <img src="https://img.youtube.com/vi/UmqTQ2yDG5k/hqdefault.jpg" alt="Project Thumbnail" class="project-thumbnail">
-            </div>
-            <div class="project-content">
-                <span class="project-category">Robotics</span>
-                <h3 class="project-title">Super Smart Dustbin by Class 6 Student</h3>
-                <p class="project-description">A Class 6 student from Ujjwal Kids World created an innovative smart dustbin using IoT and sensor technology that automatically segregates and manages waste, demonstrating exceptional engineering and environmental awareness.</p>
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">👨‍🎓</span>
-                        <span>Class 6 Student</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">♻️</span>
-                        <span>Smart Tech</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Ujjwal Kids World</h3>
-                <p>Empowering young minds through innovative education and technology-driven learning for a brighter, smarter tomorrow.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <div>
-                    <div><a href="#home">→ Home</a></div>
-                    <div><a href="programs.html">→ Programs</a></div>
-                    <div><a href="#campuses">→ Campuses</a></div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <div>
-                    <div>📍 Gangarampur, Dakshin Dinajpur</div>
-                    <div>West Bengal, India</div>
-                    <div>📧 info@kidsworld.edu</div>
-                    <div>📞 Contact: Available on Request</div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Education Boards</h3>
-                <div>
-                    <div>✓ CBSE Board</div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Ujjwal Kids World. All Rights Reserved. | Founded by Mr. Ashim Ghosh</p>
         </div>
     </footer>
 
     <script>
-        /* Add this JavaScript at the end of your existing <script> section */
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileClose = document.getElementById('mobileClose');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const body = document.body;
 
-// Video loading function
-function loadVideo(button, videoId) {
-    const wrapper = button.parentElement;
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
-    wrapper.innerHTML = '';
-    wrapper.appendChild(iframe);
-}
-
-// Filter functionality
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const category = btn.getAttribute('data-category');
-        
-        // Update active button
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // Filter projects
-        projectCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            if (category === 'all' || cardCategory === category) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
+            function openMobileMenu() {
+                menuToggle.classList.add('active');
+                mobileOverlay.classList.add('active');
+                body.style.overflow = 'hidden';
+                menuToggle.setAttribute('aria-expanded', 'true');
             }
-        });
-    });
-});
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+            function closeMobileMenu() {
+                menuToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                body.style.overflow = '';
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
-        });
 
-        // Background slider
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-bg-slide');
-        const totalSlides = slides.length;
+            if (menuToggle && mobileOverlay) {
+                menuToggle.addEventListener('click', function() {
+                    if (mobileOverlay.classList.contains('active')) {
+                        closeMobileMenu();
+                    } else {
+                        openMobileMenu();
+                    }
+                });
 
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % totalSlides;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 8000);
-
-        // Particle generation
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 4 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                if (mobileClose) {
+                    mobileClose.addEventListener('click', closeMobileMenu);
                 }
-            });
-        });
 
-        // Scroll reveal animation for feature cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    observer.unobserve(entry.target);
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+
+                mobileOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileOverlay) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+
+            const navbar = document.getElementById('navbar');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
                 }
-            });
-        }, observerOptions);
 
-        document.querySelectorAll('.feature-card-enhanced').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+                lastScrollTop = scrollTop;
+            });
+
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    if (href === '#') {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    const target = document.querySelector(href);
+
+                    if (target) {
+                        e.preventDefault();
+                        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
+
+        function loadVideo(button, videoId) {
+            const wrapper = button.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            wrapper.innerHTML = '';
+            wrapper.appendChild(iframe);
+        }
     </script>
 </body>
 </html>
