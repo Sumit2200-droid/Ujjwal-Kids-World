@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-   
 </head>
 <body>
     <style>
@@ -534,6 +533,24 @@ img {
     align-items: center;
     position: relative;
     z-index: 1;
+}
+
+/* MOBILE-FIRST: Image comes first on mobile */
+@media (max-width: 767px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hero-visual {
+        order: -1; /* This moves the visual to the top */
+        width: 100%;
+        margin-bottom: var(--space-8);
+    }
+    
+    .hero-content {
+        order: 1;
+    }
 }
 
 .hero-content {
@@ -1356,8 +1373,18 @@ section {
     }
     
     .hero-container {
-        grid-template-columns: 1.1fr 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
         gap: var(--space-16);
+    }
+    
+    /* Reset mobile flexbox order - grid will use natural HTML order */
+    .hero-visual {
+        order: 0;
+    }
+    
+    .hero-content {
+        order: 0;
     }
     
     .hero-title {
@@ -1523,7 +1550,7 @@ section {
     }
 }
     </style>
-
+    
     <!-- Navigation -->
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
@@ -1575,7 +1602,7 @@ section {
                 <li><a href="Achievements.html" class="mobile-link">Achievements</a></li>
                 <li><a href="projects.html" class="mobile-link">Student Projects</a></li>
                 <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
-               
+                
             </ul>
         </nav>
     </div>
@@ -1584,6 +1611,29 @@ section {
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="hero-container">
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <div class="image-card primary-card">
+                            <img src="home image.jpg"
+                                  alt="Students engaged in collaborative learning activities"
+                                  loading="eager">
+                        </div>
+                        <div class="image-card secondary-card">
+                            <img src="home image 1.jpg"
+                                  alt="Student achieving academic excellence"
+                                  loading="eager">
+                        </div>
+                        <div class="floating-element element-1">
+                            <div class="icon-circle">🎓</div>
+                            <span>CBSE Affiliated</span>
+                        </div>
+                        <div class="floating-element element-2">
+                            <div class="icon-circle">⭐</div>
+                            <span>Award Winning</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="hero-content">
                     <div class="hero-badge">
                         <span class="badge-icon">✨</span>
@@ -1629,29 +1679,6 @@ section {
                         <div class="stat-item">
                             <div class="stat-number">100%</div>
                             <div class="stat-label">Success Rate</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-visual">
-                    <div class="hero-image-wrapper">
-                        <div class="image-card primary-card">
-                            <img src="home image.jpg" 
-                                 alt="Students engaged in collaborative learning activities" 
-                                 loading="eager">
-                        </div>
-                        <div class="image-card secondary-card">
-                            <img src="home image 1.jpg" 
-                                 alt="Student achieving academic excellence" 
-                                 loading="eager">
-                        </div>
-                        <div class="floating-element element-1">
-                            <div class="icon-circle">🎓</div>
-                            <span>CBSE Affiliated</span>
-                        </div>
-                        <div class="floating-element element-2">
-                            <div class="icon-circle">⭐</div>
-                            <span>Award Winning</span>
                         </div>
                     </div>
                 </div>
@@ -1766,9 +1793,9 @@ section {
                 <div class="leadership-content">
                     <div class="leadership-image">
                         <div class="image-frame">
-                            <img src="founder.jpg" 
-                                 alt="Mr. Ashim Ghosh, Founder of Ujjwal Kids World" 
-                                 loading="lazy">
+                            <img src="founder.jpg"
+                                  alt="Mr. Ashim Ghosh, Founder of Ujjwal Kids World"
+                                  loading="lazy">
                         </div>
                         <div class="quote-mark">"</div>
                     </div>
@@ -1832,9 +1859,9 @@ section {
 
                 <div class="gallery-grid">
                     <div class="gallery-item large">
-                        <img src="student1.jpg" 
-                             alt="Students collaborating in modern learning environment" 
-                             loading="lazy">
+                        <img src="student1.jpg"
+                              alt="Students collaborating in modern learning environment"
+                              loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Childrens Day!</h3>
                             <p>Happy Childrens Day!</p>
@@ -1842,9 +1869,9 @@ section {
                     </div>
                     
                     <div class="gallery-item medium">
-                        <img src="student images 2.jpg" 
-                             alt="Group discussion and learning activities" 
-                             loading="lazy">
+                        <img src="student images 2.jpg"
+                              alt="Group discussion and learning activities"
+                              loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Student Performance</h3>
                             <p>Childrens Performance on stage</p>
@@ -1852,9 +1879,9 @@ section {
                     </div>
                     
                     <div class="gallery-item medium">
-                        <img src="student image 3.jpg" 
-                             alt="Contemporary classroom with digital learning tools" 
-                             loading="lazy">
+                        <img src="student image 3.jpg"
+                              alt="Contemporary classroom with digital learning tools"
+                              loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Smart Classrooms</h3>
                             <p>Technology-enabled learning spaces</p>
@@ -1862,9 +1889,9 @@ section {
                     </div>
                     
                     <div class="gallery-item small">
-                        <img src="teachers 5.jpg" 
-                             alt="Advanced science laboratory facilities" 
-                             loading="lazy">
+                        <img src="teachers 5.jpg"
+                              alt="Advanced science laboratory facilities"
+                              loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Science Labs</h3>
                             <p>Hands-on experimentation</p>
@@ -1872,9 +1899,9 @@ section {
                     </div>
                     
                     <div class="gallery-item small">
-                        <img src="teacher 6.jpg" 
-                             alt="Arts and creative programs" 
-                             loading="lazy">
+                        <img src="teacher 6.jpg"
+                              alt="Arts and creative programs"
+                              loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Arts Program</h3>
                             <p>Creative expression & talent</p>
@@ -1882,9 +1909,9 @@ section {
                     </div>
                     
                     <div class="gallery-item small">
-                        <img src="teacher 7.jpg" 
-                             alt="Sports and athletic facilities" 
-                             loading="lazy">
+                        <img src="teacher 7.jpg"
+                              alt="Sports and athletic facilities"
+                              loading="lazy">
                         <div class="gallery-overlay">
                             <h3>Sports Complex</h3>
                             <p>Physical fitness & wellness</p>
@@ -1901,8 +1928,8 @@ section {
                     <div class="cta-icon">
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
                             <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.1)"/>
-                            <path d="M32 20L36 28L44 30L38 36L40 44L32 40L24 44L26 36L20 30L28 28L32 20Z" 
-                                  fill="white" stroke="white" stroke-width="2"/>
+                            <path d="M32 20L36 28L44 30L38 36L40 44L32 40L24 44L26 36L20 30L28 28L32 20Z"
+                                   fill="white" stroke="white" stroke-width="2"/>
                         </svg>
                     </div>
                     
@@ -1929,8 +1956,8 @@ section {
                     <div class="cta-trust">
                         <div class="trust-badge">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M10 2L12 7L17 8L13.5 12L15 17L10 14.5L5 17L6.5 12L3 8L8 7L10 2Z" 
-                                      fill="currentColor"/>
+                                <path d="M10 2L12 7L17 8L13.5 12L15 17L10 14.5L5 17L6.5 12L3 8L8 7L10 2Z"
+                                       fill="currentColor"/>
                             </svg>
                             <span>CBSE Affiliated</span>
                         </div>
@@ -1963,8 +1990,8 @@ section {
                     <div class="footer-accreditation">
                         <span class="accreditation-badge">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z" 
-                                      fill="currentColor"/>
+                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z"
+                                       fill="currentColor"/>
                             </svg>
                             CBSE Affiliated
                         </span>
@@ -1999,8 +2026,8 @@ section {
                         <ul class="footer-links">
                             <li class="contact-item">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z" 
-                                          stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z"
+                                           stroke="currentColor" stroke-width="1.5" fill="none"/>
                                     <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
                                 </svg>
                                 <span>Gangarampur, Dakshin Dinajpur<br>West Bengal, India</span>
