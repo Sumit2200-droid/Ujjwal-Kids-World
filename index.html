@@ -459,14 +459,54 @@ img {
 /* ===== HERO SECTION ===== */
 .hero {
     padding: calc(80px + var(--space-16)) 0 var(--space-20);
-    background: linear-gradient(
-  180deg,
-  #e6b3b3 0%,
-  #ffffff 100%
-);
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 }
+
+/* Hero Background Slideshow */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-bg-slide.active {
+    opacity: 1;
+}
+
+/* Overlay for better text readability */
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(230, 179, 179, 0.85) 0%,
+        rgba(255, 255, 255, 0.92) 100%
+    );
+    z-index: 1;
+}
+
 .hero::before {
     content: '';
     position: absolute;
@@ -476,7 +516,9 @@ img {
     height: 150%;
     background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 2;
 }
+
 .hero-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -486,7 +528,7 @@ img {
     gap: var(--space-12);
     align-items: center;
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 /* MOBILE-FIRST: Image comes first on mobile */
 @media (max-width: 767px) {
@@ -1457,6 +1499,14 @@ section {
     <main id="main-content">
         <!-- Hero Section -->
         <section class="hero" id="home">
+            <!-- Animated Background Slideshow -->
+            <div class="hero-background">
+                <div class="hero-bg-slide active" style="background-image: url('home image.jpg');"></div>
+                <div class="hero-bg-slide" style="background-image: url('home image 1.jpg');"></div>
+                <div class="hero-bg-slide" style="background-image: url('student1.jpg');"></div>
+                <div class="hero-bg-slide" style="background-image: url('student images 2.jpg');"></div>
+            </div>
+            
             <div class="hero-container">
                 <div class="hero-visual">
                     <div class="hero-image-wrapper">
@@ -1811,6 +1861,20 @@ section {
 // ========================================
 document.addEventListener('DOMContentLoaded', function() {
   
+    // ===== BACKGROUND SLIDESHOW =====
+    const slides = document.querySelectorAll('.hero-bg-slide');
+    let currentSlide = 0;
+    const slideInterval = 5000; // Change image every 5 seconds
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Start the slideshow
+    setInterval(nextSlide, slideInterval);
+
     // ===== MOBILE MENU TOGGLE =====
     const menuToggle = document.getElementById('menuToggle');
     const mobileOverlay = document.getElementById('mobileOverlay');
@@ -1933,7 +1997,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
         const observerOptions = {
-            threshold: 0.1,  // ✅ CORRECT - Use comma here
+            threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
   
@@ -2077,7 +2141,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // ===== CONSOLE MESSAGE =====
     console.log('%cUjjwal Kids World', 'font-size: 24px; color: #4A90E2; font-weight: bold;');
-    console.log('%cExcellence in Education Since 2010', 'font-size: 14px; color: #6C757D;');
+    console.log('%cExcellence in Education Since 2017', 'font-size: 14px; color: #6C757D;');
     console.log('%c🎓 Building Bright Futures', 'font-size: 12px; color: #26C281;');
   
 });

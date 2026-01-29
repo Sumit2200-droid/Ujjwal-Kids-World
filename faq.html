@@ -229,7 +229,7 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: #a41e35;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-sm);
@@ -286,7 +286,7 @@ img {
 .nav-links a {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-gray-700);
+    color: var(--color-white);
     transition: color var(--transition-fast);
     position: relative;
 }
@@ -298,12 +298,12 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-primary);
+    background: var(--color-white);
     transition: width var(--transition-base);
 }
 
 .nav-links a:hover {
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .nav-links a:hover::after {
@@ -344,7 +344,7 @@ img {
 .hamburger {
     width: 24px;
     height: 2px;
-    background: var(--color-gray-800);
+    background: white;
     border-radius: var(--radius-full);
     transition: all var(--transition-base);
 }
@@ -846,8 +846,8 @@ section {
 .section-tag {
     display: inline-block;
     padding: var(--space-2) var(--space-4);
-    background: var(--color-primary-50);
-    color: var(--color-primary-dark);
+    background: #a41e35;
+    color: var(--color-white);
     font-size: var(--text-sm);
     font-weight: 700;
     text-transform: uppercase;
@@ -865,7 +865,11 @@ section {
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+   background: linear-gradient(
+  135deg,
+  rgb(164, 30, 53) 0%,
+  rgb(220, 90, 110) 100%
+);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1022,7 +1026,11 @@ section {
 }
 
 .faq-item.active .faq-icon {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    background: linear-gradient(
+  135deg,
+  rgb(164, 30, 53) 0%,
+  rgb(220, 90, 110) 100%
+);
 }
 
 .faq-item.active .faq-icon svg {
@@ -1780,7 +1788,7 @@ section {
             <div class="nav-brand">
                 <div class="logo">
                     <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
-                    <span class="logo-text">Ujjwal Kids World</span>
+                    <span class="logo-text" style="color: white;">Ujjwal Kids World</span>
                 </div>
             </div>
 
@@ -1796,7 +1804,7 @@ section {
                     <li><a href="programs.html">Academic Programs</a></li>
                     <li><a href="Campus.html">Our Campuses</a></li>
                     <li><a href="Achievements.html">Achievements</a></li>
-                    <li><a href="projects.html" class="btn-nav-cta">Student Projects</a></li>
+                    <li><a href="projects.html">Student Projects</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
