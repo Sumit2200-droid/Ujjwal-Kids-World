@@ -396,7 +396,7 @@ img {
     justify-content: space-between;
     padding: var(--space-5) var(--space-6);
     border-bottom: 1px solid var(--color-gray-200);
-    background: var(--color-white);
+    background: #a41e35;
     position: sticky;
     top: 0;
     z-index: var(--z-fixed);
@@ -421,6 +421,7 @@ img {
 .mobile-logo-text {
     font-family: var(--font-secondary);
     letter-spacing: -0.02em;
+    color: var(--color-white);
 }
 
 .mobile-close {
@@ -431,7 +432,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-gray-800);
+    color: var(--color-white);
     transition: all var(--transition-fast);
 }
 
@@ -998,7 +999,7 @@ section {
 }
 
 .faq-question:hover {
-    color: var(--color-primary);
+    color: #a41e35;
 }
 
 .question-text {
@@ -1013,7 +1014,11 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-primary-50);
+   background: linear-gradient(
+  135deg,
+  rgb(164, 30, 53) 0%,
+  rgb(220, 90, 110) 100%
+);
     border-radius: var(--radius-full);
     transition: all var(--transition-base);
 }
@@ -1021,7 +1026,7 @@ section {
 .faq-icon svg {
     width: 16px;
     height: 16px;
-    stroke: var(--color-primary);
+    stroke: var(--color-white);
     transition: transform var(--transition-base);
 }
 
@@ -1491,8 +1496,8 @@ section {
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-2) var(--space-4);
-    background: rgba(74, 144, 226, 0.1);
-    color: var(--color-primary-100);
+    background: #591c1f;
+    color: var(--color-white);
     font-size: var(--text-sm);
     font-weight: 600;
     border-radius: var(--radius-full);
@@ -1525,9 +1530,6 @@ section {
     font-size: var(--text-sm);
 }
 
-.footer-links a:hover {
-    color: var(--color-primary-100);
-}
 
 .contact-item {
     display: flex;
@@ -1578,7 +1580,7 @@ section {
 }
 
 .social-link:hover {
-    background: var(--color-primary);
+    background: #591c1f;
     color: var(--color-white);
     transform: translateY(-3px);
 }
@@ -1800,7 +1802,7 @@ section {
 
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="programs.html">Academic Programs</a></li>
                     <li><a href="Campus.html">Our Campuses</a></li>
                     <li><a href="Achievements.html">Achievements</a></li>
@@ -1986,26 +1988,7 @@ section {
                     </div>
 
                     <!-- FAQ CTA -->
-                    <div class="faq-cta">
-                        <h3 class="faq-cta-title">Still Have Questions?</h3>
-                        <p class="faq-cta-text">
-                            Our admissions team is here to help. Reach out to us for personalized assistance and campus tours.
-                        </p>
-                        <div class="faq-cta-actions">
-                            <a href="mailto:admissions@ujjwalkidsworld.edu" class="btn btn-primary">
-                                Contact Admissions
-                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="btn btn-secondary">
-                                Schedule Campus Visit
-                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -2088,7 +2071,7 @@ section {
             <div class="footer-bottom">
                 <div class="footer-copyright">
                     <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
-                    <p class="footer-tagline-small">Excellence Since 2010</p>
+                    <p class="footer-tagline-small">Excellence Since 2017</p>
                 </div>
 
                 <div class="footer-social">
