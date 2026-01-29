@@ -1932,10 +1932,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   
     // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
-    const observerOptions = {
-        threshold: 0.1;
-        rootMargin: '0px 0px -50px 0px'
-    };
+        const observerOptions = {
+            threshold: 0.1,  // ✅ CORRECT - Use comma here
+            rootMargin: '0px 0px -50px 0px'
+        };
   
     const fadeInObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
