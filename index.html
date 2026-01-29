@@ -216,7 +216,7 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgb(164, 30, 53);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-sm);
@@ -251,7 +251,8 @@ img {
 }
 .logo-text {
     font-family: var(--font-secondary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.02em; 
+    color: white;
 }
 .nav-menu {
     display: none;
@@ -265,7 +266,7 @@ img {
 .nav-links a {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-gray-700);
+    color: white;
     transition: color var(--transition-fast);
     position: relative;
 }
@@ -276,11 +277,11 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-primary);
+    background: var(--color-white);
     transition: width var(--transition-base);
 }
 .nav-links a:hover {
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 .nav-links a:hover::after {
     width: 100%;
@@ -311,6 +312,7 @@ img {
     cursor: pointer;
     padding: var(--space-2);
     z-index: var(--z-modal);
+    color: white;
 }
 .hamburger {
     width: 24px;
@@ -457,7 +459,11 @@ img {
 /* ===== HERO SECTION ===== */
 .hero {
     padding: calc(80px + var(--space-16)) 0 var(--space-20);
-    background: linear-gradient(180deg, var(--color-primary-50) 0%, var(--color-white) 100%);
+    background: linear-gradient(
+  180deg,
+  #e6b3b3 0%,
+  #ffffff 100%
+);
     position: relative;
     overflow: hidden;
 }
@@ -1399,7 +1405,7 @@ section {
                     <li><a href="programs.html">Academic Programs</a></li>
                     <li><a href="Campus.html">Our Campuses</a></li>
                     <li><a href="Achievements.html">Achievements</a></li>
-                    <li><a href="projects.html" class="btn-nav-cta">Student Projects</a></li>
+                    <li><a href="projects.html">Student Projects</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
