@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ujjwal Kids World - A premier educational institution nurturing young minds through excellence in academics, character development, and holistic growth.">
     <title>Ujjwal Kids World | Excellence in Education</title>
-    
+  
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+  
 </head>
 <body>
     <style>
@@ -18,7 +18,6 @@
    UJJWAL KIDS WORLD - MODERN STYLESHEET
    Educational Design System
    ======================================== */
-
 /* ===== CSS VARIABLES ===== */
 :root {
     /* Primary Color Palette - Soft Educational Blues */
@@ -27,18 +26,18 @@
     --color-primary-dark: #3A7BC8;
     --color-primary-50: #E3F2FD;
     --color-primary-100: #BBDEFB;
-    
+  
     /* Secondary Color Palette - Gentle Purples */
     --color-secondary: #8E7CC3;
     --color-secondary-light: #A796D6;
     --color-secondary-dark: #7461B8;
     --color-secondary-50: #F3E5F5;
-    
+  
     /* Accent Colors */
     --color-accent-orange: #FF9F43;
     --color-accent-green: #26C281;
     --color-accent-pink: #EE5A6F;
-    
+  
     /* Neutral Colors */
     --color-white: #FFFFFF;
     --color-gray-50: #F8F9FA;
@@ -51,45 +50,45 @@
     --color-gray-700: #495057;
     --color-gray-800: #343A40;
     --color-gray-900: #212529;
-    
+  
     /* Typography */
     --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-secondary: 'Quicksand', sans-serif;
-    
+  
     /* Font Sizes */
-    --text-xs: 0.75rem;      /* 12px */
-    --text-sm: 0.875rem;     /* 14px */
-    --text-base: 1rem;       /* 16px */
-    --text-lg: 1.125rem;     /* 18px */
-    --text-xl: 1.25rem;      /* 20px */
-    --text-2xl: 1.5rem;      /* 24px */
-    --text-3xl: 1.875rem;    /* 30px */
-    --text-4xl: 2.25rem;     /* 36px */
-    --text-5xl: 3rem;        /* 48px */
-    --text-6xl: 3.75rem;     /* 60px */
-    
+    --text-xs: 0.75rem; /* 12px */
+    --text-sm: 0.875rem; /* 14px */
+    --text-base: 1rem; /* 16px */
+    --text-lg: 1.125rem; /* 18px */
+    --text-xl: 1.25rem; /* 20px */
+    --text-2xl: 1.5rem; /* 24px */
+    --text-3xl: 1.875rem; /* 30px */
+    --text-4xl: 2.25rem; /* 36px */
+    --text-5xl: 3rem; /* 48px */
+    --text-6xl: 3.75rem; /* 60px */
+  
     /* Spacing Scale */
-    --space-1: 0.25rem;   /* 4px */
-    --space-2: 0.5rem;    /* 8px */
-    --space-3: 0.75rem;   /* 12px */
-    --space-4: 1rem;      /* 16px */
-    --space-5: 1.25rem;   /* 20px */
-    --space-6: 1.5rem;    /* 24px */
-    --space-8: 2rem;      /* 32px */
-    --space-10: 2.5rem;   /* 40px */
-    --space-12: 3rem;     /* 48px */
-    --space-16: 4rem;     /* 64px */
-    --space-20: 5rem;     /* 80px */
-    --space-24: 6rem;     /* 96px */
-    
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem; /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem; /* 16px */
+    --space-5: 1.25rem; /* 20px */
+    --space-6: 1.5rem; /* 24px */
+    --space-8: 2rem; /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem; /* 48px */
+    --space-16: 4rem; /* 64px */
+    --space-20: 5rem; /* 80px */
+    --space-24: 6rem; /* 96px */
+  
     /* Border Radius */
-    --radius-sm: 0.375rem;   /* 6px */
-    --radius-md: 0.5rem;     /* 8px */
-    --radius-lg: 0.75rem;    /* 12px */
-    --radius-xl: 1rem;       /* 16px */
-    --radius-2xl: 1.5rem;    /* 24px */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.5rem; /* 8px */
+    --radius-lg: 0.75rem; /* 12px */
+    --radius-xl: 1rem; /* 16px */
+    --radius-2xl: 1.5rem; /* 24px */
     --radius-full: 9999px;
-    
+  
     /* Shadows */
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -97,12 +96,12 @@
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.06);
     --shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
-    
+  
     /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    
+  
     /* Z-index Scale */
     --z-dropdown: 1000;
     --z-sticky: 1020;
@@ -113,20 +112,23 @@
     --z-tooltip: 1070;
 }
 
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.4); opacity: 0.7; }
+}
+
 /* ===== RESET & BASE STYLES ===== */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     font-size: 16px;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 body {
     font-family: var(--font-primary);
     font-size: var(--text-base);
@@ -135,7 +137,6 @@ body {
     background-color: var(--color-white);
     overflow-x: hidden;
 }
-
 /* ===== ACCESSIBILITY ===== */
 .skip-link {
     position: absolute;
@@ -150,18 +151,15 @@ body {
     font-weight: 600;
     transition: top var(--transition-fast);
 }
-
 .skip-link:focus {
     top: 0;
 }
-
 /* Focus Visible for Keyboard Navigation */
 :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
     border-radius: var(--radius-sm);
 }
-
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
@@ -170,39 +168,31 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-gray-900);
     margin-bottom: var(--space-4);
 }
-
 h1 {
     font-size: var(--text-5xl);
 }
-
 h2 {
     font-size: var(--text-4xl);
 }
-
 h3 {
     font-size: var(--text-2xl);
 }
-
 p {
     margin-bottom: var(--space-4);
 }
-
 a {
     color: var(--color-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
-
 a:hover {
     color: var(--color-primary-dark);
 }
-
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
-
 /* ===== CONTAINER & LAYOUT ===== */
 .container {
     width: 100%;
@@ -210,19 +200,16 @@ img {
     margin: 0 auto;
     padding: 0 var(--space-6);
 }
-
 @media (min-width: 768px) {
     .container {
         padding: 0 var(--space-8);
     }
 }
-
 @media (min-width: 1280px) {
     .container {
         padding: 0 var(--space-12);
     }
 }
-
 /* ===== NAVIGATION ===== */
 .navbar {
     position: fixed;
@@ -236,11 +223,9 @@ img {
     z-index: var(--z-fixed);
     transition: all var(--transition-base);
 }
-
 .navbar.scrolled {
     box-shadow: var(--shadow-md);
 }
-
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -249,7 +234,6 @@ img {
     justify-content: space-between;
     align-items: center;
 }
-
 .nav-brand .logo {
     display: flex;
     align-items: center;
@@ -259,30 +243,25 @@ img {
     color: var(--color-gray-900);
     text-decoration: none;
 }
-
 .logo-img {
     width: 40px;
     height: 40px;
     object-fit: contain;
     border-radius: var(--radius-md);
 }
-
 .logo-text {
     font-family: var(--font-secondary);
     letter-spacing: -0.02em;
 }
-
 .nav-menu {
     display: none;
 }
-
 .nav-links {
     display: flex;
     align-items: center;
     gap: var(--space-8);
     list-style: none;
 }
-
 .nav-links a {
     font-size: var(--text-sm);
     font-weight: 500;
@@ -290,7 +269,6 @@ img {
     transition: color var(--transition-fast);
     position: relative;
 }
-
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -301,15 +279,12 @@ img {
     background: var(--color-primary);
     transition: width var(--transition-base);
 }
-
 .nav-links a:hover {
     color: var(--color-primary);
 }
-
 .nav-links a:hover::after {
     width: 100%;
 }
-
 .btn-nav-cta {
     padding: var(--space-3) var(--space-6);
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
@@ -319,16 +294,13 @@ img {
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
 }
-
 .btn-nav-cta::after {
     display: none;
 }
-
 .btn-nav-cta:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
-
 /* Mobile Menu Toggle */
 .menu-toggle {
     display: flex;
@@ -340,7 +312,6 @@ img {
     padding: var(--space-2);
     z-index: var(--z-modal);
 }
-
 .hamburger {
     width: 24px;
     height: 2px;
@@ -348,20 +319,16 @@ img {
     border-radius: var(--radius-full);
     transition: all var(--transition-base);
 }
-
 .menu-toggle.active .hamburger:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
 }
-
 .menu-toggle.active .hamburger:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
-
 .menu-toggle.active .hamburger:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
 }
-
 /* Mobile Navigation Overlay */
 .mobile-overlay {
     position: fixed;
@@ -378,18 +345,15 @@ img {
     transition: all var(--transition-slow);
     overflow-y: auto;
 }
-
 .mobile-overlay.active {
     opacity: 1;
     visibility: visible;
 }
-
 .mobile-nav {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-
 .mobile-nav-header {
     display: flex;
     align-items: center;
@@ -401,7 +365,6 @@ img {
     top: 0;
     z-index: var(--z-fixed);
 }
-
 .mobile-logo {
     display: flex;
     align-items: center;
@@ -410,19 +373,16 @@ img {
     font-weight: 700;
     color: var(--color-gray-900);
 }
-
 .mobile-logo-img {
     width: 32px;
     height: 32px;
     object-fit: contain;
     border-radius: var(--radius-md);
 }
-
 .mobile-logo-text {
     font-family: var(--font-secondary);
     letter-spacing: -0.02em;
 }
-
 .mobile-close {
     background: none;
     border: none;
@@ -434,18 +394,15 @@ img {
     color: var(--color-gray-800);
     transition: all var(--transition-fast);
 }
-
 .mobile-close:hover {
     color: var(--color-primary);
     transform: rotate(90deg);
 }
-
 .mobile-nav-links {
     list-style: none;
     padding: var(--space-4) 0;
     flex: 1;
 }
-
 .mobile-link {
     display: block;
     padding: var(--space-5) var(--space-6);
@@ -457,11 +414,9 @@ img {
     border-left: 4px solid transparent;
     position: relative;
 }
-
 .mobile-overlay.active .mobile-link {
     animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 @keyframes slideInLeft {
     from {
         opacity: 0;
@@ -472,7 +427,6 @@ img {
         transform: translateX(0);
     }
 }
-
 .mobile-nav-links li:nth-child(1) .mobile-link { animation-delay: 0.1s; }
 .mobile-nav-links li:nth-child(2) .mobile-link { animation-delay: 0.15s; }
 .mobile-nav-links li:nth-child(3) .mobile-link { animation-delay: 0.2s; }
@@ -480,14 +434,12 @@ img {
 .mobile-nav-links li:nth-child(5) .mobile-link { animation-delay: 0.3s; }
 .mobile-nav-links li:nth-child(6) .mobile-link { animation-delay: 0.35s; }
 .mobile-nav-links li:nth-child(7) .mobile-link { animation-delay: 0.4s; }
-
 .mobile-link:hover {
     background: var(--color-primary-50);
     color: var(--color-primary-dark);
     border-left-color: var(--color-primary);
     transform: translateX(4px);
 }
-
 .mobile-link-cta {
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
     color: var(--color-white) !important;
@@ -497,13 +449,11 @@ img {
     font-weight: 600;
     box-shadow: var(--shadow-sm);
 }
-
 .mobile-link-cta:hover {
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
-
 /* ===== HERO SECTION ===== */
 .hero {
     padding: calc(80px + var(--space-16)) 0 var(--space-20);
@@ -511,7 +461,6 @@ img {
     position: relative;
     overflow: hidden;
 }
-
 .hero::before {
     content: '';
     position: absolute;
@@ -522,7 +471,6 @@ img {
     background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
     pointer-events: none;
 }
-
 .hero-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -534,29 +482,26 @@ img {
     position: relative;
     z-index: 1;
 }
-
 /* MOBILE-FIRST: Image comes first on mobile */
 @media (max-width: 767px) {
     .hero-container {
         display: flex;
         flex-direction: column;
     }
-    
+  
     .hero-visual {
         order: -1; /* This moves the visual to the top */
         width: 100%;
         margin-bottom: var(--space-8);
     }
-    
+  
     .hero-content {
         order: 1;
     }
 }
-
 .hero-content {
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -567,7 +512,6 @@ img {
         transform: translateY(0);
     }
 }
-
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -579,17 +523,14 @@ img {
     margin-bottom: var(--space-6);
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
-
 .badge-icon {
     font-size: var(--text-lg);
 }
-
 .badge-text {
     font-size: var(--text-sm);
     font-weight: 600;
     color: var(--color-primary-dark);
 }
-
 .hero-title {
     font-size: var(--text-5xl);
     font-weight: 800;
@@ -598,7 +539,6 @@ img {
     margin-bottom: var(--space-6);
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
-
 .highlight {
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
@@ -606,7 +546,6 @@ img {
     background-clip: text;
     position: relative;
 }
-
 .hero-description {
     font-size: var(--text-lg);
     line-height: 1.8;
@@ -615,7 +554,6 @@ img {
     max-width: 600px;
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
 }
-
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -623,7 +561,6 @@ img {
     margin-bottom: var(--space-12);
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
-
 /* ===== BUTTONS ===== */
 .btn {
     display: inline-flex;
@@ -640,63 +577,52 @@ img {
     position: relative;
     overflow: hidden;
 }
-
 .btn-primary {
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
     color: var(--color-white);
     box-shadow: var(--shadow-md);
 }
-
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
     color: var(--color-white);
 }
-
 .btn-secondary {
     background: var(--color-white);
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
 }
-
 .btn-secondary:hover {
     background: var(--color-primary-50);
     transform: translateY(-2px);
     color: var(--color-primary-dark);
 }
-
 .btn-light {
     background: var(--color-white);
     color: var(--color-primary);
     box-shadow: var(--shadow-md);
 }
-
 .btn-light:hover {
     background: var(--color-primary-50);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
-
 .btn-outline-light {
     background: transparent;
     color: var(--color-white);
     border: 2px solid var(--color-white);
 }
-
 .btn-outline-light:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
     color: var(--color-white);
 }
-
 .btn-icon {
     transition: transform var(--transition-base);
 }
-
 .btn:hover .btn-icon {
     transform: translateX(4px);
 }
-
 /* ===== HERO STATS ===== */
 .hero-stats {
     display: grid;
@@ -706,17 +632,14 @@ img {
     padding: var(--space-8) 0;
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
 }
-
 .stat-divider {
     width: 1px;
     height: 40px;
     background: var(--color-gray-300);
 }
-
 .stat-item {
     text-align: center;
 }
-
 .stat-number {
     font-size: var(--text-3xl);
     font-weight: 800;
@@ -725,29 +648,24 @@ img {
     line-height: 1;
     margin-bottom: var(--space-2);
 }
-
 .stat-label {
     font-size: var(--text-sm);
     color: var(--color-gray-600);
     font-weight: 500;
 }
-
 /* ===== HERO VISUAL ===== */
 .hero-visual {
     position: relative;
     animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 .hero-image-wrapper {
     position: relative;
     height: 600px;
 }
-
 .image-card {
     position: absolute;
     border-radius: var(--radius-2xl);
@@ -755,13 +673,11 @@ img {
     box-shadow: var(--shadow-2xl);
     transition: transform var(--transition-slow);
 }
-
 .image-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 .primary-card {
     top: 0;
     right: 0;
@@ -769,7 +685,6 @@ img {
     height: 80%;
     z-index: 2;
 }
-
 .secondary-card {
     bottom: 0;
     left: 0;
@@ -778,11 +693,9 @@ img {
     border: 6px solid var(--color-white);
     z-index: 3;
 }
-
 .image-card:hover {
     transform: translateY(-8px);
 }
-
 .floating-element {
     position: absolute;
     display: flex;
@@ -798,24 +711,20 @@ img {
     z-index: 4;
     animation: float 3s ease-in-out infinite;
 }
-
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
-
 .element-1 {
     top: 10%;
     left: -5%;
     animation-delay: 0s;
 }
-
 .element-2 {
     bottom: 15%;
     right: -5%;
     animation-delay: 1.5s;
 }
-
 .icon-circle {
     width: 32px;
     height: 32px;
@@ -826,23 +735,19 @@ img {
     border-radius: var(--radius-full);
     font-size: var(--text-lg);
 }
-
 /* ===== SECTION STYLES ===== */
 section {
     padding: var(--space-20) 0;
 }
-
 .section-header {
     max-width: 800px;
     margin-bottom: var(--space-16);
 }
-
 .section-header.centered {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-
 .section-tag {
     display: inline-block;
     padding: var(--space-2) var(--space-4);
@@ -855,7 +760,6 @@ section {
     border-radius: var(--radius-full);
     margin-bottom: var(--space-4);
 }
-
 .section-title {
     font-size: var(--text-4xl);
     font-weight: 800;
@@ -863,31 +767,26 @@ section {
     color: var(--color-gray-900);
     margin-bottom: var(--space-5);
 }
-
 .text-gradient {
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
 .section-description {
     font-size: var(--text-lg);
     line-height: 1.8;
     color: var(--color-gray-600);
 }
-
 /* ===== ABOUT SECTION ===== */
 .about-section {
     background: var(--color-gray-50);
 }
-
 .features-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
 }
-
 .feature-card {
     background: var(--color-white);
     padding: var(--space-10);
@@ -897,7 +796,6 @@ section {
     position: relative;
     overflow: hidden;
 }
-
 .feature-card::before {
     content: '';
     position: absolute;
@@ -910,20 +808,16 @@ section {
     transform-origin: left;
     transition: transform var(--transition-base);
 }
-
 .feature-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
 }
-
 .feature-card:hover::before {
     transform: scaleX(1);
 }
-
 .feature-icon {
     margin-bottom: var(--space-6);
 }
-
 .feature-number {
     position: absolute;
     top: var(--space-6);
@@ -933,21 +827,18 @@ section {
     color: var(--color-gray-200);
     font-family: var(--font-secondary);
 }
-
 .feature-title {
     font-size: var(--text-2xl);
     font-weight: 700;
     color: var(--color-gray-900);
     margin-bottom: var(--space-4);
 }
-
 .feature-text {
     font-size: var(--text-base);
     line-height: 1.7;
     color: var(--color-gray-600);
     margin-bottom: var(--space-6);
 }
-
 .feature-badge {
     display: inline-flex;
     align-items: center;
@@ -959,44 +850,37 @@ section {
     font-weight: 600;
     border-radius: var(--radius-full);
 }
-
 .badge-dot {
     width: 8px;
     height: 8px;
     background: var(--color-primary);
     border-radius: var(--radius-full);
 }
-
 /* ===== LEADERSHIP SECTION ===== */
 .leadership-section {
     background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
     color: var(--color-white);
 }
-
 .leadership-content {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-12);
     align-items: center;
 }
-
 .leadership-image {
     position: relative;
 }
-
 .image-frame {
     position: relative;
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: var(--shadow-2xl);
 }
-
 .image-frame img {
     width: 100%;
     height: auto;
     display: block;
 }
-
 .quote-mark {
     position: absolute;
     bottom: -2rem;
@@ -1007,19 +891,16 @@ section {
     line-height: 0.5;
     pointer-events: none;
 }
-
 .leadership-text .section-tag {
     background: rgba(255, 255, 255, 0.1);
     color: var(--color-primary-100);
 }
-
 .leadership-name {
     font-size: var(--text-4xl);
     font-weight: 800;
     color: var(--color-white);
     margin-bottom: var(--space-2);
 }
-
 .leadership-role {
     font-size: var(--text-xl);
     font-weight: 500;
@@ -1027,7 +908,6 @@ section {
     font-style: italic;
     margin-bottom: var(--space-8);
 }
-
 .leadership-quote {
     font-size: var(--text-xl);
     line-height: 1.7;
@@ -1037,18 +917,15 @@ section {
     padding-left: var(--space-6);
     border-left: 4px solid var(--color-primary);
 }
-
 .leadership-bio {
     margin-bottom: var(--space-10);
 }
-
 .leadership-bio p {
     font-size: var(--text-base);
     line-height: 1.8;
     color: var(--color-gray-400);
     margin-bottom: var(--space-5);
 }
-
 .leadership-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1056,11 +933,9 @@ section {
     padding-top: var(--space-8);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .leadership-stat {
     text-align: center;
 }
-
 .leadership-stat .stat-value {
     font-size: var(--text-4xl);
     font-weight: 800;
@@ -1068,24 +943,20 @@ section {
     font-family: var(--font-secondary);
     margin-bottom: var(--space-2);
 }
-
 .leadership-stat .stat-text {
     font-size: var(--text-sm);
     color: var(--color-gray-400);
     font-weight: 500;
 }
-
 /* ===== GALLERY SECTION ===== */
 .gallery-section {
     background: var(--color-white);
 }
-
 .gallery-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
 }
-
 .gallery-item {
     position: relative;
     border-radius: var(--radius-xl);
@@ -1094,14 +965,12 @@ section {
     transition: all var(--transition-base);
     cursor: pointer;
 }
-
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
 }
-
 .gallery-overlay {
     position: absolute;
     bottom: 0;
@@ -1113,33 +982,27 @@ section {
     transform: translateY(100%);
     transition: transform var(--transition-base);
 }
-
 .gallery-item:hover .gallery-overlay {
     transform: translateY(0);
 }
-
 .gallery-item:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
 }
-
 .gallery-item:hover img {
     transform: scale(1.1);
 }
-
 .gallery-overlay h3 {
     font-size: var(--text-xl);
     font-weight: 700;
     margin-bottom: var(--space-2);
     color: var(--color-white);
 }
-
 .gallery-overlay p {
     font-size: var(--text-sm);
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
 }
-
 /* ===== CTA SECTION ===== */
 .cta-section {
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark), var(--color-secondary));
@@ -1148,7 +1011,6 @@ section {
     position: relative;
     overflow: hidden;
 }
-
 .cta-section::before {
     content: '';
     position: absolute;
@@ -1159,29 +1021,24 @@ section {
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
 }
-
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
 .cta-content {
     position: relative;
     z-index: 1;
     max-width: 800px;
     margin: 0 auto;
 }
-
 .cta-icon {
     margin-bottom: var(--space-6);
     animation: pulse 2s ease-in-out infinite;
 }
-
 @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.1); opacity: 0.8; }
 }
-
 .cta-title {
     font-size: var(--text-4xl);
     font-weight: 800;
@@ -1189,14 +1046,12 @@ section {
     margin-bottom: var(--space-6);
     line-height: 1.2;
 }
-
 .cta-description {
     font-size: var(--text-lg);
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--space-10);
 }
-
 .cta-actions {
     display: flex;
     flex-wrap: wrap;
@@ -1204,14 +1059,12 @@ section {
     gap: var(--space-4);
     margin-bottom: var(--space-10);
 }
-
 .cta-trust {
     display: flex;
     justify-content: center;
     gap: var(--space-8);
     flex-wrap: wrap;
 }
-
 .trust-badge {
     display: flex;
     align-items: center;
@@ -1224,14 +1077,12 @@ section {
     font-weight: 600;
     color: var(--color-white);
 }
-
 /* ===== FOOTER ===== */
 .footer {
     background: var(--color-gray-900);
     color: var(--color-gray-400);
     padding: var(--space-16) 0 var(--space-8);
 }
-
 .footer-main {
     display: grid;
     grid-template-columns: 1fr;
@@ -1240,7 +1091,6 @@ section {
     padding-bottom: var(--space-12);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .footer-brand .footer-logo {
     display: flex;
     align-items: center;
@@ -1250,7 +1100,6 @@ section {
     color: var(--color-white);
     margin-bottom: var(--space-4);
 }
-
 .footer-tagline {
     font-size: var(--text-base);
     line-height: 1.7;
@@ -1258,11 +1107,9 @@ section {
     margin-bottom: var(--space-4);
     max-width: 400px;
 }
-
 .footer-accreditation {
     margin-top: var(--space-4);
 }
-
 .accreditation-badge {
     display: inline-flex;
     align-items: center;
@@ -1274,38 +1121,31 @@ section {
     font-weight: 600;
     border-radius: var(--radius-full);
 }
-
 .footer-links-group {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-8);
 }
-
 .footer-heading {
     font-size: var(--text-lg);
     font-weight: 700;
     color: var(--color-white);
     margin-bottom: var(--space-4);
 }
-
 .footer-links {
     list-style: none;
 }
-
 .footer-links li {
     margin-bottom: var(--space-3);
 }
-
 .footer-links a {
     color: var(--color-gray-400);
     transition: color var(--transition-fast);
     font-size: var(--text-sm);
 }
-
 .footer-links a:hover {
     color: var(--color-primary-100);
 }
-
 .contact-item {
     display: flex;
     align-items: flex-start;
@@ -1313,12 +1153,10 @@ section {
     color: var(--color-gray-400);
     font-size: var(--text-sm);
 }
-
 .contact-item svg {
     flex-shrink: 0;
     margin-top: var(--space-1);
 }
-
 .footer-bottom {
     display: flex;
     flex-direction: column;
@@ -1326,22 +1164,18 @@ section {
     align-items: center;
     text-align: center;
 }
-
 .footer-copyright {
     font-size: var(--text-sm);
     color: var(--color-gray-500);
 }
-
 .footer-tagline-small {
     color: var(--color-gray-600);
     margin-top: var(--space-2);
 }
-
 .footer-social {
     display: flex;
     gap: var(--space-4);
 }
-
 .social-link {
     width: 40px;
     height: 40px;
@@ -1353,183 +1187,175 @@ section {
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
 }
-
 .social-link:hover {
     background: var(--color-primary);
     color: var(--color-white);
     transform: translateY(-3px);
 }
-
 /* ===== RESPONSIVE DESIGN ===== */
-
 /* Tablet (768px and up) */
 @media (min-width: 768px) {
     .nav-menu {
         display: block;
     }
-    
+  
     .menu-toggle {
         display: none;
     }
-    
+  
     .hero-container {
         display: grid;
         grid-template-columns: 1fr 1.1fr;
         gap: var(--space-16);
     }
-    
+  
     /* Reset mobile flexbox order - grid will use natural HTML order */
     .hero-visual {
         order: 0;
     }
-    
+  
     .hero-content {
         order: 0;
     }
-    
+  
     .hero-title {
         font-size: var(--text-6xl);
     }
-    
+  
     .hero-stats {
         grid-template-columns: auto 1px auto 1px auto 1px auto;
     }
-    
+  
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-8);
     }
-    
+  
     .leadership-content {
         grid-template-columns: 0.9fr 1.1fr;
         gap: var(--space-16);
     }
-    
+  
     .gallery-grid {
         grid-template-columns: repeat(12, 1fr);
         grid-auto-rows: 250px;
         gap: var(--space-4);
     }
-    
+  
     .gallery-item.large {
         grid-column: span 7;
         grid-row: span 2;
     }
-    
+  
     .gallery-item.medium {
         grid-column: span 5;
         grid-row: span 1;
     }
-    
+  
     .gallery-item.small {
         grid-column: span 4;
         grid-row: span 1;
     }
-    
+  
     .footer-main {
         grid-template-columns: 1.5fr 1fr;
     }
-    
+  
     .footer-links-group {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+  
     .footer-bottom {
         flex-direction: row;
         justify-content: space-between;
     }
 }
-
 /* Desktop (1024px and up) */
 @media (min-width: 1024px) {
     .section-title {
         font-size: var(--text-5xl);
     }
-    
+  
     .cta-title {
         font-size: var(--text-5xl);
     }
 }
-
 /* Large Desktop (1280px and up) */
 @media (min-width: 1280px) {
     .hero-image-wrapper {
         height: 650px;
     }
 }
-
 /* Mobile Optimizations */
 @media (max-width: 767px) {
     .hero {
         padding: calc(70px + var(--space-12)) 0 var(--space-12);
     }
-    
+  
     .hero-title {
         font-size: var(--text-4xl);
     }
-    
+  
     .hero-stats {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-4);
     }
-    
+  
     .stat-divider {
         display: none;
     }
-    
+  
     .stat-divider:nth-child(4) {
         display: block;
         grid-column: 1 / -1;
         height: 1px;
         width: 100%;
     }
-    
+  
     .hero-image-wrapper {
         height: 450px;
     }
-    
+  
     .primary-card {
         width: 75%;
         height: 75%;
     }
-    
+  
     .secondary-card {
         width: 55%;
         height: 40%;
     }
-    
+  
     .floating-element {
         font-size: var(--text-xs);
         padding: var(--space-2) var(--space-3);
     }
-    
+  
     .section-title {
         font-size: var(--text-3xl);
     }
-    
+  
     .leadership-stats {
         grid-template-columns: 1fr;
         gap: var(--space-6);
     }
-    
+  
     .cta-title {
         font-size: var(--text-3xl);
     }
 }
-
 /* Extra Small Mobile */
 @media (max-width: 480px) {
     .hero-actions {
         flex-direction: column;
         width: 100%;
     }
-    
+  
     .btn {
         width: 100%;
         justify-content: center;
     }
 }
-
 /* Print Styles */
 @media print {
     .navbar,
@@ -1540,17 +1366,17 @@ section {
     .footer-social {
         display: none;
     }
-    
+  
     body {
         font-size: 12pt;
     }
-    
+  
     .hero {
         padding-top: var(--space-8);
     }
 }
     </style>
-    
+  
     <!-- Navigation -->
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
@@ -1560,13 +1386,13 @@ section {
                     <span class="logo-text">Ujjwal Kids World</span>
                 </div>
             </div>
-            
+          
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
             </button>
-            
+          
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -1579,7 +1405,6 @@ section {
             </div>
         </div>
     </nav>
-
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-overlay" id="mobileOverlay">
         <nav class="mobile-nav" aria-label="Mobile navigation">
@@ -1602,11 +1427,9 @@ section {
                 <li><a href="Achievements.html" class="mobile-link">Achievements</a></li>
                 <li><a href="projects.html" class="mobile-link">Student Projects</a></li>
                 <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
-                
             </ul>
         </nav>
     </div>
-
     <main id="main-content">
         <!-- Hero Section -->
         <section class="hero" id="home">
@@ -1633,24 +1456,24 @@ section {
                         </div>
                     </div>
                 </div>
-                
+              
                 <div class="hero-content">
                     <div class="hero-badge">
                         <span class="badge-icon">✨</span>
                         <span class="badge-text">Established 2017 • West Bengal</span>
                     </div>
-                    
+                  
                     <h1 class="hero-title">
-                        Nurturing Young Minds for a 
+                        Nurturing Young Minds for a
                         <span class="highlight">Brighter Future</span>
                     </h1>
-                    
+                  
                     <p class="hero-description">
-                        Welcome to Ujjwal Kids World, where academic excellence meets holistic development. 
-                        We create an inspiring learning environment that empowers students to discover their 
+                        Welcome to Ujjwal Kids World, where academic excellence meets holistic development.
+                        We create an inspiring learning environment that empowers students to discover their
                         potential, build character, and develop into confident, compassionate leaders of tomorrow.
                     </p>
-                    
+                  
                     <div class="hero-actions">
                         <a href="contact.html" class="btn btn-primary">
                             <span>Apply for Admission</span>
@@ -1659,7 +1482,7 @@ section {
                             </svg>
                         </a>
                     </div>
-                    
+                  
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-number">10,000+</div>
@@ -1684,7 +1507,6 @@ section {
                 </div>
             </div>
         </section>
-
         <!-- About Section -->
         <section class="about-section" id="about">
             <div class="container">
@@ -1694,12 +1516,11 @@ section {
                         Where Learning Meets <span class="text-gradient">Innovation</span>
                     </h2>
                     <p class="section-description">
-                        At Ujjwal Kids World, education goes beyond textbooks. We believe in nurturing 
-                        well-rounded individuals who are equipped with knowledge, values, and skills to 
+                        At Ujjwal Kids World, education goes beyond textbooks. We believe in nurturing
+                        well-rounded individuals who are equipped with knowledge, values, and skills to
                         excel in an ever-evolving world.
                     </p>
                 </div>
-
                 <div class="features-grid">
                     <article class="feature-card">
                         <div class="feature-icon">
@@ -1711,8 +1532,8 @@ section {
                         <div class="feature-number">01</div>
                         <h3 class="feature-title">Academic Excellence</h3>
                         <p class="feature-text">
-                            Our CBSE-aligned curriculum integrates traditional wisdom with modern technology. 
-                            Advanced labs, digital learning, coding, and robotics prepare students for the future 
+                            Our CBSE-aligned curriculum integrates traditional wisdom with modern technology.
+                            Advanced labs, digital learning, coding, and robotics prepare students for the future
                             while building strong academic foundations.
                         </p>
                         <div class="feature-badge">
@@ -1720,7 +1541,6 @@ section {
                             <span>Technology Integration: 95%</span>
                         </div>
                     </article>
-
                     <article class="feature-card">
                         <div class="feature-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -1732,8 +1552,8 @@ section {
                         <div class="feature-number">02</div>
                         <h3 class="feature-title">Character Development</h3>
                         <p class="feature-text">
-                            We focus on holistic growth through arts, sports, community service, and leadership 
-                            programs. Students develop resilience, empathy, creativity, and strong moral values 
+                            We focus on holistic growth through arts, sports, community service, and leadership
+                            programs. Students develop resilience, empathy, creativity, and strong moral values
                             essential for meaningful lives.
                         </p>
                         <div class="feature-badge">
@@ -1741,7 +1561,6 @@ section {
                             <span>Holistic Approach: 360°</span>
                         </div>
                     </article>
-
                     <article class="feature-card">
                         <div class="feature-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -1753,8 +1572,8 @@ section {
                         <div class="feature-number">03</div>
                         <h3 class="feature-title">Expert Educators</h3>
                         <p class="feature-text">
-                            Our 50+ exceptional teachers bring expertise, passion, and dedication to every classroom. 
-                            They mentor, inspire, and guide each student's journey with personalized attention and 
+                            Our 50+ exceptional teachers bring expertise, passion, and dedication to every classroom.
+                            They mentor, inspire, and guide each student's journey with personalized attention and
                             genuine care for their success.
                         </p>
                         <div class="feature-badge">
@@ -1762,7 +1581,6 @@ section {
                             <span>Qualified Teachers: 50+</span>
                         </div>
                     </article>
-
                     <article class="feature-card">
                         <div class="feature-icon">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -1774,8 +1592,8 @@ section {
                         <div class="feature-number">04</div>
                         <h3 class="feature-title">World-Class Infrastructure</h3>
                         <p class="feature-text">
-                            Five state-of-the-art campuses equipped with advanced science labs, digital libraries, 
-                            innovation hubs, performing arts theaters, sports complexes, and collaborative spaces 
+                            Five state-of-the-art campuses equipped with advanced science labs, digital libraries,
+                            innovation hubs, performing arts theaters, sports complexes, and collaborative spaces
                             that inspire learning and achievement.
                         </p>
                         <div class="feature-badge">
@@ -1787,7 +1605,86 @@ section {
             </div>
         </section>
 
-        
+        <section class="about-section" id="resources">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Additional Resources</span>
+                    <h2 class="section-title">
+                        Enhance Your <span class="text-gradient">Skills</span>
+                    </h2>
+                    <p class="section-description">
+                        Discover specialized learning platforms to master programming and mathematics for all levels.
+                    </p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" rx="12" fill="#E3F2FD"/>
+                                <path d="M24 14L28 22H32L26 30L22 22H18L24 14Z" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-number">01</div>
+                        <h3 class="feature-title">Learn Python</h3>
+                        <p class="feature-text">
+                            Want to learn Python? Check out Pyversity.com where we teach Python programming from basics to advanced levels.
+                        </p>
+                        <div class="feature-badge">
+                            <span class="badge-dot"></span>
+                            <a href="https://pyversity.com">Visit Pyversity</a>
+                        </div>
+                    </article>
+
+                    <!-- Modified "Master Mathematics" card - Under Development -->
+                    <article class="feature-card" style="opacity: 0.92; position: relative;">
+                        <div class="feature-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" rx="12" fill="#E8F5E9"/>
+                                <path d="M14 14H34M14 24H34M14 34H34M24 14V34" stroke="#2E7D32" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="24" cy="24" r="10" stroke="#2E7D32" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="feature-number">02</div>
+                        <h3 class="feature-title">Master Mathematics</h3>
+                        <p class="feature-text">
+                            We're building <strong>Mathsversity.com</strong> — a dedicated platform to help students master mathematics from class 1 to 12 and beyond.
+                            <br><br>
+                            <strong>Launching soon</strong> with structured lessons, practice problems, video explanations, and progress tracking.
+                        </p>
+
+                        <!-- Coming soon badges -->
+                        <div style="margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-4);">
+                            <div class="feature-badge" style="background: #FFF3E0; color: #E65100; border: 1px solid #FFCA28;">
+                                <span style="display: inline-block; width: 8px; height: 8px; background: #E65100; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                <span>Under Development</span>
+                            </div>
+
+                            <div class="feature-badge" style="background: var(--color-primary-50);">
+                                <span>Coming 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- Subtle overlay teaser -->
+                        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,243,224,0.4)); 
+                                    pointer-events: none; border-radius: var(--radius-2xl); 
+                                    display: flex; align-items: center; justify-content: center; z-index: 1;">
+                            <span style="font-size: var(--text-2xl); font-weight: 800; color: rgba(230,81,0,0.7); 
+                                         text-transform: uppercase; letter-spacing: 0.15em; 
+                                         background: rgba(255,255,255,0.75); padding: var(--space-4) var(--space-8); 
+                                         border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+                                Coming Soon
+                            </span>
+                        </div>
+
+                        <!-- Disabled link style -->
+                        <div class="feature-badge" style="margin-top: var(--space-6); opacity: 0.6; cursor: not-allowed;">
+                            <span class="badge-dot" style="background: #ADB5BD;"></span>
+                            <span>Visit Mathsversity (soon)</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
         <!-- Leadership Section -->
         <section class="leadership-section" id="leadership">
@@ -1801,31 +1698,31 @@ section {
                         </div>
                         <div class="quote-mark">"</div>
                     </div>
-                    
+                  
                     <div class="leadership-text">
                         <span class="section-tag">Visionary Leadership</span>
                         <h2 class="leadership-name">Mr. Ashim Ghosh</h2>
                         <p class="leadership-role">Founder & Educational Pioneer</p>
-                        
+                      
                         <blockquote class="leadership-quote">
-                            "True education illuminates not only the mind but also the spirit. It awakens 
-                            potential, cultivates character, and empowers individuals to contribute meaningfully 
+                            "True education illuminates not only the mind but also the spirit. It awakens
+                            potential, cultivates character, and empowers individuals to contribute meaningfully
                             to society."
                         </blockquote>
-                        
+                      
                         <div class="leadership-bio">
                             <p>
-                                With an unwavering commitment to educational transformation, Mr. Ashim Ghosh has 
-                                pioneered an innovative approach that honors traditional values while embracing 
+                                With an unwavering commitment to educational transformation, Mr. Ashim Ghosh has
+                                pioneered an innovative approach that honors traditional values while embracing
                                 progressive methodologies.
                             </p>
                             <p>
-                                Under his visionary leadership, Ujjwal Kids World has become one of West Bengal's 
-                                most distinguished educational institutions, positively impacting over 10,000 students 
+                                Under his visionary leadership, Ujjwal Kids World has become one of West Bengal's
+                                most distinguished educational institutions, positively impacting over 10,000 students
                                 across five exceptional campuses since 2010.
                             </p>
                         </div>
-                        
+                      
                         <div class="leadership-stats">
                             <div class="leadership-stat">
                                 <div class="stat-value">9+</div>
@@ -1844,7 +1741,6 @@ section {
                 </div>
             </div>
         </section>
-
         <!-- Campus Gallery Section -->
         <section class="gallery-section" id="campus">
             <div class="container">
@@ -1854,11 +1750,10 @@ section {
                         Where Learning Comes <span class="text-gradient">Alive</span>
                     </h2>
                     <p class="section-description">
-                        Explore our vibrant learning spaces designed to inspire creativity, collaboration, 
+                        Explore our vibrant learning spaces designed to inspire creativity, collaboration,
                         and academic excellence.
                     </p>
                 </div>
-
                 <div class="gallery-grid">
                     <div class="gallery-item large">
                         <img src="student1.jpg"
@@ -1869,7 +1764,7 @@ section {
                             <p>Happy Childrens Day!</p>
                         </div>
                     </div>
-                    
+                  
                     <div class="gallery-item medium">
                         <img src="student images 2.jpg"
                               alt="Group discussion and learning activities"
@@ -1879,7 +1774,7 @@ section {
                             <p>Childrens Performance on stage</p>
                         </div>
                     </div>
-                    
+                  
                     <div class="gallery-item medium">
                         <img src="student image 3.jpg"
                               alt="Contemporary classroom with digital learning tools"
@@ -1889,7 +1784,7 @@ section {
                             <p>Technology-enabled learning spaces</p>
                         </div>
                     </div>
-                    
+                  
                     <div class="gallery-item small">
                         <img src="teachers 5.jpg"
                               alt="Advanced science laboratory facilities"
@@ -1899,7 +1794,7 @@ section {
                             <p>Hands-on experimentation</p>
                         </div>
                     </div>
-                    
+                  
                     <div class="gallery-item small">
                         <img src="teacher 6.jpg"
                               alt="Arts and creative programs"
@@ -1909,7 +1804,7 @@ section {
                             <p>Creative expression & talent</p>
                         </div>
                     </div>
-                    
+                  
                     <div class="gallery-item small">
                         <img src="teacher 7.jpg"
                               alt="Sports and athletic facilities"
@@ -1922,7 +1817,6 @@ section {
                 </div>
             </div>
         </section>
-
         <!-- Call to Action Section -->
         <section class="cta-section" id="admissions">
             <div class="container">
@@ -1934,17 +1828,17 @@ section {
                                    fill="white" stroke="white" stroke-width="2"/>
                         </svg>
                     </div>
-                    
+                  
                     <h2 class="cta-title">
                         Begin Your Child's Journey to Excellence
                     </h2>
-                    
+                  
                     <p class="cta-description">
-                        Discover how Ujjwal Kids World can provide your child with an exceptional foundation 
-                        for lifelong success. Schedule a personalized campus tour and experience our 
+                        Discover how Ujjwal Kids World can provide your child with an exceptional foundation
+                        for lifelong success. Schedule a personalized campus tour and experience our
                         distinguished educational community firsthand.
                     </p>
-                    
+                  
                     <div class="cta-actions">
                         <a href="contact.html" class="btn btn-light">
                             <span>Schedule Campus Visit</span>
@@ -1952,9 +1846,8 @@ section {
                                 <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </a>
-                        
                     </div>
-                    
+                  
                     <div class="cta-trust">
                         <div class="trust-badge">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -1975,7 +1868,6 @@ section {
             </div>
         </section>
     </main>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1986,7 +1878,7 @@ section {
                         <span class="logo-text">Ujjwal Kids World</span>
                     </div>
                     <p class="footer-tagline">
-                        A premier educational institution dedicated to cultivating excellence, character, 
+                        A premier educational institution dedicated to cultivating excellence, character,
                         and leadership in every student.
                     </p>
                     <div class="footer-accreditation">
@@ -1999,7 +1891,6 @@ section {
                         </span>
                     </div>
                 </div>
-
                 <div class="footer-links-group">
                     <div class="footer-column">
                         <h4 class="footer-heading">Quick Links</h4>
@@ -2009,7 +1900,6 @@ section {
                             <li><a href="projects.html">Projects</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
                         <h4 class="footer-heading">Other Links</h4>
                         <ul class="footer-links">
@@ -2019,7 +1909,6 @@ section {
                             <li><a href="gallery.html">Gallery</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
                         <h4 class="footer-heading">Contact</h4>
                         <ul class="footer-links">
@@ -2049,13 +1938,12 @@ section {
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
+                    <p>© 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
                     <p class="footer-tagline-small">Excellence Since 2010</p>
                 </div>
-                
+              
                 <div class="footer-social">
                     <a href="#facebook" aria-label="Visit our Facebook page" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -2079,52 +1967,52 @@ section {
             </div>
         </div>
     </footer>
+
 <script>
-    // ========================================
+// ========================================
 // UJJWAL KIDS WORLD - INTERACTIVE SCRIPT
 // Modern, accessible, educational website
 // ========================================
-
 document.addEventListener('DOMContentLoaded', function() {
-    
+  
     // ===== MOBILE MENU TOGGLE =====
     const menuToggle = document.getElementById('menuToggle');
     const mobileOverlay = document.getElementById('mobileOverlay');
     const mobileClose = document.getElementById('mobileClose');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const body = document.body;
-    
+  
     if (menuToggle && mobileOverlay) {
         // Toggle mobile menu
         menuToggle.addEventListener('click', function() {
             const isActive = mobileOverlay.classList.contains('active');
-            
+          
             if (isActive) {
                 closeMobileMenu();
             } else {
                 openMobileMenu();
             }
         });
-        
+      
         // Close menu with close button
         if (mobileClose) {
             mobileClose.addEventListener('click', closeMobileMenu);
         }
-        
+      
         // Close menu when clicking on a link
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 closeMobileMenu();
             });
         });
-        
+      
         // Close menu on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
                 closeMobileMenu();
             }
         });
-        
+      
         // Close menu when clicking outside
         mobileOverlay.addEventListener('click', function(e) {
             if (e.target === mobileOverlay) {
@@ -2132,26 +2020,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+  
     function openMobileMenu() {
         menuToggle.classList.add('active');
         mobileOverlay.classList.add('active');
         body.style.overflow = 'hidden';
         menuToggle.setAttribute('aria-expanded', 'true');
     }
-    
+  
     function closeMobileMenu() {
         menuToggle.classList.remove('active');
         mobileOverlay.classList.remove('active');
         body.style.overflow = '';
         menuToggle.setAttribute('aria-expanded', 'false');
     }
-    
+  
     // ===== NAVBAR SCROLL EFFECT =====
     const navbar = document.getElementById('navbar');
     let lastScrollTop = 0;
     let ticking = false;
-    
+  
     window.addEventListener('scroll', function() {
         if (!ticking) {
             window.requestAnimationFrame(function() {
@@ -2161,44 +2049,44 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
-    
+  
     function updateNavbar() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+      
         if (scrollTop > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-        
+      
         lastScrollTop = scrollTop;
     }
-    
+  
     // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
+  
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
+          
             // Skip if href is just "#"
             if (href === '#') {
                 e.preventDefault();
                 return;
             }
-            
+          
             const target = document.querySelector(href);
-            
+          
             if (target) {
                 e.preventDefault();
                 const navbarHeight = navbar ? navbar.offsetHeight : 80;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                
+              
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
+              
                 // Update URL without jumping
                 if (history.pushState) {
                     history.pushState(null, null, href);
@@ -2206,13 +2094,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+  
     // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.1;
         rootMargin: '0px 0px -50px 0px'
     };
-    
+  
     const fadeInObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -2222,20 +2110,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-    
+  
     // Apply fade-in animation to elements
     const fadeElements = document.querySelectorAll('.feature-card, .gallery-item, .leadership-stat');
-    
+  
     fadeElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         fadeInObserver.observe(el);
     });
-    
+  
     // ===== PARALLAX EFFECT FOR HERO VISUAL =====
     const heroVisual = document.querySelector('.hero-visual');
-    
+  
     if (heroVisual) {
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
@@ -2244,24 +2132,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+  
     // ===== LOADING ANIMATION =====
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
-    
+  
     // ===== ACTIVE NAVIGATION LINK =====
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a:not(.btn-nav-cta)');
-    
+  
     function highlightNavigation() {
         const scrollY = window.pageYOffset;
-        
+      
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
             const sectionTop = section.offsetTop - 100;
             const sectionId = section.getAttribute('id');
-            
+          
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
@@ -2272,17 +2160,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+  
     window.addEventListener('scroll', highlightNavigation);
-    
+  
     // ===== FORM VALIDATION (if forms are added later) =====
     const forms = document.querySelectorAll('form');
-    
+  
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
             const inputs = form.querySelectorAll('input[required], textarea[required]');
             let isValid = true;
-            
+          
             inputs.forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
@@ -2291,25 +2179,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     input.classList.remove('error');
                 }
             });
-            
+          
             if (!isValid) {
                 e.preventDefault();
             }
         });
     });
-    
+  
     // ===== ACCESSIBILITY: TRAP FOCUS IN MOBILE MENU =====
     function trapFocus(element) {
         const focusableElements = element.querySelectorAll(
             'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
         );
-        
+      
         const firstFocusable = focusableElements[0];
         const lastFocusable = focusableElements[focusableElements.length - 1];
-        
+      
         element.addEventListener('keydown', function(e) {
             if (e.key !== 'Tab') return;
-            
+          
             if (e.shiftKey) {
                 if (document.activeElement === firstFocusable) {
                     lastFocusable.focus();
@@ -2323,14 +2211,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+  
     if (mobileOverlay) {
         trapFocus(mobileOverlay);
     }
-    
+  
     // ===== PERFORMANCE: LAZY LOADING IMAGES =====
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+  
     if ('loading' in HTMLImageElement.prototype) {
         // Browser supports native lazy loading
         images.forEach(img => {
@@ -2347,19 +2235,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
+      
         images.forEach(img => imageObserver.observe(img));
     }
-    
+  
     // ===== CONSOLE MESSAGE =====
     console.log('%cUjjwal Kids World', 'font-size: 24px; color: #4A90E2; font-weight: bold;');
     console.log('%cExcellence in Education Since 2010', 'font-size: 14px; color: #6C757D;');
     console.log('%c🎓 Building Bright Futures', 'font-size: 12px; color: #26C281;');
-    
+  
 });
-
 // ===== UTILITY FUNCTIONS =====
-
 // Debounce function for performance optimization
 function debounce(func, wait) {
     let timeout;
@@ -2372,7 +2258,6 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 }
-
 // Throttle function for scroll events
 function throttle(func, limit) {
     let inThrottle;
@@ -2386,7 +2271,6 @@ function throttle(func, limit) {
         }
     };
 }
-
 // Check if element is in viewport
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
@@ -2397,7 +2281,6 @@ function isInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
-
 // ===== PERFORMANCE MONITORING =====
 if ('PerformanceObserver' in window) {
     try {
@@ -2409,7 +2292,7 @@ if ('PerformanceObserver' in window) {
                 }
             });
         });
-        
+      
         perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
     } catch (e) {
         // PerformanceObserver not supported
