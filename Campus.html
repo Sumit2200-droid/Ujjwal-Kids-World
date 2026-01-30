@@ -193,7 +193,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: #a41e35;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: var(--shadow-sm);
@@ -250,7 +250,7 @@
         .nav-links a {
             font-size: var(--text-sm);
             font-weight: 500;
-            color: var(--color-gray-700);
+            color: var(--color-white);
             transition: color var(--transition-fast);
             position: relative;
         }
@@ -262,12 +262,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--color-primary);
+            background: var(--color-white);
             transition: width var(--transition-base);
         }
 
         .nav-links a:hover {
-            color: var(--color-primary);
+            color: var(--color-white);
         }
 
         .nav-links a:hover::after {
@@ -308,7 +308,7 @@
         .hamburger {
             width: 24px;
             height: 2px;
-            background: var(--color-gray-800);
+            background: var(--color-white);
             border-radius: var(--radius-full);
             transition: all var(--transition-base);
         }
@@ -360,7 +360,7 @@
             justify-content: space-between;
             padding: var(--space-5) var(--space-6);
             border-bottom: 1px solid var(--color-gray-200);
-            background: var(--color-white);
+            background: #a41e35;
             position: sticky;
             top: 0;
             z-index: var(--z-fixed);
@@ -395,12 +395,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-gray-800);
+            color: var(--color-white);
             transition: all var(--transition-fast);
         }
 
         .mobile-close:hover {
-            color: var(--color-primary);
+            color: var(--color-white);
             transform: rotate(90deg);
         }
 
@@ -614,7 +614,7 @@
         .campus-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-xl);
-            border-color: rgba(74, 144, 226, 0.2);
+            border-color: rgba(238, 38, 38, 0.2);
         }
 
         .campus-card:hover::before {
@@ -992,7 +992,7 @@
             <div class="nav-brand">
                 <div class="logo">
                     <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
-                    <span class="logo-text">Ujjwal Kids World</span>
+                    <span class="logo-text" style="color: var(--color-white);">Ujjwal Kids World</span>
                 </div>
             </div>
             
@@ -1021,7 +1021,7 @@
             <div class="mobile-nav-header">
                 <div class="mobile-logo">
                     <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="mobile-logo-img">
-                    <span class="mobile-logo-text">Ujjwal Kids World</span>
+                    <span class="mobile-logo-text" style="color: var(--color-white);">Ujjwal Kids World</span>
                 </div>
                 <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1384,19 +1384,13 @@
                                 </svg>
                                 <span>Gangarampur, Dakshin Dinajpur<br>West Bengal, India</span>
                             </li>
+                           
                             <li class="contact-item">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                                     <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
                                 </svg>
-                                <a href="mailto:admissions@ujjwalkidsworld.edu">admissions@ujjwalkidsworld.edu</a>
-                            </li>
-                            <li class="contact-item">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
-                                </svg>
-                                <a href="mailto:info@ujjwalkidsworld.edu">info@ujjwalkidsworld.edu</a>
+                                <a href="mailto:ujjwalkidsworld@gmail.com">ujjwalkidsworld@gmail.com</a>
                             </li>
                         </ul>
                     </div>
