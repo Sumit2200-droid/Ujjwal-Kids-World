@@ -210,6 +210,126 @@ img {
         padding: 0 var(--space-12);
     }
 }
+
+/* ===== TOP BAR STYLES ===== */
+/* Top Contact Bar - Visible on all devices */
+.top-bar {
+    background: linear-gradient(135deg, rgb(164, 30, 53) 0%, rgb(220, 90, 110) 100%);
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Desktop version - normal layout */
+.top-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.top-bar-left {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.top-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.top-bar-item i {
+    font-size: 16px;
+}
+
+.top-bar a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.top-bar a:hover {
+    opacity: 0.8;
+}
+
+.career-link {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.career-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide duplicate on desktop */
+@media (min-width: 768px) {
+    .top-bar-left:nth-child(2) {
+        display: none;
+    }
+}
+
+/* Mobile version - scrolling marquee effect */
+@media (max-width: 767px) {
+    .top-bar {
+        font-size: 12px;
+    }
+
+    .top-bar-content {
+        padding: 0;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 0;
+        animation: marquee 25s linear infinite;
+    }
+
+    .top-bar-left {
+        display: flex;
+        gap: 30px;
+        flex-wrap: nowrap;
+        padding-right: 30px;
+    }
+
+    .top-bar-item {
+        font-size: 12px;
+        gap: 6px;
+        flex-shrink: 0;
+    }
+
+    /* Marquee animation - scrolls right to left */
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Pause animation on hover */
+    .top-bar-content:hover {
+        animation-play-state: paused;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar-left {
+        gap: 25px;
+    }
+}
+
 /* ===== NAVIGATION ===== */
 .navbar {
     position: fixed;
@@ -1446,122 +1566,40 @@ section {
     <!-- Navigation -->
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <!-- TOP BAR HTML -->
-<div class="top-bar">
-    <div class="top-bar-content">
-        <div class="top-bar-left">
-            <div class="top-bar-item">
-                <span>📞</span>
-                <a href="tel:+917356680413">+91 9382927687</a>
-            </div>
-            <div class="top-bar-item">
-                <span>✉️</span>
-                <a href="mailto:ujjwalkidsworld@gmail.com">ujjwalkidsworld@gmail.com</a>
-            </div>
-            <div class="top-bar-item">
-                <span>🕒</span>
-                <span>Tue - Sat: 10:30 AM - 3:30 PM</span>
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <div class="top-bar-item">
+                        <span>📞</span>
+                        <a href="tel:+919382927687">+91 9382927687</a>
+                    </div>
+                    <div class="top-bar-item">
+                        <span>✉️</span>
+                        <a href="mailto:ujjwalkidsworld@gmail.com">ujjwalkidsworld@gmail.com</a>
+                    </div>
+                    <div class="top-bar-item">
+                        <span>🕒</span>
+                        <span>Tue - Sat: 10:30 AM - 3:30 PM</span>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop on mobile -->
+                <div class="top-bar-left">
+                    <div class="top-bar-item">
+                        <span>📞</span>
+                        <a href="tel:+919382927687">+91 9382927687</a>
+                    </div>
+                    <div class="top-bar-item">
+                        <span>✉️</span>
+                        <a href="mailto:ujjwalkidsworld@gmail.com">ujjwalkidsworld@gmail.com</a>
+                    </div>
+                    <div class="top-bar-item">
+                        <span>🕒</span>
+                        <span>Tue - Sat: 10:30 AM - 3:30 PM</span>
+                    </div>
+                </div>
             </div>
         </div>
-        
-    </div>
-</div>
 
-<!-- TOP BAR CSS -->
-<style>
-/* Top Contact Bar */
-.top-bar {
-   background: linear-gradient(
-  135deg,
-  rgb(164, 30, 53) 0%,
-  rgb(220, 90, 110) 100%
-);
-
-    color: white;
-    padding: 10px 0;
-    font-size: 14px;
-}
-
-.top-bar-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.top-bar-left {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.top-bar-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.top-bar-item i {
-    font-size: 16px;
-}
-
-.top-bar a {
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
-
-.top-bar a:hover {
-    opacity: 0.8;
-}
-
-.career-link {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-    transition: background 0.3s;
-}
-
-.career-link:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-/* Responsive Design for Top Bar */
-@media (max-width: 768px) {
-    .top-bar-content {
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .top-bar-left {
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .top-bar-item {
-        font-size: 12px;
-        gap: 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    .top-bar {
-        font-size: 12px;
-    }
-}
-</style>
         <div class="nav-container">
             <div class="nav-brand">
                 <div class="logo">
@@ -1772,19 +1810,19 @@ section {
                         <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,243,224,0.4)); 
                                     pointer-events: none; border-radius: var(--radius-2xl); 
                                     display: flex; align-items: center; justify-content: center; z-index: 1;">
+             
                             <span style="font-size: var(--text-2xl); font-weight: 800; color: rgba(230,81,0,0.7); 
                                          text-transform: uppercase; letter-spacing: 0.15em; 
                                          background: rgba(255,255,255,0.75); padding: var(--space-4) var(--space-8); 
                                          border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+                                          
                                 Coming Soon
+
                             </span>
                         </div>
 
                         <!-- Disabled link style -->
-                        <div class="feature-badge" style="margin-top: var(--space-6); opacity: 0.6; cursor: not-allowed;">
-                            <span class="badge-dot" style="background: #ADB5BD;"></span>
-                            <span>Visit Mathsversity (soon)</span>
-                        </div>
+                       
                     </article>
                 </div>
             </div>
@@ -1928,14 +1966,14 @@ section {
                                     <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                                     <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
                                 </svg>
-                                <a href="mailto:admissions@ujjwalkidsworld.edu">admissions@ujjwalkidsworld.edu</a>
+                                <a href="/cdn-cgi/l/email-protection#7312171e1a00001a1c1d003306191904121f181a1700041c011f175d161706"><span class="__cf_email__" data-cfemail="6001040d091313090f0e1320150a0a17010c0b090413170f120c044e050415">[email&#160;protected]</span></a>
                             </li>
                             <li class="contact-item">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
                                     <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
                                 </svg>
-                                <a href="mailto:info@ujjwalkidsworld.edu">info@ujjwalkidsworld.edu</a>
+                                <a href="/cdn-cgi/l/email-protection#264f48404966534c4c51474a4d4f42555149544a4208434253"><span class="__cf_email__" data-cfemail="0960676f66497c63637e686562606d7a7e667b656d276c6d7c">[email&#160;protected]</span></a>
                             </li>
                         </ul>
                     </div>
@@ -1971,7 +2009,7 @@ section {
         </div>
     </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ========================================
 // UJJWAL KIDS WORLD - INTERACTIVE SCRIPT
 // Modern, accessible, educational website
@@ -2300,21 +2338,12 @@ function isInViewport(element) {
 }
 // ===== PERFORMANCE MONITORING =====
 if ('PerformanceObserver' in window) {
-    try {
-        const perfObserver = new PerformanceObserver((entryList) => {
-            const entries = entryList.getEntries();
-            entries.forEach((entry) => {
-                if (entry.entryType === 'largest-contentful-paint') {
-                    console.log('LCP:', entry.startTime);
-                }
-            });
+    const perfObserver = new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
+            console.log('Performance Entry:', entry);
         });
-      
-        perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-    } catch (e) {
-        // PerformanceObserver not supported
-    }
+    });
+    perfObserver.observe({ entryTypes: ['paint', 'resource', 'longtask'] });
 }
 </script>
 </body>
-</html>
