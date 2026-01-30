@@ -19,7 +19,7 @@
 /* ===== CSS VARIABLES ===== */
 :root {
     /* Primary Color Palette - Soft Educational Blues */
-    --color-primary: #4A90E2;
+    --color-primary: #a41e35;
     --color-primary-light: #6BA3E8;
     --color-primary-dark: #3A7BC8;
     --color-primary-50: #E3F2FD;
@@ -161,6 +161,11 @@ img {
 @media (min-width: 768px) {
     .container {
         padding: 0 var(--space-8);
+    }
+}
+@media (min-width: 1280px) {
+    .container {
+        padding: 0 var(--space-12);
     }
 }
 
@@ -390,7 +395,6 @@ background: linear-gradient(
   rgb(164, 30, 53) 0%,
   rgb(255, 200, 210) 100%
 );
-
 
     text-align: center;
     position: relative;
@@ -737,7 +741,7 @@ background: linear-gradient(
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    background: var(--color-primary);
     color: var(--color-white);
     box-shadow: var(--shadow-md);
     width: 100%;
@@ -775,8 +779,8 @@ background: linear-gradient(
 .section-tag {
     display: inline-block;
     padding: var(--space-2) var(--space-4);
-    background: var(--color-primary-50);
-    color: var(--color-primary-dark);
+    background: var(--color-primary);
+    color: #ffffff;
     font-size: var(--text-sm);
     font-weight: 700;
     text-transform: uppercase;
@@ -829,9 +833,8 @@ background: linear-gradient(
 .footer {
     background: var(--color-gray-900);
     color: var(--color-gray-400);
-    padding: var(--space-16) 0 var(--space-8);
+    padding: calc(var(--space-16) + 1.5rem) 0 var(--space-8);
 }
-
 .footer-main {
     display: grid;
     grid-template-columns: 1fr;
@@ -840,7 +843,6 @@ background: linear-gradient(
     padding-bottom: var(--space-12);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .footer-brand .footer-logo {
     display: flex;
     align-items: center;
@@ -850,7 +852,6 @@ background: linear-gradient(
     color: var(--color-white);
     margin-bottom: var(--space-4);
 }
-
 .footer-tagline {
     font-size: var(--text-base);
     line-height: 1.7;
@@ -858,36 +859,41 @@ background: linear-gradient(
     margin-bottom: var(--space-4);
     max-width: 400px;
 }
-
+.footer-accreditation {
+    margin-top: var(--space-4);
+}
+.accreditation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgb(255 0 0 / 25%);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
 .footer-links-group {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-8);
 }
-
 .footer-heading {
     font-size: var(--text-lg);
     font-weight: 700;
     color: var(--color-white);
     margin-bottom: var(--space-4);
 }
-
 .footer-links {
     list-style: none;
 }
-
 .footer-links li {
     margin-bottom: var(--space-3);
 }
-
 .footer-links a {
     color: var(--color-gray-400);
     transition: color var(--transition-fast);
     font-size: var(--text-sm);
-}
-
-.footer-links a:hover {
-    color: var(--color-primary-100);
 }
 
 .contact-item {
@@ -896,9 +902,11 @@ background: linear-gradient(
     gap: var(--space-3);
     color: var(--color-gray-400);
     font-size: var(--text-sm);
-    margin-bottom: var(--space-3);
 }
-
+.contact-item svg {
+    flex-shrink: 0;
+    margin-top: var(--space-1);
+}
 .footer-bottom {
     display: flex;
     flex-direction: column;
@@ -906,17 +914,18 @@ background: linear-gradient(
     align-items: center;
     text-align: center;
 }
-
 .footer-copyright {
     font-size: var(--text-sm);
     color: var(--color-gray-500);
 }
-
+.footer-tagline-small {
+    color: var(--color-gray-600);
+    margin-top: var(--space-2);
+}
 .footer-social {
     display: flex;
     gap: var(--space-4);
 }
-
 .social-link {
     width: 40px;
     height: 40px;
@@ -928,13 +937,11 @@ background: linear-gradient(
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
 }
-
 .social-link:hover {
-    background: var(--color-primary);
+    background: rgb(255 0 0 / 25%);
     color: var(--color-white);
     transform: translateY(-3px);
 }
-
 /* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {
     .nav-menu {
@@ -1240,7 +1247,7 @@ background: linear-gradient(
         </div>
     </section>
 
-    <!-- Footer -->
+     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-main">
@@ -1253,18 +1260,25 @@ background: linear-gradient(
                         A premier educational institution dedicated to cultivating excellence, character,
                         and leadership in every student.
                     </p>
+                    <div class="footer-accreditation">
+                        <span class="accreditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 2L9.5 5.5L13 6L10.5 9L11.5 13L8 11L4.5 13L5.5 9L3 6L6.5 5.5L8 2Z"
+                                       fill="currentColor"/>
+                            </svg>
+                            CBSE Curriculum
+                        </span>
+                    </div>
                 </div>
-
                 <div class="footer-links-group">
                     <div class="footer-column">
                         <h4 class="footer-heading">Quick Links</h4>
                         <ul class="footer-links">
-                            <li><a href="programs.html">Academic Programs</a></li>
+                            <li><a href="programs.html">Academics Programs</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="projects.html">Projects</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
                         <h4 class="footer-heading">Other Links</h4>
                         <ul class="footer-links">
@@ -1274,46 +1288,52 @@ background: linear-gradient(
                             <li><a href="gallery.html">Gallery</a></li>
                         </ul>
                     </div>
-
                     <div class="footer-column">
                         <h4 class="footer-heading">Contact</h4>
                         <ul class="footer-links">
                             <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 2C5 2 3 4 3 7C3 10 8 14 8 14C8 14 13 10 13 7C13 4 11 2 8 2Z"
+                                           stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="7" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                </svg>
                                 <span>Gangarampur, Dakshin Dinajpur<br>West Bengal, India</span>
                             </li>
-                            <li class="contact-item">
+                           
+                               <li class="contact-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <path d="M2 3L8 8L14 3" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
                                 <a href="mailto:ujjwalkidsworld@gmail.com">ujjwalkidsworld@gmail.com</a>
-                            </li>
-                            <li class="contact-item">
-                                <a href="tel:+919382927687">+91 93829 27687</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
+                    <p>© 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
+                    <p class="footer-tagline-small">Excellence Since 2017</p>
                 </div>
-
+              
                 <div class="footer-social">
-                    <a href="#facebook" class="social-link">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM11 10.5V14H9V10.5H8V9H9V8C9 6.9 9.9 6 11 6H12V7.5H11.5C11.22 7.5 11 7.72 11 8V9H12L11.75 10.5H11Z"/>
+                    <a href="#facebook" aria-label="Visit our Facebook page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM11 10.5V14H9V10.5H8V9H9V8C9 6.9 9.9 6 11 6H12V7.5H11.5C11.22 7.5 11 7.72 11 8V9H12L11.75 10.5H11Z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#instagram" class="social-link">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="14" height="14" rx="4"></rect>
-                            <circle cx="10" cy="10" r="3"></circle>
-                            <circle cx="14.5" cy="5.5" r="0.5" fill="currentColor"></circle>
+                    <a href="#instagram" aria-label="Visit our Instagram page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="14.5" cy="5.5" r="0.5" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#linkedin" class="social-link">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 3H17V17H3V3Z"></path>
-                            <path d="M6 8V14M6 6.5V6M10 14V10.5C10 9.5 10.5 9 11.5 9C12.5 9 13 9.5 13 10.5V14" stroke-linecap="round"></path>
+                    <a href="#linkedin" aria-label="Visit our LinkedIn page" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 3H17V17H3V3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M6 8V14M6 6.5V6M10 14V10.5C10 9.5 10.5 9 11.5 9C12.5 9 13 9.5 13 10.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </a>
                 </div>
