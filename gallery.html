@@ -135,7 +135,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.97);
+            background: #a41e35;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             box-shadow: var(--shadow-sm);
@@ -192,7 +192,7 @@
         .nav-links a {
             font-size: var(--text-sm);
             font-weight: 500;
-            color: var(--color-gray-700);
+            color: var(--color-white);
             transition: color var(--transition-fast);
             position: relative;
             text-decoration: none;
@@ -205,12 +205,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--color-primary);
+            background: var(--color-white);
             transition: width var(--transition-base);
         }
 
         .nav-links a:hover {
-            color: var(--color-primary);
+            color: var(--color-white);
         }
 
         .nav-links a:hover::after {
@@ -259,7 +259,7 @@
         .hamburger {
             width: 24px;
             height: 2px;
-            background: var(--color-gray-800);
+            background: var(--color-white);
             border-radius: var(--radius-full);
             transition: all var(--transition-base);
         }
@@ -310,7 +310,7 @@
             justify-content: space-between;
             padding: var(--space-5) var(--space-6);
             border-bottom: 1px solid var(--color-gray-200);
-            background: var(--color-white);
+            background: #a41e35;
             position: sticky;
             top: 0;
             z-index: var(--z-fixed);
@@ -345,7 +345,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-gray-800);
+            color: var(--color-white);
             transition: all var(--transition-fast);
         }
 
@@ -426,7 +426,12 @@
 
         .page-hero {
             padding: calc(80px + var(--space-16)) 0 var(--space-16);
-            background: linear-gradient(135deg, var(--color-primary-50) 0%, rgba(227, 242, 253, 0.3) 100%);
+            background: linear-gradient(
+  180deg,
+  #e6b3b3 0%,
+  #ffffff 100%
+);
+
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -458,12 +463,12 @@
             gap: var(--space-2);
             padding: var(--space-2) var(--space-4);
             background: var(--color-white);
-            border: 1px solid var(--color-primary-100);
+          
             border-radius: var(--radius-full);
             margin-bottom: var(--space-6);
             font-size: var(--text-sm);
             font-weight: 600;
-            color: var(--color-primary-dark);
+            color: #a41e35;
         }
 
         .badge-icon {
@@ -479,7 +484,12 @@
         }
 
         .highlight {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(
+  135deg,
+  rgb(164, 30, 53) 0%,
+  rgb(220, 90, 110) 100%
+);
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -800,8 +810,8 @@
             align-items: center;
             gap: var(--space-2);
             padding: var(--space-2) var(--space-4);
-            background: rgba(74, 144, 226, 0.1);
-            color: var(--color-primary-100);
+            background: #591c1f;
+            color: var(--color-white);
             font-size: var(--text-sm);
             font-weight: 600;
             border-radius: var(--radius-full);
@@ -835,9 +845,7 @@
             text-decoration: none;
         }
 
-        .footer-links a:hover {
-            color: var(--color-primary-100);
-        }
+ 
 
         .contact-item {
             display: flex;
@@ -1033,7 +1041,7 @@
             <div class="nav-brand">
                 <a href="index.html" class="logo">
                     <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
-                    <span class="logo-text">Ujjwal Kids World</span>
+                    <span class="logo-text" style="color: var(--color-white);">Ujjwal Kids World</span>
                 </a>
             </div>
 
@@ -1049,7 +1057,7 @@
                     <li><a href="programs.html">Academic Programs</a></li>
                     <li><a href="Campus.html">Our Campuses</a></li>
                     <li><a href="Achievements.html">Achievements</a></li>
-                    <li><a href="projects.html" class="btn-nav-cta">Student Projects</a></li>
+                    <li><a href="projects.html">Student Projects</a></li>
                     <li><a href="gallery.html" >Gallery</a></li>
                 </ul>
             </div>
@@ -1061,7 +1069,7 @@
             <div class="mobile-nav-header">
                 <div class="mobile-logo">
                     <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="mobile-logo-img">
-                    <span class="mobile-logo-text">Ujjwal Kids World</span>
+                    <span class="mobile-logo-text" style="color: var(--color-white);">Ujjwal Kids World</span>
                 </div>
                 <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1076,7 +1084,7 @@
                 <li><a href="Campus.html" class="mobile-link">Our Campuses</a></li>
                 <li><a href="Achievements.html" class="mobile-link">Achievements</a></li>
                 <li><a href="projects.html" class="mobile-link">Student Projects</a></li>
-                <li><a href="gallery.html" class="mobile-link active">Gallery</a></li>
+                <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
             </ul>
         </nav>
     </div>
@@ -1188,7 +1196,7 @@
             <div class="footer-bottom">
                 <div class="footer-copyright">
                     <p>&copy; 2026 Ujjwal Kids World. Founded by Mr. Ashim Ghosh.</p>
-                    <p class="footer-tagline-small">Excellence Since 2010</p>
+                    <p class="footer-tagline-small">Excellence Since 2017</p>
                 </div>
 
                 <div class="footer-social">
@@ -1430,8 +1438,6 @@
                 {id: 135, url: '138.jpeg'},
                 {id: 136, url: '139.jpeg'},
                 {id: 137, url: '140.jpeg'},
-                                             
-
             ];
 
             let currentImageIndex = 0;
