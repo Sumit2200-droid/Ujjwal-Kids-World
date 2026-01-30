@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: var(--color-primary);
+    color: var(--color-white);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
@@ -170,7 +170,7 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: #a41e35;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-sm);
@@ -227,7 +227,7 @@ img {
 .nav-links a {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-gray-700);
+    color: var(--color-white);
     transition: color var(--transition-fast);
     position: relative;
 }
@@ -239,12 +239,12 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-primary);
+    background: var(--color-white);
     transition: width var(--transition-base);
 }
 
 .nav-links a:hover {
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .nav-links a:hover::after {
@@ -385,7 +385,13 @@ img {
 /* ===== PAGE HEADER ===== */
 .page-header {
     padding: calc(80px + var(--space-12)) 0 var(--space-12);
-    background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-white) 100%);
+background: linear-gradient(
+  135deg,
+  rgb(164, 30, 53) 0%,
+  rgb(255, 200, 210) 100%
+);
+
+
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -432,7 +438,7 @@ img {
 
 .page-subtitle {
     font-size: var(--text-lg);
-    color: var(--color-gray-600);
+    color: var(--color-white);
     line-height: 1.8;
 }
 
@@ -1007,7 +1013,7 @@ img {
             <div class="nav-brand">
                 <a href="index.html" class="logo">
                     <img src="logo.jpeg" alt="Ujjwal Kids World Logo" class="logo-img">
-                    <span class="logo-text">Ujjwal Kids World</span>
+                    <span class="logo-text" style="color: var(--color-white);">Ujjwal Kids World</span>
                 </a>
             </div>
 
@@ -1023,7 +1029,7 @@ img {
                     <li><a href="programs.html">Academic Programs</a></li>
                     <li><a href="Campus.html">Our Campuses</a></li>
                     <li><a href="Achievements.html">Achievements</a></li>
-                    <li><a href="projects.html" class="btn-nav-cta">Student Projects</a></li>
+                    <li><a href="projects.html">Student Projects</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
@@ -1063,7 +1069,7 @@ img {
                 <nav class="breadcrumb">
                     <a href="index.html">Home</a>
                     <span class="breadcrumb-separator">•</span>
-                    <span>Contact Us</span>
+                    <span style="color: var(--color-white);">Contact Us</span>
                 </nav>
                 <h1 class="page-title">Get in Touch</h1>
                 <p class="page-subtitle">
